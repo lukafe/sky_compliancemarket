@@ -1,8 +1,7 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "rewrites": [
-    { "source": "/", "destination": "/dashboard/index.html" }
-  ],
+  "buildCommand": "cp dashboard/index.html ./index.html && cp dashboard/data.json ./data.json",
+  "outputDirectory": ".",
   "cleanUrls": true,
   "trailingSlash": false
 }

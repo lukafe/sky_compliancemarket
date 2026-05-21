@@ -615,7 +615,7 @@ let DATA = null;
 let SEL = null;
 
 async function load() {
-  const r = await fetch('/dashboard/data.json');
+  const r = await fetch('data.json');
   DATA = await r.json();
   document.getElementById('cfgVersion').textContent = DATA.config_version;
   document.getElementById('footerVersion').textContent = DATA.config_version;
