@@ -38,7 +38,19 @@
       ],
       "competitors_weak": "Big 4 BR + Mattos Filho own relationships but no on-chain depth",
       "first_touch": "ABCripto + Mattos Filho joint event",
-      "is_shortlist": true
+      "is_shortlist": true,
+      "iso_a2": "BR",
+      "iso_a3": "BRA",
+      "scores_1to5": {
+        "adoption": 5,
+        "aml": 4,
+        "enforcement": 3,
+        "volume": 5,
+        "inst_depth": 4,
+        "deadline_prox": 5,
+        "lifecycle": 5,
+        "trigger": 5
+      }
     },
     {
       "country": "Pakistan",
@@ -70,7 +82,19 @@
       ],
       "competitors_weak": "No regional crypto-tech bench",
       "first_touch": "Verify regime is operational before significant outreach investment",
-      "is_shortlist": true
+      "is_shortlist": true,
+      "iso_a2": "PK",
+      "iso_a3": "PAK",
+      "scores_1to5": {
+        "adoption": 4,
+        "aml": 2,
+        "enforcement": 2,
+        "volume": 3,
+        "inst_depth": 2,
+        "deadline_prox": 5,
+        "lifecycle": 5,
+        "trigger": 5
+      }
     },
     {
       "country": "Germany",
@@ -104,7 +128,19 @@
       ],
       "competitors_weak": "Big 4 dominate audit; lack on-chain depth",
       "first_touch": "BBV / Bitkom MiCA webinar",
-      "is_shortlist": true
+      "is_shortlist": true,
+      "iso_a2": "DE",
+      "iso_a3": "DEU",
+      "scores_1to5": {
+        "adoption": 4,
+        "aml": 5,
+        "enforcement": 5,
+        "volume": 5,
+        "inst_depth": 5,
+        "deadline_prox": 5,
+        "lifecycle": 5,
+        "trigger": 5
+      }
     },
     {
       "country": "France",
@@ -138,7 +174,19 @@
       ],
       "competitors_weak": "Long-tail PSAN underserved by Big 4",
       "first_touch": "ADAN webinar + AMF Reg Lab engagement",
-      "is_shortlist": true
+      "is_shortlist": true,
+      "iso_a2": "FR",
+      "iso_a3": "FRA",
+      "scores_1to5": {
+        "adoption": 4,
+        "aml": 5,
+        "enforcement": 5,
+        "volume": 4,
+        "inst_depth": 5,
+        "deadline_prox": 5,
+        "lifecycle": 5,
+        "trigger": 5
+      }
     },
     {
       "country": "Ireland",
@@ -172,7 +220,19 @@
       ],
       "competitors_weak": "Big 4 Ireland strong on audit but on-chain forensics gap",
       "first_touch": "FPAI event + Matheson partnership webinar",
-      "is_shortlist": true
+      "is_shortlist": true,
+      "iso_a2": "IE",
+      "iso_a3": "IRL",
+      "scores_1to5": {
+        "adoption": 4,
+        "aml": 5,
+        "enforcement": 4,
+        "volume": 4,
+        "inst_depth": 5,
+        "deadline_prox": 5,
+        "lifecycle": 5,
+        "trigger": 5
+      }
     },
     {
       "country": "Hong Kong",
@@ -191,7 +251,19 @@
       "top10_rate": 0.0,
       "stage": "verified",
       "legal_status": "Legal \u2013 Regulated",
-      "is_shortlist": false
+      "is_shortlist": false,
+      "iso_a2": "HK",
+      "iso_a3": "HKG",
+      "scores_1to5": {
+        "adoption": 5,
+        "aml": 5,
+        "enforcement": 4,
+        "volume": 4,
+        "inst_depth": 5,
+        "deadline_prox": 4,
+        "lifecycle": 5,
+        "trigger": 5
+      }
     },
     {
       "country": "Turkey",
@@ -224,7 +296,19 @@
       ],
       "competitors_weak": "Local Big-4 offer audit but no on-chain capability",
       "first_touch": "Joint webinar with Esin or BTS Partners",
-      "is_shortlist": true
+      "is_shortlist": true,
+      "iso_a2": "TR",
+      "iso_a3": "TUR",
+      "scores_1to5": {
+        "adoption": 5,
+        "aml": 2,
+        "enforcement": 2,
+        "volume": 5,
+        "inst_depth": 3,
+        "deadline_prox": 5,
+        "lifecycle": 5,
+        "trigger": 5
+      }
     },
     {
       "country": "Netherlands",
@@ -243,7 +327,19 @@
       "top10_rate": 0.57,
       "stage": "verified",
       "legal_status": "Legal \u2013 MiCA",
-      "is_shortlist": false
+      "is_shortlist": false,
+      "iso_a2": "NL",
+      "iso_a3": "NLD",
+      "scores_1to5": {
+        "adoption": 4,
+        "aml": 5,
+        "enforcement": 4,
+        "volume": 4,
+        "inst_depth": 4,
+        "deadline_prox": 5,
+        "lifecycle": 5,
+        "trigger": 5
+      }
     },
     {
       "country": "United Kingdom",
@@ -262,7 +358,19 @@
       "top10_rate": 0.0,
       "stage": "verified",
       "legal_status": "Legal \u2013 Regulated",
-      "is_shortlist": false
+      "is_shortlist": false,
+      "iso_a2": "GB",
+      "iso_a3": "GBR",
+      "scores_1to5": {
+        "adoption": 4,
+        "aml": 4,
+        "enforcement": 4,
+        "volume": 4,
+        "inst_depth": 5,
+        "deadline_prox": 4,
+        "lifecycle": 5,
+        "trigger": 5
+      }
     },
     {
       "country": "Vietnam",
@@ -297,7 +405,19 @@
       ],
       "competitors_weak": "CertiK already audits many VN projects \u2014 strong proof-of-concept",
       "first_touch": "VBA event + upsell existing VN project clients",
-      "is_shortlist": true
+      "is_shortlist": true,
+      "iso_a2": "VN",
+      "iso_a3": "VNM",
+      "scores_1to5": {
+        "adoption": 5,
+        "aml": 2,
+        "enforcement": 2,
+        "volume": 4,
+        "inst_depth": 2,
+        "deadline_prox": 5,
+        "lifecycle": 5,
+        "trigger": 5
+      }
     },
     {
       "country": "Nigeria",
@@ -331,7 +451,19 @@
       ],
       "competitors_weak": "No local crypto-tech bench at any Big 4",
       "first_touch": "SiBAN joint event + named exchange direct outreach",
-      "is_shortlist": true
+      "is_shortlist": true,
+      "iso_a2": "NG",
+      "iso_a3": "NGA",
+      "scores_1to5": {
+        "adoption": 5,
+        "aml": 3,
+        "enforcement": 3,
+        "volume": 4,
+        "inst_depth": 3,
+        "deadline_prox": 5,
+        "lifecycle": 5,
+        "trigger": 5
+      }
     },
     {
       "country": "Kenya",
@@ -350,7 +482,19 @@
       "top10_rate": 0.03,
       "stage": "verified",
       "legal_status": "Legal \u2013 Gray Zone",
-      "is_shortlist": false
+      "is_shortlist": false,
+      "iso_a2": "KE",
+      "iso_a3": "KEN",
+      "scores_1to5": {
+        "adoption": 4,
+        "aml": 2,
+        "enforcement": 2,
+        "volume": 3,
+        "inst_depth": 2,
+        "deadline_prox": 4,
+        "lifecycle": 5,
+        "trigger": 5
+      }
     },
     {
       "country": "Lithuania",
@@ -383,7 +527,19 @@
       ],
       "competitors_weak": "No vendor has bandwidth for 100s of legacy VASPs",
       "first_touch": "Sorainen/Walless co-hosted webinar",
-      "is_shortlist": true
+      "is_shortlist": true,
+      "iso_a2": "LT",
+      "iso_a3": "LTU",
+      "scores_1to5": {
+        "adoption": 3,
+        "aml": 4,
+        "enforcement": 3,
+        "volume": 3,
+        "inst_depth": 3,
+        "deadline_prox": 5,
+        "lifecycle": 5,
+        "trigger": 5
+      }
     },
     {
       "country": "Poland",
@@ -416,7 +572,19 @@
       ],
       "competitors_weak": "Big 4 PL + legal own incumbent relationships but light on tech",
       "first_touch": "Polish Blockchain Association event + Zonda direct",
-      "is_shortlist": true
+      "is_shortlist": true,
+      "iso_a2": "PL",
+      "iso_a3": "POL",
+      "scores_1to5": {
+        "adoption": 3,
+        "aml": 3,
+        "enforcement": 3,
+        "volume": 3,
+        "inst_depth": 3,
+        "deadline_prox": 5,
+        "lifecycle": 5,
+        "trigger": 5
+      }
     },
     {
       "country": "Spain",
@@ -435,7 +603,19 @@
       "top10_rate": null,
       "stage": "screen",
       "legal_status": "Legal \u2013 MiCA",
-      "is_shortlist": false
+      "is_shortlist": false,
+      "iso_a2": "ES",
+      "iso_a3": "ESP",
+      "scores_1to5": {
+        "adoption": 3,
+        "aml": 4,
+        "enforcement": 3,
+        "volume": 4,
+        "inst_depth": 4,
+        "deadline_prox": 5,
+        "lifecycle": 5,
+        "trigger": 4
+      }
     },
     {
       "country": "Italy",
@@ -454,7 +634,19 @@
       "top10_rate": null,
       "stage": "screen",
       "legal_status": "Legal \u2013 MiCA",
-      "is_shortlist": false
+      "is_shortlist": false,
+      "iso_a2": "IT",
+      "iso_a3": "ITA",
+      "scores_1to5": {
+        "adoption": 3,
+        "aml": 4,
+        "enforcement": 3,
+        "volume": 4,
+        "inst_depth": 3,
+        "deadline_prox": 5,
+        "lifecycle": 5,
+        "trigger": 4
+      }
     },
     {
       "country": "Estonia",
@@ -473,7 +665,19 @@
       "top10_rate": null,
       "stage": "screen",
       "legal_status": "Legal \u2013 MiCA",
-      "is_shortlist": false
+      "is_shortlist": false,
+      "iso_a2": "EE",
+      "iso_a3": "EST",
+      "scores_1to5": {
+        "adoption": 3,
+        "aml": 4,
+        "enforcement": 4,
+        "volume": 3,
+        "inst_depth": 3,
+        "deadline_prox": 5,
+        "lifecycle": 5,
+        "trigger": 4
+      }
     },
     {
       "country": "Austria",
@@ -492,7 +696,19 @@
       "top10_rate": null,
       "stage": "screen",
       "legal_status": "Legal \u2013 MiCA",
-      "is_shortlist": false
+      "is_shortlist": false,
+      "iso_a2": "AT",
+      "iso_a3": "AUT",
+      "scores_1to5": {
+        "adoption": 3,
+        "aml": 4,
+        "enforcement": 3,
+        "volume": 3,
+        "inst_depth": 4,
+        "deadline_prox": 5,
+        "lifecycle": 5,
+        "trigger": 4
+      }
     },
     {
       "country": "Denmark",
@@ -511,7 +727,19 @@
       "top10_rate": null,
       "stage": "screen",
       "legal_status": "Legal \u2013 MiCA",
-      "is_shortlist": false
+      "is_shortlist": false,
+      "iso_a2": "DK",
+      "iso_a3": "DNK",
+      "scores_1to5": {
+        "adoption": 3,
+        "aml": 4,
+        "enforcement": 3,
+        "volume": 3,
+        "inst_depth": 4,
+        "deadline_prox": 5,
+        "lifecycle": 5,
+        "trigger": 4
+      }
     },
     {
       "country": "Sweden",
@@ -530,7 +758,19 @@
       "top10_rate": null,
       "stage": "screen",
       "legal_status": "Legal \u2013 MiCA",
-      "is_shortlist": false
+      "is_shortlist": false,
+      "iso_a2": "SE",
+      "iso_a3": "SWE",
+      "scores_1to5": {
+        "adoption": 3,
+        "aml": 4,
+        "enforcement": 3,
+        "volume": 3,
+        "inst_depth": 4,
+        "deadline_prox": 5,
+        "lifecycle": 5,
+        "trigger": 4
+      }
     },
     {
       "country": "Australia",
@@ -549,7 +789,19 @@
       "top10_rate": 0.0,
       "stage": "verified",
       "legal_status": "Legal \u2013 Regulated",
-      "is_shortlist": false
+      "is_shortlist": false,
+      "iso_a2": "AU",
+      "iso_a3": "AUS",
+      "scores_1to5": {
+        "adoption": 4,
+        "aml": 4,
+        "enforcement": 3,
+        "volume": 4,
+        "inst_depth": 4,
+        "deadline_prox": 5,
+        "lifecycle": 3,
+        "trigger": 5
+      }
     },
     {
       "country": "Portugal",
@@ -568,7 +820,19 @@
       "top10_rate": null,
       "stage": "screen",
       "legal_status": "Legal \u2013 MiCA",
-      "is_shortlist": false
+      "is_shortlist": false,
+      "iso_a2": "PT",
+      "iso_a3": "PRT",
+      "scores_1to5": {
+        "adoption": 2,
+        "aml": 3,
+        "enforcement": 2,
+        "volume": 3,
+        "inst_depth": 2,
+        "deadline_prox": 5,
+        "lifecycle": 5,
+        "trigger": 4
+      }
     },
     {
       "country": "United States",
@@ -587,7 +851,19 @@
       "top10_rate": 0.0,
       "stage": "verified",
       "legal_status": "Legal \u2013 Regulated",
-      "is_shortlist": false
+      "is_shortlist": false,
+      "iso_a2": "US",
+      "iso_a3": "USA",
+      "scores_1to5": {
+        "adoption": 5,
+        "aml": 5,
+        "enforcement": 5,
+        "volume": 5,
+        "inst_depth": 3,
+        "deadline_prox": 5,
+        "lifecycle": 3,
+        "trigger": 3
+      }
     },
     {
       "country": "Luxembourg",
@@ -606,7 +882,19 @@
       "top10_rate": null,
       "stage": "screen",
       "legal_status": "Legal \u2013 MiCA",
-      "is_shortlist": false
+      "is_shortlist": false,
+      "iso_a2": "LU",
+      "iso_a3": "LUX",
+      "scores_1to5": {
+        "adoption": 3,
+        "aml": 5,
+        "enforcement": 4,
+        "volume": 3,
+        "inst_depth": 5,
+        "deadline_prox": 5,
+        "lifecycle": 4,
+        "trigger": 4
+      }
     },
     {
       "country": "Norway",
@@ -625,7 +913,19 @@
       "top10_rate": null,
       "stage": "screen",
       "legal_status": "Legal \u2013 MiCA",
-      "is_shortlist": false
+      "is_shortlist": false,
+      "iso_a2": "NO",
+      "iso_a3": "NOR",
+      "scores_1to5": {
+        "adoption": 3,
+        "aml": 4,
+        "enforcement": 3,
+        "volume": 3,
+        "inst_depth": 3,
+        "deadline_prox": 5,
+        "lifecycle": 4,
+        "trigger": 4
+      }
     },
     {
       "country": "Cyprus",
@@ -644,7 +944,19 @@
       "top10_rate": null,
       "stage": "screen",
       "legal_status": "Legal \u2013 MiCA",
-      "is_shortlist": false
+      "is_shortlist": false,
+      "iso_a2": "CY",
+      "iso_a3": "CYP",
+      "scores_1to5": {
+        "adoption": 3,
+        "aml": 3,
+        "enforcement": 3,
+        "volume": 3,
+        "inst_depth": 4,
+        "deadline_prox": 5,
+        "lifecycle": 4,
+        "trigger": 4
+      }
     },
     {
       "country": "Taiwan",
@@ -663,7 +975,19 @@
       "top10_rate": 0.0,
       "stage": "verified",
       "legal_status": "Legal \u2013 Regulated",
-      "is_shortlist": false
+      "is_shortlist": false,
+      "iso_a2": "TW",
+      "iso_a3": "TWN",
+      "scores_1to5": {
+        "adoption": 3,
+        "aml": 3,
+        "enforcement": 3,
+        "volume": 3,
+        "inst_depth": 3,
+        "deadline_prox": 5,
+        "lifecycle": 5,
+        "trigger": 4
+      }
     },
     {
       "country": "Japan",
@@ -682,7 +1006,19 @@
       "top10_rate": 0.0,
       "stage": "verified",
       "legal_status": "Legal \u2013 Regulated",
-      "is_shortlist": false
+      "is_shortlist": false,
+      "iso_a2": "JP",
+      "iso_a3": "JPN",
+      "scores_1to5": {
+        "adoption": 4,
+        "aml": 5,
+        "enforcement": 5,
+        "volume": 5,
+        "inst_depth": 3,
+        "deadline_prox": 3,
+        "lifecycle": 3,
+        "trigger": 4
+      }
     },
     {
       "country": "UAE",
@@ -701,7 +1037,19 @@
       "top10_rate": 0.0,
       "stage": "verified",
       "legal_status": "Legal \u2013 Progressive",
-      "is_shortlist": false
+      "is_shortlist": false,
+      "iso_a2": "AE",
+      "iso_a3": "ARE",
+      "scores_1to5": {
+        "adoption": 4,
+        "aml": 5,
+        "enforcement": 5,
+        "volume": 4,
+        "inst_depth": 3,
+        "deadline_prox": 3,
+        "lifecycle": 3,
+        "trigger": 4
+      }
     },
     {
       "country": "South Korea",
@@ -720,7 +1068,19 @@
       "top10_rate": 0.0,
       "stage": "verified",
       "legal_status": "Legal \u2013 Regulated",
-      "is_shortlist": false
+      "is_shortlist": false,
+      "iso_a2": "KR",
+      "iso_a3": "KOR",
+      "scores_1to5": {
+        "adoption": 4,
+        "aml": 4,
+        "enforcement": 4,
+        "volume": 5,
+        "inst_depth": 3,
+        "deadline_prox": 4,
+        "lifecycle": 3,
+        "trigger": 4
+      }
     },
     {
       "country": "Argentina",
@@ -739,7 +1099,19 @@
       "top10_rate": null,
       "stage": "screen",
       "legal_status": "Legal \u2013 Gray Zone",
-      "is_shortlist": false
+      "is_shortlist": false,
+      "iso_a2": "AR",
+      "iso_a3": "ARG",
+      "scores_1to5": {
+        "adoption": 5,
+        "aml": 2,
+        "enforcement": 2,
+        "volume": 4,
+        "inst_depth": 2,
+        "deadline_prox": 3,
+        "lifecycle": 3,
+        "trigger": 3
+      }
     },
     {
       "country": "Indonesia",
@@ -758,7 +1130,19 @@
       "top10_rate": null,
       "stage": "screen",
       "legal_status": "Legal \u2013 Regulated",
-      "is_shortlist": false
+      "is_shortlist": false,
+      "iso_a2": "ID",
+      "iso_a3": "IDN",
+      "scores_1to5": {
+        "adoption": 5,
+        "aml": 3,
+        "enforcement": 3,
+        "volume": 4,
+        "inst_depth": 3,
+        "deadline_prox": 3,
+        "lifecycle": 3,
+        "trigger": 3
+      }
     },
     {
       "country": "Thailand",
@@ -777,7 +1161,19 @@
       "top10_rate": null,
       "stage": "screen",
       "legal_status": "Legal \u2013 Regulated",
-      "is_shortlist": false
+      "is_shortlist": false,
+      "iso_a2": "TH",
+      "iso_a3": "THA",
+      "scores_1to5": {
+        "adoption": 3,
+        "aml": 4,
+        "enforcement": 4,
+        "volume": 3,
+        "inst_depth": 3,
+        "deadline_prox": 3,
+        "lifecycle": 3,
+        "trigger": 3
+      }
     },
     {
       "country": "Philippines",
@@ -796,7 +1192,19 @@
       "top10_rate": null,
       "stage": "screen",
       "legal_status": "Legal \u2013 Regulated",
-      "is_shortlist": false
+      "is_shortlist": false,
+      "iso_a2": "PH",
+      "iso_a3": "PHL",
+      "scores_1to5": {
+        "adoption": 4,
+        "aml": 3,
+        "enforcement": 3,
+        "volume": 3,
+        "inst_depth": 3,
+        "deadline_prox": 3,
+        "lifecycle": 3,
+        "trigger": 3
+      }
     },
     {
       "country": "South Africa",
@@ -815,7 +1223,19 @@
       "top10_rate": null,
       "stage": "screen",
       "legal_status": "Legal \u2013 Regulated",
-      "is_shortlist": false
+      "is_shortlist": false,
+      "iso_a2": "ZA",
+      "iso_a3": "ZAF",
+      "scores_1to5": {
+        "adoption": 3,
+        "aml": 4,
+        "enforcement": 3,
+        "volume": 3,
+        "inst_depth": 3,
+        "deadline_prox": 3,
+        "lifecycle": 3,
+        "trigger": 3
+      }
     },
     {
       "country": "Russia",
@@ -834,7 +1254,19 @@
       "top10_rate": null,
       "stage": "screen",
       "legal_status": "Legal \u2013 Gray Zone",
-      "is_shortlist": false
+      "is_shortlist": false,
+      "iso_a2": "RU",
+      "iso_a3": "RUS",
+      "scores_1to5": {
+        "adoption": 4,
+        "aml": 2,
+        "enforcement": 2,
+        "volume": 4,
+        "inst_depth": 2,
+        "deadline_prox": 3,
+        "lifecycle": 3,
+        "trigger": 3
+      }
     },
     {
       "country": "Malaysia",
@@ -853,7 +1285,19 @@
       "top10_rate": null,
       "stage": "screen",
       "legal_status": "Legal \u2013 Restricted",
-      "is_shortlist": false
+      "is_shortlist": false,
+      "iso_a2": "MY",
+      "iso_a3": "MYS",
+      "scores_1to5": {
+        "adoption": 3,
+        "aml": 3,
+        "enforcement": 3,
+        "volume": 3,
+        "inst_depth": 3,
+        "deadline_prox": 3,
+        "lifecycle": 3,
+        "trigger": 3
+      }
     },
     {
       "country": "Chile",
@@ -872,7 +1316,19 @@
       "top10_rate": null,
       "stage": "screen",
       "legal_status": "Legal \u2013 Regulated",
-      "is_shortlist": false
+      "is_shortlist": false,
+      "iso_a2": "CL",
+      "iso_a3": "CHL",
+      "scores_1to5": {
+        "adoption": 3,
+        "aml": 3,
+        "enforcement": 3,
+        "volume": 3,
+        "inst_depth": 3,
+        "deadline_prox": 3,
+        "lifecycle": 3,
+        "trigger": 3
+      }
     },
     {
       "country": "Cayman Islands",
@@ -891,7 +1347,19 @@
       "top10_rate": null,
       "stage": "screen",
       "legal_status": "Legal \u2013 Offshore",
-      "is_shortlist": false
+      "is_shortlist": false,
+      "iso_a2": "KY",
+      "iso_a3": "CYM",
+      "scores_1to5": {
+        "adoption": 2,
+        "aml": 4,
+        "enforcement": 3,
+        "volume": 2,
+        "inst_depth": 4,
+        "deadline_prox": 3,
+        "lifecycle": 3,
+        "trigger": 3
+      }
     },
     {
       "country": "Bermuda",
@@ -910,7 +1378,19 @@
       "top10_rate": null,
       "stage": "screen",
       "legal_status": "Legal \u2013 Progressive",
-      "is_shortlist": false
+      "is_shortlist": false,
+      "iso_a2": "BM",
+      "iso_a3": "BMU",
+      "scores_1to5": {
+        "adoption": 2,
+        "aml": 4,
+        "enforcement": 3,
+        "volume": 2,
+        "inst_depth": 4,
+        "deadline_prox": 3,
+        "lifecycle": 3,
+        "trigger": 3
+      }
     },
     {
       "country": "Gibraltar",
@@ -929,7 +1409,19 @@
       "top10_rate": null,
       "stage": "screen",
       "legal_status": "Legal \u2013 Regulated",
-      "is_shortlist": false
+      "is_shortlist": false,
+      "iso_a2": "GI",
+      "iso_a3": "GIB",
+      "scores_1to5": {
+        "adoption": 2,
+        "aml": 4,
+        "enforcement": 3,
+        "volume": 2,
+        "inst_depth": 4,
+        "deadline_prox": 3,
+        "lifecycle": 3,
+        "trigger": 3
+      }
     },
     {
       "country": "Georgia",
@@ -948,7 +1440,19 @@
       "top10_rate": null,
       "stage": "screen",
       "legal_status": "Legal \u2013 Regulated",
-      "is_shortlist": false
+      "is_shortlist": false,
+      "iso_a2": "GE",
+      "iso_a3": "GEO",
+      "scores_1to5": {
+        "adoption": 3,
+        "aml": 3,
+        "enforcement": 3,
+        "volume": 2,
+        "inst_depth": 2,
+        "deadline_prox": 3,
+        "lifecycle": 3,
+        "trigger": 3
+      }
     },
     {
       "country": "Kazakhstan",
@@ -967,7 +1471,19 @@
       "top10_rate": null,
       "stage": "screen",
       "legal_status": "Legal \u2013 Regulated",
-      "is_shortlist": false
+      "is_shortlist": false,
+      "iso_a2": "KZ",
+      "iso_a3": "KAZ",
+      "scores_1to5": {
+        "adoption": 2,
+        "aml": 3,
+        "enforcement": 3,
+        "volume": 3,
+        "inst_depth": 3,
+        "deadline_prox": 3,
+        "lifecycle": 3,
+        "trigger": 3
+      }
     },
     {
       "country": "Uzbekistan",
@@ -986,7 +1502,19 @@
       "top10_rate": null,
       "stage": "screen",
       "legal_status": "Legal \u2013 Regulated",
-      "is_shortlist": false
+      "is_shortlist": false,
+      "iso_a2": "UZ",
+      "iso_a3": "UZB",
+      "scores_1to5": {
+        "adoption": 2,
+        "aml": 3,
+        "enforcement": 3,
+        "volume": 2,
+        "inst_depth": 2,
+        "deadline_prox": 3,
+        "lifecycle": 3,
+        "trigger": 3
+      }
     },
     {
       "country": "Bahamas",
@@ -1005,7 +1533,19 @@
       "top10_rate": null,
       "stage": "screen",
       "legal_status": "Legal \u2013 Regulated",
-      "is_shortlist": false
+      "is_shortlist": false,
+      "iso_a2": "BS",
+      "iso_a3": "BHS",
+      "scores_1to5": {
+        "adoption": 1,
+        "aml": 3,
+        "enforcement": 3,
+        "volume": 1,
+        "inst_depth": 3,
+        "deadline_prox": 3,
+        "lifecycle": 3,
+        "trigger": 3
+      }
     },
     {
       "country": "Bahrain",
@@ -1024,7 +1564,19 @@
       "top10_rate": null,
       "stage": "screen",
       "legal_status": "Legal \u2013 Regulated",
-      "is_shortlist": false
+      "is_shortlist": false,
+      "iso_a2": "BH",
+      "iso_a3": "BHR",
+      "scores_1to5": {
+        "adoption": 2,
+        "aml": 4,
+        "enforcement": 3,
+        "volume": 2,
+        "inst_depth": 3,
+        "deadline_prox": 3,
+        "lifecycle": 3,
+        "trigger": 3
+      }
     },
     {
       "country": "Mauritius",
@@ -1043,7 +1595,19 @@
       "top10_rate": null,
       "stage": "screen",
       "legal_status": "Legal \u2013 Regulated",
-      "is_shortlist": false
+      "is_shortlist": false,
+      "iso_a2": "MU",
+      "iso_a3": "MUS",
+      "scores_1to5": {
+        "adoption": 2,
+        "aml": 3,
+        "enforcement": 2,
+        "volume": 2,
+        "inst_depth": 3,
+        "deadline_prox": 3,
+        "lifecycle": 3,
+        "trigger": 3
+      }
     },
     {
       "country": "Canada",
@@ -1062,7 +1626,19 @@
       "top10_rate": null,
       "stage": "screen",
       "legal_status": "Legal \u2013 Regulated",
-      "is_shortlist": false
+      "is_shortlist": false,
+      "iso_a2": "CA",
+      "iso_a3": "CAN",
+      "scores_1to5": {
+        "adoption": 5,
+        "aml": 4,
+        "enforcement": 4,
+        "volume": 4,
+        "inst_depth": 4,
+        "deadline_prox": 2,
+        "lifecycle": 3,
+        "trigger": 3
+      }
     },
     {
       "country": "Singapore",
@@ -1081,7 +1657,19 @@
       "top10_rate": null,
       "stage": "screen",
       "legal_status": "Legal \u2013 Regulated",
-      "is_shortlist": false
+      "is_shortlist": false,
+      "iso_a2": "SG",
+      "iso_a3": "SGP",
+      "scores_1to5": {
+        "adoption": 4,
+        "aml": 5,
+        "enforcement": 4,
+        "volume": 4,
+        "inst_depth": 5,
+        "deadline_prox": 2,
+        "lifecycle": 3,
+        "trigger": 3
+      }
     },
     {
       "country": "Mexico",
@@ -1100,7 +1688,19 @@
       "top10_rate": null,
       "stage": "screen",
       "legal_status": "Legal \u2013 Restricted",
-      "is_shortlist": false
+      "is_shortlist": false,
+      "iso_a2": "MX",
+      "iso_a3": "MEX",
+      "scores_1to5": {
+        "adoption": 4,
+        "aml": 3,
+        "enforcement": 3,
+        "volume": 4,
+        "inst_depth": 3,
+        "deadline_prox": 2,
+        "lifecycle": 3,
+        "trigger": 3
+      }
     },
     {
       "country": "Ukraine",
@@ -1119,7 +1719,19 @@
       "top10_rate": null,
       "stage": "screen",
       "legal_status": "Legal \u2013 Regulated",
-      "is_shortlist": false
+      "is_shortlist": false,
+      "iso_a2": "UA",
+      "iso_a3": "UKR",
+      "scores_1to5": {
+        "adoption": 5,
+        "aml": 3,
+        "enforcement": 2,
+        "volume": 3,
+        "inst_depth": 2,
+        "deadline_prox": 3,
+        "lifecycle": 2,
+        "trigger": 2
+      }
     },
     {
       "country": "Malta",
@@ -1138,7 +1750,19 @@
       "top10_rate": null,
       "stage": "screen",
       "legal_status": "Legal \u2013 MiCA",
-      "is_shortlist": false
+      "is_shortlist": false,
+      "iso_a2": "MT",
+      "iso_a3": "MLT",
+      "scores_1to5": {
+        "adoption": 3,
+        "aml": 4,
+        "enforcement": 3,
+        "volume": 3,
+        "inst_depth": 4,
+        "deadline_prox": 3,
+        "lifecycle": 2,
+        "trigger": 2
+      }
     },
     {
       "country": "Liechtenstein",
@@ -1157,7 +1781,19 @@
       "top10_rate": null,
       "stage": "screen",
       "legal_status": "Legal \u2013 Progressive",
-      "is_shortlist": false
+      "is_shortlist": false,
+      "iso_a2": "LI",
+      "iso_a3": "LIE",
+      "scores_1to5": {
+        "adoption": 2,
+        "aml": 5,
+        "enforcement": 4,
+        "volume": 2,
+        "inst_depth": 4,
+        "deadline_prox": 3,
+        "lifecycle": 2,
+        "trigger": 2
+      }
     },
     {
       "country": "Switzerland",
@@ -1176,7 +1812,19 @@
       "top10_rate": null,
       "stage": "screen",
       "legal_status": "Legal \u2013 Progressive",
-      "is_shortlist": false
+      "is_shortlist": false,
+      "iso_a2": "CH",
+      "iso_a3": "CHE",
+      "scores_1to5": {
+        "adoption": 5,
+        "aml": 5,
+        "enforcement": 5,
+        "volume": 4,
+        "inst_depth": 5,
+        "deadline_prox": 2,
+        "lifecycle": 2,
+        "trigger": 2
+      }
     },
     {
       "country": "Israel",
@@ -1195,7 +1843,19 @@
       "top10_rate": null,
       "stage": "screen",
       "legal_status": "Legal \u2013 Regulated",
-      "is_shortlist": false
+      "is_shortlist": false,
+      "iso_a2": "IL",
+      "iso_a3": "ISR",
+      "scores_1to5": {
+        "adoption": 3,
+        "aml": 4,
+        "enforcement": 3,
+        "volume": 3,
+        "inst_depth": 4,
+        "deadline_prox": 2,
+        "lifecycle": 3,
+        "trigger": 2
+      }
     },
     {
       "country": "New Zealand",
@@ -1214,7 +1874,19 @@
       "top10_rate": null,
       "stage": "screen",
       "legal_status": "Legal \u2013 Regulated",
-      "is_shortlist": false
+      "is_shortlist": false,
+      "iso_a2": "NZ",
+      "iso_a3": "NZL",
+      "scores_1to5": {
+        "adoption": 3,
+        "aml": 4,
+        "enforcement": 3,
+        "volume": 3,
+        "inst_depth": 3,
+        "deadline_prox": 2,
+        "lifecycle": 3,
+        "trigger": 2
+      }
     },
     {
       "country": "Saudi Arabia",
@@ -1233,7 +1905,19 @@
       "top10_rate": null,
       "stage": "screen",
       "legal_status": "Restricted",
-      "is_shortlist": false
+      "is_shortlist": false,
+      "iso_a2": "SA",
+      "iso_a3": "SAU",
+      "scores_1to5": {
+        "adoption": 3,
+        "aml": 3,
+        "enforcement": 2,
+        "volume": 3,
+        "inst_depth": 3,
+        "deadline_prox": 2,
+        "lifecycle": 2,
+        "trigger": 2
+      }
     },
     {
       "country": "Morocco",
@@ -1252,7 +1936,19 @@
       "top10_rate": null,
       "stage": "screen",
       "legal_status": "Total Ban (reviewing)",
-      "is_shortlist": false
+      "is_shortlist": false,
+      "iso_a2": "MA",
+      "iso_a3": "MAR",
+      "scores_1to5": {
+        "adoption": 3,
+        "aml": 2,
+        "enforcement": 2,
+        "volume": 3,
+        "inst_depth": 2,
+        "deadline_prox": 2,
+        "lifecycle": 2,
+        "trigger": 2
+      }
     },
     {
       "country": "Panama",
@@ -1271,7 +1967,19 @@
       "top10_rate": null,
       "stage": "screen",
       "legal_status": "Legal \u2013 Gray Zone",
-      "is_shortlist": false
+      "is_shortlist": false,
+      "iso_a2": "PA",
+      "iso_a3": "PAN",
+      "scores_1to5": {
+        "adoption": 3,
+        "aml": 2,
+        "enforcement": 2,
+        "volume": 2,
+        "inst_depth": 3,
+        "deadline_prox": 2,
+        "lifecycle": 2,
+        "trigger": 2
+      }
     },
     {
       "country": "Peru",
@@ -1290,7 +1998,19 @@
       "top10_rate": null,
       "stage": "screen",
       "legal_status": "Legal \u2013 Gray Zone",
-      "is_shortlist": false
+      "is_shortlist": false,
+      "iso_a2": "PE",
+      "iso_a3": "PER",
+      "scores_1to5": {
+        "adoption": 3,
+        "aml": 2,
+        "enforcement": 2,
+        "volume": 2,
+        "inst_depth": 2,
+        "deadline_prox": 2,
+        "lifecycle": 2,
+        "trigger": 2
+      }
     },
     {
       "country": "British Virgin Islands",
@@ -1309,7 +2029,19 @@
       "top10_rate": null,
       "stage": "screen",
       "legal_status": "Legal \u2013 Regulated",
-      "is_shortlist": false
+      "is_shortlist": false,
+      "iso_a2": "VG",
+      "iso_a3": "VGB",
+      "scores_1to5": {
+        "adoption": 1,
+        "aml": 4,
+        "enforcement": 3,
+        "volume": 1,
+        "inst_depth": 4,
+        "deadline_prox": 2,
+        "lifecycle": 2,
+        "trigger": 2
+      }
     },
     {
       "country": "Isle of Man",
@@ -1328,7 +2060,19 @@
       "top10_rate": null,
       "stage": "screen",
       "legal_status": "Legal \u2013 Regulated",
-      "is_shortlist": false
+      "is_shortlist": false,
+      "iso_a2": "IM",
+      "iso_a3": "IMN",
+      "scores_1to5": {
+        "adoption": 1,
+        "aml": 4,
+        "enforcement": 3,
+        "volume": 1,
+        "inst_depth": 3,
+        "deadline_prox": 2,
+        "lifecycle": 2,
+        "trigger": 2
+      }
     },
     {
       "country": "Jersey",
@@ -1347,7 +2091,19 @@
       "top10_rate": null,
       "stage": "screen",
       "legal_status": "Legal \u2013 Regulated",
-      "is_shortlist": false
+      "is_shortlist": false,
+      "iso_a2": "JE",
+      "iso_a3": "JEY",
+      "scores_1to5": {
+        "adoption": 1,
+        "aml": 4,
+        "enforcement": 3,
+        "volume": 1,
+        "inst_depth": 3,
+        "deadline_prox": 2,
+        "lifecycle": 2,
+        "trigger": 2
+      }
     },
     {
       "country": "Guernsey",
@@ -1366,7 +2122,19 @@
       "top10_rate": null,
       "stage": "screen",
       "legal_status": "Legal \u2013 Regulated",
-      "is_shortlist": false
+      "is_shortlist": false,
+      "iso_a2": "GG",
+      "iso_a3": "GGY",
+      "scores_1to5": {
+        "adoption": 1,
+        "aml": 4,
+        "enforcement": 3,
+        "volume": 1,
+        "inst_depth": 3,
+        "deadline_prox": 2,
+        "lifecycle": 2,
+        "trigger": 2
+      }
     },
     {
       "country": "Seychelles",
@@ -1385,7 +2153,19 @@
       "top10_rate": null,
       "stage": "screen",
       "legal_status": "Legal \u2013 Light-touch",
-      "is_shortlist": false
+      "is_shortlist": false,
+      "iso_a2": "SC",
+      "iso_a3": "SYC",
+      "scores_1to5": {
+        "adoption": 2,
+        "aml": 2,
+        "enforcement": 2,
+        "volume": 2,
+        "inst_depth": 3,
+        "deadline_prox": 2,
+        "lifecycle": 2,
+        "trigger": 2
+      }
     },
     {
       "country": "El Salvador",
@@ -1404,7 +2184,19 @@
       "top10_rate": null,
       "stage": "screen",
       "legal_status": "Legal \u2013 Progressive",
-      "is_shortlist": false
+      "is_shortlist": false,
+      "iso_a2": "SV",
+      "iso_a3": "SLV",
+      "scores_1to5": {
+        "adoption": 2,
+        "aml": 2,
+        "enforcement": 2,
+        "volume": 2,
+        "inst_depth": 2,
+        "deadline_prox": 2,
+        "lifecycle": 2,
+        "trigger": 2
+      }
     },
     {
       "country": "Jordan",
@@ -1423,7 +2215,19 @@
       "top10_rate": null,
       "stage": "screen",
       "legal_status": "Restricted",
-      "is_shortlist": false
+      "is_shortlist": false,
+      "iso_a2": "JO",
+      "iso_a3": "JOR",
+      "scores_1to5": {
+        "adoption": 2,
+        "aml": 2,
+        "enforcement": 2,
+        "volume": 2,
+        "inst_depth": 2,
+        "deadline_prox": 2,
+        "lifecycle": 2,
+        "trigger": 2
+      }
     },
     {
       "country": "India",
@@ -1442,7 +2246,19 @@
       "top10_rate": null,
       "stage": "screen",
       "legal_status": "Legal \u2013 Restricted",
-      "is_shortlist": false
+      "is_shortlist": false,
+      "iso_a2": "IN",
+      "iso_a3": "IND",
+      "scores_1to5": {
+        "adoption": 5,
+        "aml": 4,
+        "enforcement": 3,
+        "volume": 5,
+        "inst_depth": 4,
+        "deadline_prox": 1,
+        "lifecycle": 2,
+        "trigger": 1
+      }
     },
     {
       "country": "Colombia",
@@ -1461,7 +2277,19 @@
       "top10_rate": null,
       "stage": "screen",
       "legal_status": "Legal \u2013 Gray Zone",
-      "is_shortlist": false
+      "is_shortlist": false,
+      "iso_a2": "CO",
+      "iso_a3": "COL",
+      "scores_1to5": {
+        "adoption": 4,
+        "aml": 2,
+        "enforcement": 2,
+        "volume": 3,
+        "inst_depth": 2,
+        "deadline_prox": 1,
+        "lifecycle": 1,
+        "trigger": 1
+      }
     },
     {
       "country": "Venezuela",
@@ -1480,7 +2308,19 @@
       "top10_rate": null,
       "stage": "screen",
       "legal_status": "Legal \u2013 Gray Zone",
-      "is_shortlist": false
+      "is_shortlist": false,
+      "iso_a2": "VE",
+      "iso_a3": "VEN",
+      "scores_1to5": {
+        "adoption": 5,
+        "aml": 1,
+        "enforcement": 1,
+        "volume": 3,
+        "inst_depth": 1,
+        "deadline_prox": 1,
+        "lifecycle": 1,
+        "trigger": 1
+      }
     },
     {
       "country": "Dominican Republic",
@@ -1499,7 +2339,19 @@
       "top10_rate": null,
       "stage": "screen",
       "legal_status": "Legal \u2013 Gray Zone",
-      "is_shortlist": false
+      "is_shortlist": false,
+      "iso_a2": "DO",
+      "iso_a3": "DOM",
+      "scores_1to5": {
+        "adoption": 3,
+        "aml": 2,
+        "enforcement": 2,
+        "volume": 2,
+        "inst_depth": 2,
+        "deadline_prox": 1,
+        "lifecycle": 1,
+        "trigger": 1
+      }
     },
     {
       "country": "Moldova",
@@ -1518,7 +2370,19 @@
       "top10_rate": null,
       "stage": "screen",
       "legal_status": "Legal \u2013 Gray Zone",
-      "is_shortlist": false
+      "is_shortlist": false,
+      "iso_a2": "MD",
+      "iso_a3": "MDA",
+      "scores_1to5": {
+        "adoption": 2,
+        "aml": 2,
+        "enforcement": 2,
+        "volume": 2,
+        "inst_depth": 2,
+        "deadline_prox": 1,
+        "lifecycle": 1,
+        "trigger": 1
+      }
     },
     {
       "country": "Tanzania",
@@ -1537,7 +2401,19 @@
       "top10_rate": null,
       "stage": "screen",
       "legal_status": "Restricted",
-      "is_shortlist": false
+      "is_shortlist": false,
+      "iso_a2": "TZ",
+      "iso_a3": "TZA",
+      "scores_1to5": {
+        "adoption": 2,
+        "aml": 2,
+        "enforcement": 2,
+        "volume": 2,
+        "inst_depth": 2,
+        "deadline_prox": 1,
+        "lifecycle": 1,
+        "trigger": 1
+      }
     },
     {
       "country": "Bolivia",
@@ -1556,7 +2432,19 @@
       "top10_rate": null,
       "stage": "screen",
       "legal_status": "Total Ban (reviewing)",
-      "is_shortlist": false
+      "is_shortlist": false,
+      "iso_a2": "BO",
+      "iso_a3": "BOL",
+      "scores_1to5": {
+        "adoption": 1,
+        "aml": 1,
+        "enforcement": 1,
+        "volume": 1,
+        "inst_depth": 1,
+        "deadline_prox": 1,
+        "lifecycle": 1,
+        "trigger": 1
+      }
     },
     {
       "country": "Sri Lanka",
@@ -1575,7 +2463,19 @@
       "top10_rate": null,
       "stage": "screen",
       "legal_status": "Restricted",
-      "is_shortlist": false
+      "is_shortlist": false,
+      "iso_a2": "LK",
+      "iso_a3": "LKA",
+      "scores_1to5": {
+        "adoption": 2,
+        "aml": 1,
+        "enforcement": 1,
+        "volume": 2,
+        "inst_depth": 1,
+        "deadline_prox": 1,
+        "lifecycle": 1,
+        "trigger": 1
+      }
     },
     {
       "country": "North Macedonia",
@@ -1594,7 +2494,19 @@
       "top10_rate": null,
       "stage": "screen",
       "legal_status": "Restricted",
-      "is_shortlist": false
+      "is_shortlist": false,
+      "iso_a2": "MK",
+      "iso_a3": "MKD",
+      "scores_1to5": {
+        "adoption": 1,
+        "aml": 2,
+        "enforcement": 2,
+        "volume": 1,
+        "inst_depth": 1,
+        "deadline_prox": 1,
+        "lifecycle": 1,
+        "trigger": 1
+      }
     },
     {
       "country": "China",
@@ -1613,7 +2525,19 @@
       "top10_rate": null,
       "stage": "screen",
       "legal_status": "Total Ban",
-      "is_shortlist": false
+      "is_shortlist": false,
+      "iso_a2": "CN",
+      "iso_a3": "CHN",
+      "scores_1to5": {
+        "adoption": 3,
+        "aml": 4,
+        "enforcement": 5,
+        "volume": 3,
+        "inst_depth": 4,
+        "deadline_prox": 1,
+        "lifecycle": 1,
+        "trigger": 1
+      }
     },
     {
       "country": "Egypt",
@@ -1632,7 +2556,19 @@
       "top10_rate": null,
       "stage": "screen",
       "legal_status": "Total Ban",
-      "is_shortlist": false
+      "is_shortlist": false,
+      "iso_a2": "EG",
+      "iso_a3": "EGY",
+      "scores_1to5": {
+        "adoption": 2,
+        "aml": 2,
+        "enforcement": 2,
+        "volume": 2,
+        "inst_depth": 2,
+        "deadline_prox": 1,
+        "lifecycle": 1,
+        "trigger": 1
+      }
     },
     {
       "country": "Kuwait",
@@ -1651,7 +2587,19 @@
       "top10_rate": null,
       "stage": "screen",
       "legal_status": "Total Ban",
-      "is_shortlist": false
+      "is_shortlist": false,
+      "iso_a2": "KW",
+      "iso_a3": "KWT",
+      "scores_1to5": {
+        "adoption": 1,
+        "aml": 2,
+        "enforcement": 2,
+        "volume": 1,
+        "inst_depth": 2,
+        "deadline_prox": 1,
+        "lifecycle": 1,
+        "trigger": 1
+      }
     },
     {
       "country": "Ghana",
@@ -1670,7 +2618,19 @@
       "top10_rate": null,
       "stage": "screen",
       "legal_status": "Total Ban",
-      "is_shortlist": false
+      "is_shortlist": false,
+      "iso_a2": "GH",
+      "iso_a3": "GHA",
+      "scores_1to5": {
+        "adoption": 3,
+        "aml": 2,
+        "enforcement": 2,
+        "volume": 3,
+        "inst_depth": 2,
+        "deadline_prox": 1,
+        "lifecycle": 1,
+        "trigger": 1
+      }
     },
     {
       "country": "Bangladesh",
@@ -1689,7 +2649,19 @@
       "top10_rate": null,
       "stage": "screen",
       "legal_status": "Total Ban",
-      "is_shortlist": false
+      "is_shortlist": false,
+      "iso_a2": "BD",
+      "iso_a3": "BGD",
+      "scores_1to5": {
+        "adoption": 2,
+        "aml": 1,
+        "enforcement": 1,
+        "volume": 2,
+        "inst_depth": 1,
+        "deadline_prox": 1,
+        "lifecycle": 1,
+        "trigger": 1
+      }
     },
     {
       "country": "Qatar",
@@ -1708,7 +2680,19 @@
       "top10_rate": null,
       "stage": "screen",
       "legal_status": "Total Ban",
-      "is_shortlist": false
+      "is_shortlist": false,
+      "iso_a2": "QA",
+      "iso_a3": "QAT",
+      "scores_1to5": {
+        "adoption": 1,
+        "aml": 3,
+        "enforcement": 3,
+        "volume": 1,
+        "inst_depth": 3,
+        "deadline_prox": 1,
+        "lifecycle": 1,
+        "trigger": 1
+      }
     },
     {
       "country": "Cambodia",
@@ -1727,7 +2711,19 @@
       "top10_rate": null,
       "stage": "screen",
       "legal_status": "Total Ban",
-      "is_shortlist": false
+      "is_shortlist": false,
+      "iso_a2": "KH",
+      "iso_a3": "KHM",
+      "scores_1to5": {
+        "adoption": 2,
+        "aml": 1,
+        "enforcement": 1,
+        "volume": 2,
+        "inst_depth": 1,
+        "deadline_prox": 1,
+        "lifecycle": 1,
+        "trigger": 1
+      }
     },
     {
       "country": "Ethiopia",
@@ -1746,7 +2742,19 @@
       "top10_rate": null,
       "stage": "screen",
       "legal_status": "Restricted",
-      "is_shortlist": false
+      "is_shortlist": false,
+      "iso_a2": "ET",
+      "iso_a3": "ETH",
+      "scores_1to5": {
+        "adoption": 1,
+        "aml": 1,
+        "enforcement": 1,
+        "volume": 2,
+        "inst_depth": 1,
+        "deadline_prox": 1,
+        "lifecycle": 1,
+        "trigger": 1
+      }
     },
     {
       "country": "Algeria",
@@ -1765,7 +2773,19 @@
       "top10_rate": null,
       "stage": "screen",
       "legal_status": "Total Ban",
-      "is_shortlist": false
+      "is_shortlist": false,
+      "iso_a2": "DZ",
+      "iso_a3": "DZA",
+      "scores_1to5": {
+        "adoption": 1,
+        "aml": 1,
+        "enforcement": 1,
+        "volume": 1,
+        "inst_depth": 1,
+        "deadline_prox": 1,
+        "lifecycle": 1,
+        "trigger": 1
+      }
     },
     {
       "country": "Tunisia",
@@ -1784,7 +2804,19 @@
       "top10_rate": null,
       "stage": "screen",
       "legal_status": "Total Ban",
-      "is_shortlist": false
+      "is_shortlist": false,
+      "iso_a2": "TN",
+      "iso_a3": "TUN",
+      "scores_1to5": {
+        "adoption": 1,
+        "aml": 1,
+        "enforcement": 1,
+        "volume": 1,
+        "inst_depth": 1,
+        "deadline_prox": 1,
+        "lifecycle": 1,
+        "trigger": 1
+      }
     },
     {
       "country": "Nepal",
@@ -1803,7 +2835,19 @@
       "top10_rate": null,
       "stage": "screen",
       "legal_status": "Total Ban",
-      "is_shortlist": false
+      "is_shortlist": false,
+      "iso_a2": "NP",
+      "iso_a3": "NPL",
+      "scores_1to5": {
+        "adoption": 1,
+        "aml": 1,
+        "enforcement": 1,
+        "volume": 1,
+        "inst_depth": 1,
+        "deadline_prox": 1,
+        "lifecycle": 1,
+        "trigger": 1
+      }
     },
     {
       "country": "Myanmar",
@@ -1822,7 +2866,19 @@
       "top10_rate": null,
       "stage": "screen",
       "legal_status": "Total Ban",
-      "is_shortlist": false
+      "is_shortlist": false,
+      "iso_a2": "MM",
+      "iso_a3": "MMR",
+      "scores_1to5": {
+        "adoption": 1,
+        "aml": 1,
+        "enforcement": 1,
+        "volume": 1,
+        "inst_depth": 1,
+        "deadline_prox": 1,
+        "lifecycle": 1,
+        "trigger": 1
+      }
     },
     {
       "country": "Iraq",
@@ -1841,7 +2897,19 @@
       "top10_rate": null,
       "stage": "screen",
       "legal_status": "Total Ban",
-      "is_shortlist": false
+      "is_shortlist": false,
+      "iso_a2": "IQ",
+      "iso_a3": "IRQ",
+      "scores_1to5": {
+        "adoption": 1,
+        "aml": 1,
+        "enforcement": 1,
+        "volume": 1,
+        "inst_depth": 1,
+        "deadline_prox": 1,
+        "lifecycle": 1,
+        "trigger": 1
+      }
     },
     {
       "country": "Afghanistan",
@@ -1860,7 +2928,19 @@
       "top10_rate": null,
       "stage": "screen",
       "legal_status": "Total Ban",
-      "is_shortlist": false
+      "is_shortlist": false,
+      "iso_a2": "AF",
+      "iso_a3": "AFG",
+      "scores_1to5": {
+        "adoption": 1,
+        "aml": 1,
+        "enforcement": 1,
+        "volume": 1,
+        "inst_depth": 1,
+        "deadline_prox": 1,
+        "lifecycle": 1,
+        "trigger": 1
+      }
     }
   ],
   "hero_metrics": {

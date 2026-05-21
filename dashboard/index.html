@@ -2,339 +2,366 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Crypto Compliance Intelligence — CertiK Targeting System</title>
+<title>Crypto Compliance Map — CertiK</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <style>
   :root {
-    --bg:        #07090d;
-    --bg-2:      #0c1118;
-    --panel:     #11161f;
-    --panel-2:   #161c27;
-    --line:      #1f2733;
-    --line-2:    #2a3340;
-    --text:      #e6edf5;
-    --text-2:    #aab4c2;
-    --muted:     #6e7a8a;
-    --accent:    #1FD1B5;   /* Skynet cyan */
-    --accent-2:  #16a89a;
-    --accent-soft: rgba(31, 209, 181, 0.12);
-    --q1:        #1FD1B5;
-    --q2:        #FFCE5C;
-    --q3:        #6691FF;
-    --q4:        #4a5567;
+    --bg:        #0a0d12;
+    --bg-2:      #11151c;
+    --panel:     #161b24;
+    --panel-2:   #1c222d;
+    --line:      #232a36;
+    --line-2:    #2e3644;
+    --text:      #e8eef5;
+    --text-2:    #aab6c5;
+    --muted:     #6a7588;
+    --accent:    #5BE49B;       /* Skynet green */
+    --accent-glow: rgba(91, 228, 155, 0.25);
+    --accent-soft: rgba(91, 228, 155, 0.10);
+    --q1:        #5BE49B;        /* priority — green */
+    --q2:        #FFCE5C;        /* fast/small — yellow */
+    --q3:        #6691FF;        /* nurture — blue */
+    --q4:        #353b46;        /* monitor — gray */
+    --banned:    #ff5e5e;        /* banned — red */
     --warn:      #FF8A65;
-    --danger:    #ff5e5e;
-    --shadow:    0 10px 40px -10px rgba(31,209,181,0.15);
   }
   * { box-sizing: border-box; }
   html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text);
-               font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', system-ui, sans-serif;
-               font-size: 14px; line-height: 1.5; }
+               font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+               font-size: 14px; line-height: 1.5; overflow-x: hidden; }
   a { color: var(--accent); text-decoration: none; }
   a:hover { text-decoration: underline; }
+  button { font-family: inherit; }
 
-  /* ── Header ─────────────────────────────────────────────────────── */
+  /* ── Topbar ─────────────────────────────────────────────── */
   .topbar {
     position: sticky; top: 0; z-index: 50;
-    background: linear-gradient(180deg, rgba(7,9,13,0.96) 0%, rgba(7,9,13,0.85) 100%);
-    backdrop-filter: blur(8px);
+    background: rgba(10, 13, 18, 0.92); backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--line);
-    padding: 14px 36px;
+    padding: 14px 32px;
     display: flex; align-items: center; justify-content: space-between;
   }
-  .brand { display: flex; align-items: center; gap: 12px; }
+  .brand { display: flex; align-items: center; gap: 14px; }
   .brand-logo {
-    width: 32px; height: 32px; border-radius: 6px;
-    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
+    width: 32px; height: 32px; border-radius: 8px;
+    background: linear-gradient(135deg, var(--accent) 0%, #2db974 100%);
     display: flex; align-items: center; justify-content: center;
-    color: var(--bg); font-weight: 800; font-size: 16px;
-    box-shadow: 0 4px 20px -4px rgba(31,209,181,0.4);
+    color: #04130a; font-weight: 900; font-size: 17px;
   }
-  .brand-name { font-size: 16px; font-weight: 700; letter-spacing: -0.01em; }
-  .brand-sub  { font-size: 12px; color: var(--muted); margin-top: 1px; }
-  .topbar-meta { font-size: 11px; color: var(--muted); text-align: right; }
-  .topbar-meta strong { color: var(--text-2); }
+  .brand-name { font-size: 15px; font-weight: 700; letter-spacing: -0.01em; }
+  .brand-sub  { font-size: 11px; color: var(--muted); margin-top: 1px; }
 
-  /* ── Container ──────────────────────────────────────────────────── */
-  .container { max-width: 1480px; margin: 0 auto; padding: 28px 36px 80px 36px; }
-
-  /* ── KPI strip ──────────────────────────────────────────────────── */
-  .hero { margin-bottom: 32px; }
-  .hero-title { font-size: 28px; font-weight: 700; letter-spacing: -0.02em; margin: 0 0 6px 0; }
-  .hero-sub   { font-size: 14px; color: var(--text-2); margin: 0 0 22px 0; max-width: 880px; }
-  .kpis {
-    display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px;
+  .tabs { display: flex; gap: 6px; }
+  .tab {
+    background: none; border: none; color: var(--text-2);
+    padding: 7px 14px; border-radius: 6px; font-size: 13px;
+    cursor: pointer; transition: all 0.12s; font-weight: 500;
   }
+  .tab:hover { color: var(--text); background: var(--bg-2); }
+  .tab.active {
+    color: var(--accent); background: var(--accent-soft);
+    font-weight: 600;
+  }
+
+  .topbar-search {
+    background: var(--bg-2); border: 1px solid var(--line);
+    border-radius: 6px; padding: 6px 12px; color: var(--text);
+    font-size: 12.5px; width: 260px; font-family: inherit;
+  }
+  .topbar-search:focus { outline: none; border-color: var(--accent); }
+
+  /* ── Container ──────────────────────────────────────────── */
+  .container { max-width: 100%; padding: 0; }
+
+  /* ── Hero / KPIs ────────────────────────────────────────── */
+  .hero {
+    padding: 24px 32px 12px;
+    background: linear-gradient(180deg, var(--bg-2) 0%, var(--bg) 100%);
+    border-bottom: 1px solid var(--line);
+  }
+  .hero-title {
+    font-size: 24px; font-weight: 700; letter-spacing: -0.02em;
+    margin: 0 0 4px 0;
+  }
+  .hero-sub { font-size: 13px; color: var(--text-2); margin: 0 0 16px 0; max-width: 720px; }
+  .kpis { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; }
   .kpi {
-    background: var(--panel); border: 1px solid var(--line); border-radius: 8px;
-    padding: 14px 16px; position: relative; overflow: hidden;
+    background: var(--panel); border: 1px solid var(--line);
+    border-radius: 8px; padding: 12px 14px;
   }
-  .kpi.accent { border-color: var(--accent-soft); box-shadow: var(--shadow);
-                background: linear-gradient(135deg, var(--panel) 0%, rgba(31,209,181,0.04) 100%); }
-  .kpi-label { font-size: 10.5px; color: var(--muted); text-transform: uppercase;
-               letter-spacing: 0.1em; font-weight: 600; }
-  .kpi-value { font-size: 22px; font-weight: 700; margin-top: 4px;
+  .kpi.accent { border-color: var(--accent-soft);
+                background: linear-gradient(135deg, var(--panel) 60%, var(--accent-soft) 100%); }
+  .kpi-label { font-size: 9.5px; color: var(--muted); text-transform: uppercase;
+               letter-spacing: 0.1em; font-weight: 700; }
+  .kpi-value { font-size: 20px; font-weight: 700; margin-top: 3px;
                font-variant: tabular-nums; letter-spacing: -0.01em; }
   .kpi.accent .kpi-value { color: var(--accent); }
-  .kpi-sub { font-size: 11px; color: var(--muted); margin-top: 2px; }
+  .kpi-sub { font-size: 10.5px; color: var(--muted); margin-top: 1px; }
 
-  /* ── Section ────────────────────────────────────────────────────── */
-  section { margin-top: 36px; }
-  .section-head {
+  /* ── Map section ────────────────────────────────────────── */
+  .map-section {
+    padding: 22px 32px 28px; position: relative;
+    background: var(--bg);
+  }
+  .map-head {
     display: flex; align-items: baseline; justify-content: space-between;
     margin-bottom: 14px;
   }
-  .section-title { font-size: 18px; font-weight: 700; letter-spacing: -0.01em; margin: 0; }
-  .section-sub   { font-size: 12px; color: var(--muted); margin: 0; }
-  .section-pill {
-    display: inline-block; padding: 3px 9px; border-radius: 12px;
-    background: var(--accent-soft); color: var(--accent);
-    font-size: 11px; font-weight: 600; margin-left: 10px; vertical-align: middle;
+  .map-head h2 {
+    margin: 0; font-size: 16px; font-weight: 700; letter-spacing: -0.01em;
+  }
+  .map-head .sub {
+    font-size: 12px; color: var(--muted);
+  }
+  .map-wrap {
+    background: var(--panel); border: 1px solid var(--line);
+    border-radius: 12px; padding: 16px;
+    position: relative;
+    min-height: 460px;
+  }
+  #map { width: 100%; height: 540px; display: block; }
+  .map-country {
+    cursor: pointer; transition: opacity 0.18s, stroke-width 0.15s;
+    stroke: var(--bg); stroke-width: 0.4;
+  }
+  .map-country:hover { stroke: var(--text); stroke-width: 1.2; opacity: 0.85; }
+  .map-country.selected { stroke: var(--accent); stroke-width: 1.8; }
+  .map-graticule { fill: none; stroke: var(--line); stroke-width: 0.3; opacity: 0.5; }
+  .map-sphere    { fill: var(--bg-2); stroke: var(--line); stroke-width: 0.5; }
+
+  .legend {
+    position: absolute; bottom: 22px; left: 30px;
+    background: rgba(10, 13, 18, 0.85); backdrop-filter: blur(6px);
+    border: 1px solid var(--line); border-radius: 8px;
+    padding: 10px 14px;
+    display: flex; gap: 14px; font-size: 11px; color: var(--text-2);
+    align-items: center;
+  }
+  .legend .item { display: flex; align-items: center; gap: 6px; }
+  .legend .dot {
+    display: inline-block; width: 10px; height: 10px; border-radius: 50%;
   }
 
-  /* ── Shortlist hero cards ──────────────────────────────────────── */
-  .shortlist-grid {
-    display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px;
+  .tooltip {
+    position: fixed; pointer-events: none;
+    background: var(--panel); border: 1px solid var(--line);
+    border-radius: 6px; padding: 8px 12px; font-size: 12px;
+    z-index: 200; display: none; box-shadow: 0 8px 24px rgba(0,0,0,0.4);
   }
-  .card {
-    background: var(--panel); border: 1px solid var(--line); border-radius: 10px;
-    padding: 18px 20px; cursor: pointer; transition: all 0.18s ease;
-    display: grid; grid-template-columns: 56px 1fr auto; gap: 14px;
-    align-items: start;
+  .tooltip .name { font-weight: 700; color: var(--text); }
+  .tooltip .meta { font-size: 11px; color: var(--text-2); margin-top: 3px; }
+  .tooltip .meta strong { color: var(--accent); }
+
+  /* ── Bottom section / Tabs content ──────────────────────── */
+  .bottom-section { padding: 0 32px 80px; }
+  .section-tabs {
+    display: flex; gap: 4px; margin: 6px 0 18px;
+    border-bottom: 1px solid var(--line);
   }
-  .card:hover { border-color: var(--accent-soft); transform: translateY(-1px);
-                box-shadow: 0 8px 24px -10px rgba(0,0,0,0.4); }
-  .card.anchor { border-color: rgba(31,209,181,0.35); background:
-                 linear-gradient(135deg, var(--panel) 60%, rgba(31,209,181,0.06) 100%); }
-  .card-rank {
-    width: 40px; height: 40px; border-radius: 8px;
+  .section-tab {
+    background: none; border: none; color: var(--text-2);
+    padding: 10px 18px; cursor: pointer; font-size: 13px;
+    font-weight: 500; position: relative; border-bottom: 2px solid transparent;
+    margin-bottom: -1px; transition: all 0.12s;
+  }
+  .section-tab:hover { color: var(--text); }
+  .section-tab.active {
+    color: var(--accent); border-bottom-color: var(--accent); font-weight: 600;
+  }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  /* ── Top 10 table ───────────────────────────────────────── */
+  .top10-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;
+  }
+  .top10-row {
+    background: var(--panel); border: 1px solid var(--line);
+    border-radius: 10px; padding: 14px 16px;
+    display: grid; grid-template-columns: 38px 1fr 80px; gap: 12px;
+    align-items: center; cursor: pointer; transition: all 0.15s;
+  }
+  .top10-row:hover { border-color: var(--accent-soft); transform: translateY(-1px); }
+  .top10-row.anchor { border-color: rgba(91, 228, 155, 0.35);
+    background: linear-gradient(135deg, var(--panel) 70%, var(--accent-soft) 100%); }
+  .top10-rank {
+    width: 30px; height: 30px; border-radius: 6px;
     background: var(--bg-2); border: 1px solid var(--line);
     display: flex; align-items: center; justify-content: center;
-    font-size: 18px; font-weight: 700; color: var(--accent);
-    font-variant: tabular-nums;
+    font-size: 14px; font-weight: 700; color: var(--accent);
   }
-  .card.anchor .card-rank { background: var(--accent-soft); border-color: transparent; }
-  .card-body { min-width: 0; }
-  .card-head { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; flex-wrap: wrap; }
-  .card-flag { font-size: 20px; line-height: 1; }
-  .card-country { font-size: 16px; font-weight: 700; letter-spacing: -0.01em; }
-  .card-q {
-    font-size: 10px; padding: 2px 7px; border-radius: 10px;
-    background: var(--accent-soft); color: var(--accent);
-    font-weight: 700; letter-spacing: 0.04em;
+  .top10-country { font-size: 14px; font-weight: 600; display: flex; gap: 6px; align-items: center; }
+  .top10-flag { font-size: 16px; }
+  .top10-deadline { font-size: 10.5px; color: var(--muted); margin-top: 3px; }
+  .top10-score {
+    display: flex; flex-direction: column; align-items: flex-end; gap: 2px;
   }
-  .card-q.q2 { background: rgba(255,206,92,0.14); color: var(--q2); }
-  .card-flag-pill {
-    display: inline-block; padding: 2px 7px; border-radius: 10px;
-    background: rgba(255,138,101,0.16); color: var(--warn);
-    font-size: 9.5px; font-weight: 700; letter-spacing: 0.04em;
+  .grade-pill {
+    padding: 3px 9px; border-radius: 5px;
+    font-size: 11px; font-weight: 800; letter-spacing: 0.04em;
+    font-variant: tabular-nums; min-width: 56px; text-align: center;
   }
-  .card-why { font-size: 12.5px; color: var(--text-2); margin-bottom: 10px; }
-  .card-row { display: flex; gap: 16px; font-size: 11px; color: var(--muted);
-              font-variant: tabular-nums; flex-wrap: wrap; }
-  .card-row strong { color: var(--text); font-weight: 600; }
-  .card-scores {
-    display: flex; flex-direction: column; align-items: flex-end; gap: 4px;
-    text-align: right; min-width: 90px;
-  }
-  .score-pair { display: flex; gap: 10px; }
-  .score-block {
-    display: flex; flex-direction: column; align-items: center;
-    padding: 6px 10px; background: var(--bg-2); border-radius: 6px;
-    min-width: 50px;
-  }
-  .score-block .lbl { font-size: 9px; color: var(--muted); text-transform: uppercase;
-                      letter-spacing: 0.06em; font-weight: 600; }
-  .score-block .val { font-size: 16px; font-weight: 700; color: var(--accent);
-                      font-variant: tabular-nums; line-height: 1.2; }
-  .score-block.urg .val { color: var(--accent); }
-  .score-block.atr .val { color: var(--text); }
-  .stability {
-    font-size: 10px; color: var(--muted); margin-top: 4px;
-  }
-  .stability strong { color: var(--text-2); }
+  .grade-A { background: var(--accent); color: #0a3a1f; }
+  .grade-B { background: #ffd97a; color: #4a3500; }
+  .grade-C { background: var(--q3); color: #001633; }
+  .grade-D { background: var(--q4); color: var(--text); }
+  .grade-F { background: var(--banned); color: #380000; }
+  .top10-score .urg-num { font-size: 10px; color: var(--muted); font-variant: tabular-nums; }
 
-  /* ── 2-column visual section ───────────────────────────────────── */
-  .vis-row { display: grid; grid-template-columns: 1.4fr 1fr; gap: 18px; }
-  .panel {
-    background: var(--panel); border: 1px solid var(--line); border-radius: 10px;
-    padding: 20px 22px;
+  /* ── Timeline ───────────────────────────────────────────── */
+  .timeline-table {
+    background: var(--panel); border: 1px solid var(--line);
+    border-radius: 10px; padding: 16px 20px;
   }
-  .panel h3 { margin: 0 0 6px 0; font-size: 14px; font-weight: 700; }
-  .panel .sub { font-size: 11.5px; color: var(--muted); margin: 0 0 14px 0; }
-
-  /* ── Quadrant ──────────────────────────────────────────────────── */
-  #quad svg { width: 100%; height: auto; }
-  .quad-point { cursor: pointer; transition: stroke-width 0.15s; }
-  .quad-point:hover { stroke: var(--text); stroke-width: 2; }
-  .quad-point.selected { stroke: var(--text); stroke-width: 3; }
-  .threshold { stroke: var(--accent); stroke-dasharray: 3 4; opacity: 0.4; }
-  .axis-label { fill: var(--muted); font-size: 10px; }
-  .quad-label {
-    fill: var(--text-2); font-size: 10.5px; font-weight: 700;
-    letter-spacing: 0.05em; opacity: 0.85;
-  }
-  .legend { display: flex; gap: 16px; font-size: 11px; color: var(--text-2);
-            margin-top: 12px; align-items: center; flex-wrap: wrap; }
-  .legend .dot { display: inline-block; width: 9px; height: 9px;
-                 border-radius: 50%; margin-right: 5px; vertical-align: middle; }
-
-  /* ── Timeline ──────────────────────────────────────────────────── */
   .tl-row {
-    display: grid; grid-template-columns: 30px 130px 1fr 110px; gap: 10px;
-    padding: 10px 0; align-items: center; border-bottom: 1px solid var(--line);
+    display: grid; grid-template-columns: 32px 180px 1fr 110px;
+    gap: 14px; padding: 10px 0; align-items: center;
+    border-bottom: 1px solid var(--line);
     cursor: pointer; transition: background 0.12s;
   }
   .tl-row:hover { background: rgba(255,255,255,0.02); }
   .tl-row:last-child { border-bottom: none; }
-  .tl-rank { font-size: 11px; font-weight: 700; color: var(--accent);
+  .tl-rank { font-size: 11px; color: var(--accent); font-weight: 700;
              text-align: center; font-variant: tabular-nums; }
-  .tl-country { font-size: 12.5px; font-weight: 600; display: flex; align-items: center; gap: 7px; }
+  .tl-country { font-size: 13px; font-weight: 600; display: flex; gap: 8px; align-items: center; }
   .tl-bar-wrap { position: relative; height: 8px; }
-  .tl-bar-bg { position: absolute; left: 0; right: 0; top: 3px; height: 2px; background: var(--line-2); }
-  .tl-bar-mark { position: absolute; top: 0; width: 10px; height: 8px; border-radius: 2px;
-                 transform: translateX(-5px); box-shadow: 0 0 6px currentColor; }
-  .tl-deadline { font-size: 11px; color: var(--text-2); text-align: right;
-                 font-variant: tabular-nums; }
-  .tl-axis { display: grid; grid-template-columns: 30px 130px 1fr 110px; gap: 10px;
-             padding-bottom: 6px; font-size: 9.5px; color: var(--muted);
-             text-transform: uppercase; letter-spacing: 0.08em; }
+  .tl-bar-track {
+    position: absolute; left: 0; right: 0; top: 3px; height: 2px;
+    background: var(--line-2); border-radius: 1px;
+  }
+  .tl-bar-mark {
+    position: absolute; top: 0; width: 10px; height: 8px;
+    border-radius: 2px; transform: translateX(-5px);
+    box-shadow: 0 0 8px currentColor;
+  }
+  .tl-deadline { font-size: 11.5px; color: var(--text-2);
+                 font-variant: tabular-nums; text-align: right; font-weight: 500; }
 
-  /* ── Drilldown panel (modal-ish from right) ────────────────────── */
-  .drilldown-bg {
+  /* ── Drilldown drawer ───────────────────────────────────── */
+  .drawer-bg {
     position: fixed; inset: 0; background: rgba(0,0,0,0.5);
-    backdrop-filter: blur(2px); display: none; z-index: 100;
+    backdrop-filter: blur(3px); display: none; z-index: 100;
   }
-  .drilldown-bg.open { display: block; }
-  .drilldown {
-    position: fixed; top: 0; right: -560px; width: 560px; height: 100vh;
+  .drawer-bg.open { display: block; }
+  .drawer {
+    position: fixed; top: 0; right: -600px; width: 600px; height: 100vh;
     background: var(--panel); border-left: 1px solid var(--line);
-    padding: 26px 28px; overflow-y: auto; z-index: 101;
-    transition: right 0.25s ease-out;
+    overflow-y: auto; z-index: 101; transition: right 0.28s cubic-bezier(0.32, 0.72, 0, 1);
   }
-  .drilldown.open { right: 0; }
-  .drilldown-close {
-    position: absolute; top: 14px; right: 18px;
-    background: none; border: 1px solid var(--line); color: var(--text-2);
-    width: 28px; height: 28px; border-radius: 6px; cursor: pointer; font-size: 16px;
+  .drawer.open { right: 0; }
+  .drawer-close {
+    position: absolute; top: 16px; right: 18px;
+    background: var(--bg-2); border: 1px solid var(--line); color: var(--text-2);
+    width: 32px; height: 32px; border-radius: 8px; cursor: pointer;
+    font-size: 18px; line-height: 1; z-index: 5;
   }
-  .drilldown h2 { margin: 0 0 4px 0; font-size: 22px; font-weight: 700; letter-spacing: -0.01em; }
-  .drilldown h2 .country-flag { font-size: 26px; margin-right: 6px; vertical-align: middle; }
-  .drilldown .sub { font-size: 12px; color: var(--muted); margin: 0 0 18px 0; }
-  .drilldown .score-pair { margin-bottom: 18px; gap: 14px; }
-  .drilldown .score-block { padding: 10px 14px; min-width: 78px; }
-  .drilldown .score-block .val { font-size: 22px; }
-  .drilldown .score-block .lbl { font-size: 10px; }
-  .drilldown .band { font-size: 10.5px; color: var(--muted); margin-top: 2px; }
+  .drawer-close:hover { background: var(--line-2); color: var(--text); }
 
-  .dd-section { margin-bottom: 22px; }
-  .dd-section h4 {
-    font-size: 10.5px; color: var(--muted); text-transform: uppercase;
+  .drawer-head {
+    padding: 28px 28px 18px;
+    background: linear-gradient(180deg, var(--panel-2) 0%, var(--panel) 100%);
+    border-bottom: 1px solid var(--line);
+  }
+  .drawer-flag { font-size: 28px; vertical-align: middle; margin-right: 8px; }
+  .drawer-country {
+    font-size: 22px; font-weight: 700; letter-spacing: -0.01em;
+    display: inline-flex; align-items: center; gap: 4px;
+  }
+  .drawer-sub { font-size: 12px; color: var(--muted); margin: 4px 0 14px 0; }
+  .drawer-pills { display: flex; gap: 6px; flex-wrap: wrap; }
+  .pill {
+    padding: 3px 9px; border-radius: 10px; font-size: 10px;
+    font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;
+  }
+  .pill-q1 { background: var(--accent-soft); color: var(--accent); }
+  .pill-q2 { background: rgba(255,206,92,0.15); color: var(--q2); }
+  .pill-q3 { background: rgba(102,145,255,0.15); color: var(--q3); }
+  .pill-q4 { background: rgba(53,59,70,0.5); color: var(--text-2); }
+  .pill-banned { background: rgba(255,94,94,0.15); color: var(--banned); }
+  .pill-flag { background: rgba(255,138,101,0.15); color: var(--warn); }
+
+  /* Hero score box (big number + grade, Skynet style) */
+  .drawer-score-hero {
+    display: flex; align-items: center; gap: 20px;
+    margin: 22px 0 8px;
+  }
+  .score-bignum {
+    font-size: 56px; font-weight: 800; letter-spacing: -0.04em;
+    line-height: 1; color: var(--text); font-variant: tabular-nums;
+  }
+  .grade-big {
+    padding: 9px 18px; border-radius: 8px; font-size: 24px;
+    font-weight: 900; letter-spacing: 0.02em;
+  }
+  .score-meta { font-size: 11px; color: var(--muted); margin-top: 6px; }
+
+  /* Hexagonal radar */
+  .radar-wrap {
+    background: var(--bg-2); border: 1px solid var(--line);
+    border-radius: 10px; padding: 14px; margin: 12px 0 18px;
+  }
+  .radar-wrap h4 {
+    font-size: 11px; color: var(--muted); text-transform: uppercase;
     letter-spacing: 0.1em; font-weight: 700; margin: 0 0 8px 0;
   }
-  .dd-grid { display: grid; grid-template-columns: 140px 1fr; gap: 6px 12px;
-             font-size: 12.5px; }
-  .dd-grid .k { color: var(--muted); }
-  .dd-grid .v { color: var(--text); }
+  #radar { width: 100%; height: 280px; }
+  .radar-axis-label { fill: var(--text-2); font-size: 10px; font-weight: 600; }
+  .radar-grid { fill: none; stroke: var(--line-2); stroke-width: 0.7; }
+  .radar-axis { stroke: var(--line-2); stroke-width: 0.5; }
+  .radar-poly { fill: var(--accent-glow); stroke: var(--accent); stroke-width: 1.5; }
+  .radar-dot  { fill: var(--accent); }
 
-  .decomp-bar {
-    display: grid; grid-template-columns: 1fr 50px; gap: 8px; align-items: center;
-    margin-bottom: 6px; font-size: 12px;
-  }
-  .decomp-bar .bar-bg {
-    height: 6px; background: var(--bg-2); border-radius: 3px; overflow: hidden;
-    margin-top: 6px;
-  }
-  .decomp-bar .bar-fill {
-    height: 100%; background: linear-gradient(90deg, var(--accent-2), var(--accent));
-    border-radius: 3px;
-  }
-  .decomp-bar .v { text-align: right; font-variant: tabular-nums; font-weight: 600; color: var(--accent); }
+  .drawer-body { padding: 0 28px 32px; }
 
   .why-block {
     background: var(--accent-soft); border-left: 3px solid var(--accent);
     padding: 12px 14px; border-radius: 4px; font-size: 13px; color: var(--text);
     margin-bottom: 18px;
   }
+
+  .dd-section { margin-bottom: 22px; }
+  .dd-section h4 {
+    font-size: 10.5px; color: var(--muted); text-transform: uppercase;
+    letter-spacing: 0.1em; font-weight: 700; margin: 0 0 10px 0;
+  }
+  .dd-grid {
+    display: grid; grid-template-columns: 140px 1fr; gap: 6px 12px;
+    font-size: 12.5px;
+  }
+  .dd-grid .k { color: var(--muted); }
+  .dd-grid .v { color: var(--text); word-break: break-word; }
+
   .targets-list { display: flex; flex-wrap: wrap; gap: 6px; }
   .target-pill {
     background: var(--bg-2); border: 1px solid var(--line); border-radius: 12px;
     padding: 3px 10px; font-size: 11px; color: var(--text-2);
   }
 
-  /* ── Validation strip ──────────────────────────────────────────── */
-  .validation-grid {
-    display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+  .pulse-feed { display: flex; flex-direction: column; gap: 0; }
+  .pulse-item {
+    display: grid; grid-template-columns: 90px 1fr; gap: 12px;
+    padding: 10px 0; border-bottom: 1px solid var(--line); font-size: 12px;
   }
-  .val-card {
-    background: var(--panel); border: 1px solid var(--line); border-radius: 8px;
-    padding: 14px 16px; position: relative;
-  }
-  .val-card .check { color: var(--accent); font-size: 18px; }
-  .val-card .title {
-    font-size: 12px; font-weight: 700; margin: 4px 0 6px 0;
-  }
-  .val-card .body { font-size: 11px; color: var(--muted); line-height: 1.5; }
+  .pulse-item:last-child { border-bottom: none; }
+  .pulse-date { color: var(--accent); font-weight: 600; font-variant: tabular-nums; font-size: 11px; }
+  .pulse-text { color: var(--text-2); }
 
-  /* ── BD Activation ─────────────────────────────────────────────── */
-  .bd-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
-  .bd-card {
-    background: var(--panel); border: 1px solid var(--line); border-radius: 8px;
-    padding: 16px 18px;
+  /* ── Empty / loading states ─────────────────────────────── */
+  .empty-state {
+    text-align: center; padding: 60px 20px; color: var(--muted);
+    font-size: 13px;
   }
-  .bd-card .when {
-    font-size: 10px; color: var(--accent); font-weight: 700;
-    text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px;
-  }
-  .bd-card .markets {
-    font-size: 13px; font-weight: 700; margin-bottom: 8px;
-  }
-  .bd-card .why { font-size: 11.5px; color: var(--muted); line-height: 1.5; }
-
-  /* ── Filters ───────────────────────────────────────────────────── */
-  .filter-bar {
-    display: flex; gap: 10px; margin-bottom: 14px; flex-wrap: wrap;
-    align-items: center;
-  }
-  .filter-bar label {
-    font-size: 10.5px; color: var(--muted); text-transform: uppercase;
-    letter-spacing: 0.06em; font-weight: 600;
-  }
-  .filter-bar select, .filter-bar input {
-    background: var(--bg-2); border: 1px solid var(--line); color: var(--text);
-    padding: 7px 10px; border-radius: 6px; font-size: 12px; min-width: 130px;
-    font-family: inherit;
-  }
-  .filter-bar select:focus, .filter-bar input:focus {
-    outline: none; border-color: var(--accent);
-  }
-
-  /* ── Tabs (anchored navigation) ────────────────────────────────── */
-  .nav-strip {
-    position: sticky; top: 64px; z-index: 40;
-    background: rgba(7,9,13,0.92); backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--line); padding: 10px 36px;
-    margin: 0 -36px 24px -36px;
-    display: flex; gap: 4px;
-  }
-  .nav-strip a {
-    padding: 7px 14px; border-radius: 6px; font-size: 12px;
-    color: var(--text-2); transition: all 0.12s;
-  }
-  .nav-strip a:hover { background: var(--bg-2); color: var(--text); text-decoration: none; }
-  .nav-strip a.active { background: var(--accent-soft); color: var(--accent); }
-
-  /* ── Footer ────────────────────────────────────────────────────── */
-  footer { margin-top: 80px; padding: 24px 0; border-top: 1px solid var(--line);
-           color: var(--muted); font-size: 11px; text-align: center; }
 
   @media (max-width: 1100px) {
-    .shortlist-grid { grid-template-columns: 1fr; }
-    .vis-row { grid-template-columns: 1fr; }
     .kpis { grid-template-columns: repeat(3, 1fr); }
-    .bd-grid, .validation-grid { grid-template-columns: repeat(2, 1fr); }
-    .drilldown { width: 100%; right: -100%; }
-    .drilldown.open { right: 0; }
+    .top10-grid { grid-template-columns: 1fr; }
+    .drawer { width: 100%; right: -100%; }
+    .drawer.open { right: 0; }
+    #map { height: 380px; }
+    .topbar { padding: 10px 16px; }
+    .topbar .tabs { display: none; }
+    .topbar-search { width: 140px; }
+    .hero, .map-section, .bottom-section { padding-left: 16px; padding-right: 16px; }
   }
 </style>
 </head>
@@ -344,39 +371,30 @@
   <div class="brand">
     <div class="brand-logo">C</div>
     <div>
-      <div class="brand-name">Crypto Compliance Intelligence</div>
-      <div class="brand-sub">CertiK targeting system · v<span id="cfgVersion"></span></div>
+      <div class="brand-name">Crypto Compliance Map</div>
+      <div class="brand-sub">CertiK targeting · 90 jurisdictions · v<span id="cfgVersion"></span></div>
     </div>
   </div>
-  <div class="topbar-meta">
-    <div><strong id="cfgDate"></strong></div>
-    <div>Anchor: Brazil · IN 701 · 2026-10-31</div>
+  <div class="tabs">
+    <button class="tab active" data-section="map">World Map</button>
+    <button class="tab" data-section="top10">Top 10</button>
+    <button class="tab" data-section="timeline">Timeline</button>
+    <button class="tab" data-section="methodology">Methodology</button>
   </div>
+  <input class="topbar-search" type="text" id="search" placeholder="Search country…">
 </div>
 
 <div class="container">
 
-  <nav class="nav-strip">
-    <a href="#hero" class="active">Top 10</a>
-    <a href="#quadrant">Quadrant</a>
-    <a href="#timeline">Timeline</a>
-    <a href="#bd">BD Activation</a>
-    <a href="#validation">Validation</a>
-    <a href="#methodology">Methodology</a>
-  </nav>
-
-  <!-- ── Hero ─────────────────────────────────────────────────────── -->
-  <section id="hero" class="hero">
-    <h1 class="hero-title">The Top 10 jurisdictions where compliance demand spikes by end-2026</h1>
+  <!-- ── Hero KPIs ──────────────────────────────────────────── -->
+  <section class="hero">
+    <h1 class="hero-title">Where compliance demand spikes by end-2026</h1>
     <p class="hero-sub">
-      Ranked by data-bootstrap stability across 1,000 perturbation runs. Each is a "Brazil pattern" —
-      enacted regime + dated deadline in the 6-18 month sweet spot + measurable non-compliance gap.
-      The frozen calibration anchor is Brazil's BCB IN 701 (Oct 2026).
+      Click any country on the map for its full profile. Color = quadrant. The frozen anchor is Brazil (BCB IN 701, Oct 2026); thresholds derive from it.
     </p>
-
     <div class="kpis">
       <div class="kpi accent">
-        <div class="kpi-label">Top 10 Shortlist</div>
+        <div class="kpi-label">Top 10 Targets</div>
         <div class="kpi-value" id="kpiShortlist">10</div>
         <div class="kpi-sub">data-bootstrap-stable</div>
       </div>
@@ -386,252 +404,145 @@
         <div class="kpi-sub">jurisdictions screened</div>
       </div>
       <div class="kpi">
-        <div class="kpi-label">Longlist (HARD-verified)</div>
+        <div class="kpi-label">Verified</div>
         <div class="kpi-value" id="kpiLonglist">20</div>
-        <div class="kpi-sub">source-attributed inputs</div>
+        <div class="kpi-sub">HARD-attributed inputs</div>
       </div>
       <div class="kpi accent">
-        <div class="kpi-label">Aggregate TAM (12-mo)</div>
-        <div class="kpi-value" id="kpiTam">$49.5M–$185M</div>
-        <div class="kpi-sub">range across 10 markets</div>
+        <div class="kpi-label">Aggregate TAM</div>
+        <div class="kpi-value" id="kpiTam">$50M–$185M</div>
+        <div class="kpi-sub">12-mo addressable</div>
       </div>
       <div class="kpi">
-        <div class="kpi-label">Total-ban markets capped</div>
+        <div class="kpi-label">Ban-capped</div>
         <div class="kpi-value" id="kpiBanned">8</div>
         <div class="kpi-sub">BAN GATE enforced</div>
       </div>
       <div class="kpi">
-        <div class="kpi-label">Anchor urgency threshold</div>
-        <div class="kpi-value" id="kpiAnchor">97</div>
-        <div class="kpi-sub">frozen at Brazil ~12mo</div>
+        <div class="kpi-label">Anchor</div>
+        <div class="kpi-value">Brazil</div>
+        <div class="kpi-sub">IN 701 · Oct 2026</div>
       </div>
     </div>
   </section>
 
-  <!-- ── Shortlist cards ──────────────────────────────────────────── -->
-  <section>
-    <div class="section-head">
-      <div>
-        <h2 class="section-title">Priority shortlist <span class="section-pill">10 of 90</span></h2>
-        <p class="section-sub">Click any card for the full dossier. Pakistan + Vietnam carry flags — verify before significant BD spend.</p>
-      </div>
+  <!-- ── Map ────────────────────────────────────────────────── -->
+  <section class="map-section">
+    <div class="map-head">
+      <h2>Global compliance demand map</h2>
+      <div class="sub">Hover for quick info · Click for full profile</div>
     </div>
-    <div class="shortlist-grid" id="shortlistGrid"></div>
-  </section>
-
-  <!-- ── Quadrant + Timeline (two-column) ─────────────────────────── -->
-  <section id="quadrant">
-    <div class="section-head">
-      <div>
-        <h2 class="section-title">The map</h2>
-        <p class="section-sub">Two orthogonal axes — never collapsed into a single number. Q1 = priority.</p>
-      </div>
-    </div>
-
-    <div class="vis-row">
-      <div class="panel">
-        <h3>Attractiveness × Urgency quadrant</h3>
-        <p class="sub">All 90 jurisdictions. Verified countries shown solid; screen-only translucent. Size = bootstrap stability.</p>
-
-        <div class="filter-bar">
-          <label style="margin-right:4px">Filter</label>
-          <select id="filterRegion"><option value="">All regions</option></select>
-          <select id="filterStage">
-            <option value="">All stages</option>
-            <option value="verified">Verified only</option>
-            <option value="screen">Screen-only</option>
-          </select>
-          <select id="filterQuad">
-            <option value="">All quadrants</option>
-            <option value="Q1">Q1 — priority</option>
-            <option value="Q2">Q2 — fast/small</option>
-            <option value="Q3">Q3 — nurture</option>
-            <option value="Q4">Q4 — monitor</option>
-          </select>
-          <input id="filterSearch" type="text" placeholder="search country…">
-        </div>
-
-        <div id="quad"></div>
-        <div class="legend">
-          <span><span class="dot" style="background:var(--q1)"></span> Q1 priority</span>
-          <span><span class="dot" style="background:var(--q2)"></span> Q2 fast/small</span>
-          <span><span class="dot" style="background:var(--q3)"></span> Q3 nurture</span>
-          <span><span class="dot" style="background:var(--q4)"></span> Q4 monitor</span>
-          <span style="margin-left:auto;color:var(--muted)">dashed = anchor thresholds</span>
-        </div>
-      </div>
-
-      <div class="panel" id="timeline">
-        <h3>18-month deadline runway</h3>
-        <p class="sub">Sequenced by deadline. Click any row to drill in.</p>
-        <div class="tl-axis">
-          <span>#</span><span>Country</span><span>Now ─ 2027</span><span>Deadline</span>
-        </div>
-        <div id="timelineRows"></div>
+    <div class="map-wrap">
+      <svg id="map" viewBox="0 0 960 540" preserveAspectRatio="xMidYMid meet"></svg>
+      <div class="legend">
+        <div class="item"><span class="dot" style="background:var(--q1)"></span>Q1 Priority (above anchor)</div>
+        <div class="item"><span class="dot" style="background:var(--q2)"></span>Q2 Fast/Small</div>
+        <div class="item"><span class="dot" style="background:var(--q3)"></span>Q3 Nurture</div>
+        <div class="item"><span class="dot" style="background:var(--q4)"></span>Q4 Monitor</div>
+        <div class="item"><span class="dot" style="background:var(--banned)"></span>Total ban (capped)</div>
+        <div class="item"><span class="dot" style="background:#5a6470;opacity:0.4"></span>Out of universe</div>
       </div>
     </div>
   </section>
 
-  <!-- ── BD Activation ────────────────────────────────────────────── -->
-  <section id="bd">
-    <div class="section-head">
-      <div>
-        <h2 class="section-title">90-day BD sequencing</h2>
-        <p class="section-sub">Order operations by deadline-proximity and Big-4-displacement opportunity.</p>
-      </div>
+  <!-- ── Bottom tab content ─────────────────────────────────── -->
+  <section class="bottom-section">
+    <div class="section-tabs">
+      <button class="section-tab active" data-panel="top10">Top 10 Targets</button>
+      <button class="section-tab" data-panel="timeline">Deadline Timeline</button>
+      <button class="section-tab" data-panel="methodology">Methodology</button>
     </div>
 
-    <div class="bd-grid">
-      <div class="bd-card">
-        <div class="when">Q1 2026 · NOW</div>
-        <div class="markets">Turkey · Vietnam · Nigeria</div>
-        <div class="why">Earliest closing windows + biggest absolute non-compliance gaps. Joint events with local crypto law firms.</div>
-      </div>
-      <div class="bd-card">
-        <div class="when">Q2 2026</div>
-        <div class="markets">Germany · France · Ireland · Lithuania · Poland</div>
-        <div class="why">MiCA cut-over peaks (30 Jun 2026). Big-4 displacement window — they have audit but no on-chain depth.</div>
-      </div>
-      <div class="bd-card">
-        <div class="when">Q3 2026</div>
-        <div class="markets">Brazil</div>
-        <div class="why">Anchor regime. Longest deal cycle + biggest single LATAM market. ABCripto + Mattos Filho joint event.</div>
-      </div>
-      <div class="bd-card">
-        <div class="when">Q4 2026 · VERIFY FIRST</div>
-        <div class="markets">Pakistan (only if regime operational)</div>
-        <div class="why">Latest deadline; PVARA regime untested. Verify enforcement intent before significant BD spend.</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── Validation ──────────────────────────────────────────────── -->
-  <section id="validation">
-    <div class="section-head">
-      <div>
-        <h2 class="section-title">Validation — every test passed</h2>
-        <p class="section-sub">The model is not accepted until controls + sensitivity + face validity all pass (per spec §H).</p>
-      </div>
+    <div class="tab-panel active" id="panel-top10">
+      <div class="top10-grid" id="top10Grid"></div>
     </div>
 
-    <div class="validation-grid">
-      <div class="val-card">
-        <span class="check">✓</span>
-        <div class="title">Positive control</div>
-        <div class="body">Brazil at frozen ~12mo snapshot lands in Q1 (Attr 86 / Urg 97) — calibration anchor working.</div>
-      </div>
-      <div class="val-card">
-        <span class="check">✓</span>
-        <div class="title">Negative control</div>
-        <div class="body">China (grey-market Chainalysis #20 + Total Ban): Attr=25 via BAN GATE, Urg=20. Lands clearly low-low.</div>
-      </div>
-      <div class="val-card">
-        <span class="check">✓</span>
-        <div class="title">Data-bootstrap stability</div>
-        <div class="body">1000 runs perturbing inputs within confidence bands. All 10 shortlist countries ≥85% Top-10 membership rate.</div>
-      </div>
-      <div class="val-card">
-        <span class="check">✓</span>
-        <div class="title">Weight-perturbation stability</div>
-        <div class="body">1000 runs at ±20% on every weight. All 10 = 100% Top-10 rate. Weight choice doesn't drive the shortlist.</div>
-      </div>
-      <div class="val-card">
-        <span class="check">✓</span>
-        <div class="title">Soft-signal independence</div>
-        <div class="body">9 of 10 stable when soft signals = 0. Only Pakistan flagged SOFT_DEPENDENT — explicit flag in dossier.</div>
-      </div>
-      <div class="val-card">
-        <span class="check">✓</span>
-        <div class="title">Collinearity audit</div>
-        <div class="body">Spearman on 10 indicators. Only AML↔Enforcement > 0.85 (kept separate by design per §D.3).</div>
-      </div>
-      <div class="val-card">
-        <span class="check">✓</span>
-        <div class="title">Face validity</div>
-        <div class="body">Switzerland (mature DLT, no clock) lands Q3 high-attr/low-urg. US (GENIUS enforcement-ramp) NOT in Top-10.</div>
-      </div>
-      <div class="val-card">
-        <span class="check">✓</span>
-        <div class="title">Anti-confirmation</div>
-        <div class="body">Turkey beat Brazil in verified scoring. System didn't artificially preserve the anchor's primacy.</div>
+    <div class="tab-panel" id="panel-timeline">
+      <div class="timeline-table" id="timelineTable"></div>
+    </div>
+
+    <div class="tab-panel" id="panel-methodology">
+      <div class="timeline-table" style="line-height: 1.7; font-size: 13px;">
+        <h3 style="margin-top:0;font-size:15px">Two-axis composite — orthogonal, never summed</h3>
+        <p style="color:var(--text-2)"><strong style="color:var(--text)">Axis 1 — Attractiveness</strong> (weighted arithmetic + BAN GATE): Adoption (30%) + AML maturity (20%) + Enforcement (20%) + Volume tier (20%) + Institutional depth (10%).</p>
+        <p style="color:var(--text-2)"><strong style="color:var(--text)">Axis 2 — Urgency</strong> (geometric of HARD CORE + additive SOFT + DEADLINE GATE):<br>
+          • Hard core 85%: Deadline proximity (40%) + Lifecycle (30%) + Trigger (30%)<br>
+          • Soft 15% (capped): Non-compliance gap (50%) + Demand momentum (50%)</p>
+        <p style="color:var(--text-2)"><strong style="color:var(--accent)">Gates.</strong> BAN GATE caps Attractiveness at 25 for total-ban jurisdictions (prevents grey-market inflation). DEADLINE GATE caps Urgency at 30 when no dated trigger exists.</p>
+        <p style="color:var(--text-2)"><strong style="color:var(--accent)">Why geometric on hard core.</strong> Non-compensatory: urgency requires deadline AND lifecycle AND trigger together, not just one strong leg.</p>
+        <h3 style="font-size:14px">Validation tests passed</h3>
+        <p style="color:var(--text-2)">✓ Positive control (Brazil in Q1) · ✓ Negative control (China low-low via BAN GATE) · ✓ Data-bootstrap stability (1000 runs; all Top-10 ≥85%) · ✓ Weight perturbation ±20% (all Top-10 at 100%) · ✓ Soft-signal independence (9/10 stable when soft=0) · ✓ Spearman collinearity (only AML↔Enforcement &gt; 0.85, kept separate by design)</p>
+        <h3 style="font-size:14px">Refresh policy</h3>
+        <p style="color:var(--text-2)">Soft signals + rescoring: <strong style="color:var(--accent)">auto-weekly</strong>. HARD legal facts: <strong style="color:var(--warn)">manual quarterly</strong> with re-verification. No HARD field is ever auto-imputed.</p>
       </div>
     </div>
   </section>
-
-  <!-- ── Methodology ─────────────────────────────────────────────── -->
-  <section id="methodology">
-    <div class="section-head">
-      <div>
-        <h2 class="section-title">Methodology — at a glance</h2>
-        <p class="section-sub">Full defense in <code>reports/04_methodology_and_robustness.md</code>. Config in <code>config/scoring_config.yaml</code>.</p>
-      </div>
-    </div>
-
-    <div class="vis-row">
-      <div class="panel">
-        <h3>Two-axis composite</h3>
-        <p class="sub">Orthogonal axes, never summed. Quadrant placement is the decision frame.</p>
-        <div style="font-size:12.5px; color:var(--text-2); line-height: 1.7;">
-          <strong style="color:var(--text)">Axis 1 — Attractiveness</strong> (weighted arithmetic mean + BAN GATE)<br>
-          Adoption (30%) + AML maturity (20%) + Enforcement (20%) + Volume tier (20%) + Institutional depth (10%, SYNTH-capped)<br><br>
-          <strong style="color:var(--text)">Axis 2 — Urgency</strong> (geometric mean of HARD CORE + additive SOFT + DEADLINE GATE)<br>
-          Hard core (85%): Deadline proximity (40%) + Lifecycle (30%) + Trigger (30%)<br>
-          Soft (15%, capped): Non-compliance gap (50%) + Demand momentum (50%)<br><br>
-          <strong style="color:var(--accent)">Gates.</strong> BAN GATE caps Attractiveness at 25 for total-ban jurisdictions. DEADLINE GATE caps Urgency at 30 when no dated trigger exists.<br><br>
-          <strong style="color:var(--accent)">Geometric mean of hard core</strong> = non-compensatory: urgency needs deadline AND lifecycle AND trigger together, not just one.
-        </div>
-      </div>
-
-      <div class="panel">
-        <h3>Refresh policy (honestly scoped)</h3>
-        <p class="sub">Per spec §I — Phase 7 honesty rule.</p>
-        <div style="font-size:12.5px; color:var(--text-2); line-height: 1.7;">
-          <strong style="color:var(--accent)">Auto-refresh</strong> (weekly):<br>
-          • Soft signals (non-compliance gap, demand momentum)<br>
-          • Rescoring of existing inputs<br><br>
-          <strong style="color:var(--warn)">Manual refresh</strong> (quarterly + on-event):<br>
-          • HARD legal facts — deadline, framework citation, regulator, thresholds, tax<br>
-          • Each updated field re-cites source + as-of date + confidence<br><br>
-          <em style="color:var(--muted)">No HARD field is ever auto-imputed. UNVERIFIED is allowed and tracked — never inferred.</em>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    Crypto Compliance Intelligence System · Config v<span id="footerVersion"></span> · Built with the deterministic scorer at <code>scripts/score.py</code>. Edit <code>config/scoring_config.yaml</code> and re-run to regenerate the entire shortlist.
-  </footer>
 </div>
 
-<!-- ── Drilldown panel ───────────────────────────────────────────── -->
-<div class="drilldown-bg" id="ddBg"></div>
-<div class="drilldown" id="drilldown">
-  <button class="drilldown-close" id="ddClose">×</button>
-  <div id="ddBody"></div>
+<!-- ── Drawer ───────────────────────────────────────────────── -->
+<div class="drawer-bg" id="drawerBg"></div>
+<div class="drawer" id="drawer">
+  <button class="drawer-close" id="drawerClose">×</button>
+  <div id="drawerContent"></div>
 </div>
+
+<!-- ── Tooltip ──────────────────────────────────────────────── -->
+<div class="tooltip" id="tooltip"></div>
+
+<!-- D3 + TopoJSON for the world map -->
+<script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3"></script>
 
 <script>
+const NAME_ALIAS = {
+  "United States of America": "United States",
+  "USA": "United States",
+  "United Kingdom of Great Britain and Northern Ireland": "United Kingdom",
+  "United Arab Emirates": "UAE",
+  "Korea, Republic of": "South Korea",
+  "Republic of Korea": "South Korea",
+  "Russian Federation": "Russia",
+  "Viet Nam": "Vietnam",
+  "Iran (Islamic Republic of)": "Iran",
+  "Bolivia, Plurinational State of": "Bolivia",
+  "Venezuela, Bolivarian Republic of": "Venezuela",
+  "Tanzania, United Republic of": "Tanzania",
+  "Moldova, Republic of": "Moldova",
+  "Macedonia": "North Macedonia",
+  "Republic of Macedonia": "North Macedonia",
+  "Czech Republic": "Czechia",
+  "Taiwan, Province of China": "Taiwan",
+  "Hong Kong S.A.R.": "Hong Kong",
+  "Brunei Darussalam": "Brunei",
+  "Lao People's Democratic Republic": "Laos",
+  "Syrian Arab Republic": "Syria",
+  "Côte d'Ivoire": "Ivory Coast",
+  "Cabo Verde": "Cape Verde",
+  "Eswatini": "Swaziland",
+  "São Tomé and Príncipe": "Sao Tome and Principe",
+};
+
 let DATA = null;
 let SEL = null;
+let pathGen = null;
+let projection = null;
+const QCOLOR = { Q1:'#5BE49B', Q2:'#FFCE5C', Q3:'#6691FF', Q4:'#353b46' };
 
 async function load() {
-  const r = await fetch('data.json');
-  DATA = await r.json();
+  DATA = await (await fetch('data.json')).json();
   document.getElementById('cfgVersion').textContent = DATA.config_version;
-  document.getElementById('footerVersion').textContent = DATA.config_version;
-  document.getElementById('cfgDate').textContent = DATA.config_date;
   document.getElementById('kpiShortlist').textContent = DATA.hero_metrics.shortlist_size;
   document.getElementById('kpiUniverse').textContent  = DATA.hero_metrics.universe_size;
   document.getElementById('kpiLonglist').textContent  = DATA.hero_metrics.longlist_size;
   document.getElementById('kpiTam').textContent       =
-    `$${DATA.hero_metrics.tam_total_low_usd_m}M–$${DATA.hero_metrics.tam_total_high_usd_m}M`;
+    `$${Math.round(DATA.hero_metrics.tam_total_low_usd_m)}M–$${Math.round(DATA.hero_metrics.tam_total_high_usd_m)}M`;
   document.getElementById('kpiBanned').textContent    = DATA.hero_metrics.banned_capped_count;
-  document.getElementById('kpiAnchor').textContent    = DATA.anchor_urgency;
-  renderShortlist();
-  populateRegions();
-  render();
-  setupNav();
-  setupDrilldown();
+
+  await drawMap();
+  renderTop10();
+  renderTimeline();
+  bindTabs();
+  bindSearch();
 }
 
 function quadrantOf(c) {
@@ -642,196 +553,199 @@ function quadrantOf(c) {
   if (u <  uT && a >= aT) return 'Q3';
   return 'Q4';
 }
-const QCOLOR = { Q1:'#1FD1B5', Q2:'#FFCE5C', Q3:'#6691FF', Q4:'#4a5567' };
 
-function renderShortlist() {
-  const sl = DATA.countries.filter(c => c.is_shortlist)
-                           .sort((a,b) => a.rank - b.rank);
-  const grid = document.getElementById('shortlistGrid');
-  grid.innerHTML = sl.map(c => {
+function gradeOf(urgency) {
+  if (urgency >= 95) return ['A', 'grade-A'];
+  if (urgency >= 80) return ['B', 'grade-B'];
+  if (urgency >= 65) return ['C', 'grade-C'];
+  if (urgency >= 30) return ['D', 'grade-D'];
+  return ['F', 'grade-F'];
+}
+
+function countryFill(c) {
+  if (!c) return 'rgba(90,100,112,0.18)';   // out of universe
+  if ((c.flags||'').includes('BAN_GATE_APPLIED')) return 'var(--banned)';
+  return QCOLOR[quadrantOf(c)];
+}
+
+async function drawMap() {
+  const svg = d3.select('#map');
+  svg.selectAll('*').remove();
+
+  const width = 960, height = 540;
+  projection = d3.geoNaturalEarth1()
+    .scale(180).translate([width/2, height/2 + 14]);
+  pathGen = d3.geoPath(projection);
+
+  const topo = await (await fetch('https://cdn.jsdelivr.net/npm/world-atlas@2.0.2/countries-110m.json')).json();
+  const countries = topojson.feature(topo, topo.objects.countries).features;
+
+  // Sphere + graticule
+  svg.append('path').attr('class','map-sphere').attr('d', pathGen({type:'Sphere'}));
+  const graticule = d3.geoGraticule().step([20,20]);
+  svg.append('path').attr('class','map-graticule').attr('d', pathGen(graticule()));
+
+  // Build name-lookup from our DATA
+  const dataByName = {};
+  DATA.countries.forEach(c => { dataByName[c.country] = c; });
+
+  // Render countries
+  const tooltip = document.getElementById('tooltip');
+  svg.selectAll('.map-country')
+    .data(countries)
+    .enter().append('path')
+    .attr('class','map-country')
+    .attr('d', pathGen)
+    .attr('fill', d => {
+      const rawName = d.properties.name;
+      const aliasName = NAME_ALIAS[rawName] || rawName;
+      const c = dataByName[aliasName];
+      return countryFill(c);
+    })
+    .attr('data-name', d => NAME_ALIAS[d.properties.name] || d.properties.name)
+    .on('mousemove', (e, d) => {
+      const name = NAME_ALIAS[d.properties.name] || d.properties.name;
+      const c = dataByName[name];
+      if (c) {
+        const q = quadrantOf(c);
+        const banned = (c.flags||'').includes('BAN_GATE_APPLIED');
+        tooltip.innerHTML = `
+          <div class="name">${c.flag_emoji||''} ${c.country}</div>
+          <div class="meta">${banned ? 'Total ban' : q + ' · '}<strong>Attr ${Math.round(c.attractiveness)} · Urg ${Math.round(c.urgency)}</strong></div>
+          ${c.deadline?`<div class="meta">Deadline: ${c.deadline}</div>`:''}
+        `;
+      } else {
+        tooltip.innerHTML = `<div class="name">${name}</div><div class="meta">Not in universe</div>`;
+      }
+      tooltip.style.display = 'block';
+      tooltip.style.left = (e.clientX + 14) + 'px';
+      tooltip.style.top  = (e.clientY + 14) + 'px';
+    })
+    .on('mouseleave', () => { tooltip.style.display = 'none'; })
+    .on('click', (e, d) => {
+      const name = NAME_ALIAS[d.properties.name] || d.properties.name;
+      const c = dataByName[name];
+      if (c) openDrawer(c);
+    });
+}
+
+function renderTop10() {
+  const sl = DATA.countries.filter(c => c.is_shortlist).sort((a,b) => a.rank - b.rank);
+  document.getElementById('top10Grid').innerHTML = sl.map(c => {
     const q = quadrantOf(c);
+    const g = gradeOf(c.urgency);
     const isAnchor = c.country === 'Brazil';
-    const flagsList = (c.flags || '').split(',').filter(s => s.trim() && s.trim() !== 'SOFT_DEPENDENT' || (c.country === 'Pakistan' && s.includes('SOFT')));
-    const flags = (c.flags||'').split(',').map(s=>s.trim()).filter(s=>s);
-    const flagPills = flags.includes('SOFT_DEPENDENT') && c.country === 'Pakistan'
-        ? '<span class="card-flag-pill">SOFT-DEPENDENT</span>' : '';
-    const medDQ = (c.dq && c.dq < 0.8) ? '<span class="card-flag-pill" style="background:rgba(255,206,92,0.16);color:var(--q2)">MED DQ</span>' : '';
-    const anchorPill = isAnchor ? '<span class="card-flag-pill" style="background:rgba(31,209,181,0.18);color:var(--accent)">ANCHOR</span>' : '';
-
     return `
-      <div class="card ${isAnchor?'anchor':''}" data-country="${c.country}">
-        <div class="card-rank">${c.rank}</div>
-        <div class="card-body">
-          <div class="card-head">
-            <span class="card-flag">${c.flag_emoji||''}</span>
-            <span class="card-country">${c.country}</span>
-            <span class="card-q ${q==='Q2'?'q2':''}">${q}</span>
-            ${anchorPill}${flagPills}${medDQ}
+      <div class="top10-row ${isAnchor?'anchor':''}" data-country="${c.country}">
+        <div class="top10-rank">${c.rank}</div>
+        <div>
+          <div class="top10-country">
+            <span class="top10-flag">${c.flag_emoji||''}</span>
+            <span>${c.country}</span>
+            <span class="pill pill-${q.toLowerCase()}">${q}</span>
+            ${isAnchor?'<span class="pill" style="background:var(--accent-soft);color:var(--accent)">ANCHOR</span>':''}
           </div>
-          <div class="card-why">${c.why_now||''}</div>
-          <div class="card-row">
-            <span><strong>Deadline:</strong> ${c.deadline||'—'}</span>
-            <span><strong>TAM:</strong> $${c.tam_low}M–$${c.tam_high}M</span>
-            <span><strong>Stability:</strong> ${c.top10_rate!=null?(c.top10_rate*100).toFixed(0)+'%':'—'}</span>
-          </div>
+          <div class="top10-deadline">${c.why_now||''} · <strong style="color:var(--text-2)">Deadline ${c.deadline||'—'}</strong></div>
         </div>
-        <div class="card-scores">
-          <div class="score-pair">
-            <div class="score-block atr"><div class="lbl">ATTR</div><div class="val">${c.attractiveness.toFixed(0)}</div></div>
-            <div class="score-block urg"><div class="lbl">URG</div><div class="val">${c.urgency.toFixed(0)}</div></div>
-          </div>
-          ${c.urgency_p05!=null ? `<div class="stability">band <strong>[${c.urgency_p05.toFixed(0)}, ${c.urgency_p95.toFixed(0)}]</strong></div>` : ''}
+        <div class="top10-score">
+          <span class="grade-pill ${g[1]}">${Math.round(c.urgency)} ${g[0]}</span>
+          <span class="urg-num">Attr ${Math.round(c.attractiveness)} · ${(c.top10_rate*100).toFixed(0)}% stable</span>
         </div>
       </div>`;
   }).join('');
-  document.querySelectorAll('.card').forEach(el => {
-    el.addEventListener('click', () => openDrilldown(DATA.countries.find(c => c.country === el.dataset.country)));
-  });
-}
-
-function populateRegions() {
-  const regions = [...new Set(DATA.countries.map(c => c.region).filter(Boolean))].sort();
-  const sel = document.getElementById('filterRegion');
-  regions.forEach(r => {
-    const o = document.createElement('option'); o.value=o.textContent=r; sel.appendChild(o);
-  });
-  ['filterRegion','filterStage','filterQuad'].forEach(id =>
-    document.getElementById(id).addEventListener('change', render));
-  document.getElementById('filterSearch').addEventListener('input', render);
-}
-
-function filtered() {
-  const reg = document.getElementById('filterRegion').value;
-  const stg = document.getElementById('filterStage').value;
-  const qd  = document.getElementById('filterQuad').value;
-  const s   = document.getElementById('filterSearch').value.trim().toLowerCase();
-  return DATA.countries.filter(c =>
-    (!reg || c.region === reg) &&
-    (!stg || c.stage === stg) &&
-    (!qd  || quadrantOf(c) === qd) &&
-    (!s   || c.country.toLowerCase().includes(s))
-  );
-}
-
-function render() {
-  const W=600, H=420, M={l:42,r:14,t:14,b:30};
-  const innerW = W - M.l - M.r, innerH = H - M.t - M.b;
-  const fx = a => M.l + (a/100) * innerW;
-  const fy = u => M.t + (1 - u/100) * innerH;
-  const uT = DATA.anchor_urgency, aT = DATA.attractiveness_threshold_universe_median;
-
-  const data = filtered();
-  let svg = `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet">`;
-  // background grid
-  for (let v=0; v<=100; v+=20) {
-    svg += `<line x1="${fx(v)}" y1="${M.t}" x2="${fx(v)}" y2="${M.t+innerH}" stroke="var(--line)" opacity="0.3"/>`;
-    svg += `<line x1="${M.l}" y1="${fy(v)}" x2="${M.l+innerW}" y2="${fy(v)}" stroke="var(--line)" opacity="0.3"/>`;
-    svg += `<text class="axis-label" x="${fx(v)}" y="${H-12}" text-anchor="middle">${v}</text>`;
-    svg += `<text class="axis-label" x="${M.l-8}" y="${fy(v)+3}" text-anchor="end">${v}</text>`;
-  }
-  // thresholds
-  svg += `<line class="threshold" x1="${fx(aT)}" y1="${M.t}" x2="${fx(aT)}" y2="${M.t+innerH}"/>`;
-  svg += `<line class="threshold" x1="${M.l}" y1="${fy(uT)}" x2="${M.l+innerW}" y2="${fy(uT)}"/>`;
-  // quadrant labels
-  svg += `<text class="quad-label" x="${M.l+8}" y="${M.t+16}">Q2 FAST/SMALL</text>`;
-  svg += `<text class="quad-label" x="${M.l+innerW-8}" y="${M.t+16}" text-anchor="end">Q1 PRIORITY</text>`;
-  svg += `<text class="quad-label" x="${M.l+8}" y="${M.t+innerH-6}">Q4 MONITOR</text>`;
-  svg += `<text class="quad-label" x="${M.l+innerW-8}" y="${M.t+innerH-6}" text-anchor="end">Q3 NURTURE</text>`;
-  // axis titles
-  svg += `<text class="axis-label" x="${W/2}" y="${H-2}" text-anchor="middle">ATTRACTIVENESS →</text>`;
-  svg += `<text class="axis-label" x="${10}" y="${H/2}" text-anchor="middle" transform="rotate(-90 10 ${H/2})">URGENCY →</text>`;
-  // points
-  data.forEach(c => {
-    const q = quadrantOf(c);
-    const r = c.top10_rate != null ? 5 + 7 * c.top10_rate : 3.5;
-    const cls = SEL && SEL.country === c.country ? ' selected' : '';
-    const opacity = c.stage === 'verified' ? 0.9 : 0.35;
-    const glow = c.is_shortlist ? `style="filter: drop-shadow(0 0 4px ${QCOLOR[q]})"` : '';
-    svg += `<circle class="quad-point${cls}" cx="${fx(c.attractiveness)}" cy="${fy(c.urgency)}" r="${r}"
-            fill="${QCOLOR[q]}" fill-opacity="${opacity}" stroke="none" ${glow}
-            data-country="${c.country}">
-            <title>${c.country} · Attr ${c.attractiveness.toFixed(0)} · Urg ${c.urgency.toFixed(0)} · ${q}</title>
-          </circle>`;
-    // Label shortlisted points
-    if (c.is_shortlist) {
-      svg += `<text x="${fx(c.attractiveness)+r+3}" y="${fy(c.urgency)+3}" fill="${QCOLOR[q]}"
-              font-size="9" font-weight="600" pointer-events="none">${c.country}</text>`;
-    }
-  });
-  svg += `</svg>`;
-  document.getElementById('quad').innerHTML = svg;
-  document.querySelectorAll('.quad-point').forEach(el => {
-    el.addEventListener('click', () => openDrilldown(DATA.countries.find(c => c.country === el.dataset.country)));
-  });
-
-  renderTimeline(data);
-}
-
-function renderTimeline(data) {
-  const v = data.filter(c => c.stage === 'verified' && c.deadline)
-                .sort((a,b) => a.deadline.localeCompare(b.deadline));
-  if (!v.length) { document.getElementById('timelineRows').innerHTML = '<div style="padding: 28px 0; text-align:center;color:var(--muted);font-size:12px">No verified countries match the current filter.</div>'; return; }
-  const min = v[0].deadline, max = v[v.length-1].deadline;
-  const t0 = new Date(min).getTime(), t1 = new Date(max).getTime();
-  const html = v.map((c, i) => {
-    const q = quadrantOf(c);
-    const x = t1 === t0 ? 50 : Math.round(100 * (new Date(c.deadline).getTime() - t0) / (t1 - t0));
-    const rank = c.rank ? c.rank : (i+1);
-    return `
-      <div class="tl-row" data-country="${c.country}">
-        <span class="tl-rank">${c.is_shortlist ? rank : '·'}</span>
-        <span class="tl-country">
-          ${c.flag_emoji||''} ${c.country}
-        </span>
-        <div class="tl-bar-wrap">
-          <div class="tl-bar-bg"></div>
-          <div class="tl-bar-mark" style="left:${x}%; background:${QCOLOR[q]}; color:${QCOLOR[q]}"></div>
-        </div>
-        <span class="tl-deadline">${c.deadline}</span>
-      </div>`;
-  }).join('');
-  document.getElementById('timelineRows').innerHTML = html;
-  document.querySelectorAll('.tl-row').forEach(el => {
-    el.addEventListener('click', () => openDrilldown(DATA.countries.find(c => c.country === el.dataset.country)));
-  });
-}
-
-function setupNav() {
-  document.querySelectorAll('.nav-strip a').forEach(a => {
-    a.addEventListener('click', e => {
-      document.querySelectorAll('.nav-strip a').forEach(x => x.classList.remove('active'));
-      a.classList.add('active');
+  document.querySelectorAll('.top10-row').forEach(el => {
+    el.addEventListener('click', () => {
+      const c = DATA.countries.find(x => x.country === el.dataset.country);
+      openDrawer(c);
     });
   });
 }
 
-function setupDrilldown() {
-  document.getElementById('ddClose').addEventListener('click', closeDrilldown);
-  document.getElementById('ddBg').addEventListener('click', closeDrilldown);
-  document.addEventListener('keydown', e => { if (e.key==='Escape') closeDrilldown(); });
+function renderTimeline() {
+  const v = DATA.countries.filter(c => c.stage === 'verified' && c.deadline)
+                          .sort((a,b) => a.deadline.localeCompare(b.deadline));
+  if (!v.length) { document.getElementById('timelineTable').innerHTML = '<div class="empty-state">No verified countries.</div>'; return; }
+  const min = v[0].deadline, max = v[v.length-1].deadline;
+  const t0 = new Date(min).getTime(), t1 = new Date(max).getTime();
+  const html = `
+    <div style="display:grid;grid-template-columns:32px 180px 1fr 110px;gap:14px;padding-bottom:8px;font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em">
+      <span>#</span><span>Country</span><span>${min.substring(0,7)} → ${max.substring(0,7)}</span><span style="text-align:right">Deadline</span>
+    </div>
+  ` + v.map(c => {
+    const q = quadrantOf(c);
+    const x = t1 === t0 ? 50 : Math.round(100 * (new Date(c.deadline).getTime() - t0) / (t1 - t0));
+    return `
+      <div class="tl-row" data-country="${c.country}">
+        <span class="tl-rank">${c.is_shortlist ? c.rank : '·'}</span>
+        <span class="tl-country">${c.flag_emoji||''} ${c.country}</span>
+        <div class="tl-bar-wrap">
+          <div class="tl-bar-track"></div>
+          <div class="tl-bar-mark" style="left:${x}%;background:${QCOLOR[q]};color:${QCOLOR[q]}"></div>
+        </div>
+        <span class="tl-deadline">${c.deadline}</span>
+      </div>`;
+  }).join('');
+  document.getElementById('timelineTable').innerHTML = html;
+  document.querySelectorAll('.tl-row').forEach(el => {
+    el.addEventListener('click', () => {
+      const c = DATA.countries.find(x => x.country === el.dataset.country);
+      openDrawer(c);
+    });
+  });
 }
 
-function openDrilldown(c) {
+function bindTabs() {
+  // top bar tabs scroll to section
+  document.querySelectorAll('.topbar .tab').forEach(b => {
+    b.addEventListener('click', () => {
+      document.querySelectorAll('.topbar .tab').forEach(x => x.classList.remove('active'));
+      b.classList.add('active');
+      const sec = b.dataset.section;
+      if (sec === 'map') document.querySelector('.map-section').scrollIntoView({behavior:'smooth', block:'start'});
+      else if (sec === 'methodology') { switchPanel('methodology'); document.querySelector('.bottom-section').scrollIntoView({behavior:'smooth'}); }
+      else { switchPanel(sec); document.querySelector('.bottom-section').scrollIntoView({behavior:'smooth'}); }
+    });
+  });
+
+  // bottom section tabs
+  document.querySelectorAll('.section-tab').forEach(b => {
+    b.addEventListener('click', () => switchPanel(b.dataset.panel));
+  });
+}
+
+function switchPanel(name) {
+  document.querySelectorAll('.section-tab').forEach(x => x.classList.toggle('active', x.dataset.panel === name));
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.toggle('active', p.id === 'panel-' + name));
+}
+
+function bindSearch() {
+  document.getElementById('search').addEventListener('keydown', e => {
+    if (e.key === 'Enter') {
+      const q = e.target.value.trim().toLowerCase();
+      const c = DATA.countries.find(x => x.country.toLowerCase().includes(q));
+      if (c) { openDrawer(c); e.target.value = ''; }
+    }
+  });
+  // ESC closes drawer
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDrawer(); });
+  document.getElementById('drawerClose').addEventListener('click', closeDrawer);
+  document.getElementById('drawerBg').addEventListener('click', closeDrawer);
+}
+
+function openDrawer(c) {
   if (!c) return;
   SEL = c;
   const q = quadrantOf(c);
-  const flags = (c.flags||'').split(',').map(s=>s.trim()).filter(s=>s);
-  const flagPills = flags.map(f => `<span class="card-flag-pill" style="margin-right:6px">${f}</span>`).join('');
+  const g = gradeOf(c.urgency);
+  const banned = (c.flags||'').includes('BAN_GATE_APPLIED');
+  const flags = (c.flags||'').split(',').map(s => s.trim()).filter(s => s);
+  const pillBanned = banned ? '<span class="pill pill-banned">TOTAL BAN</span>' : '';
+  const anchorPill = c.country === 'Brazil' ? '<span class="pill" style="background:var(--accent-soft);color:var(--accent)">ANCHOR</span>' : '';
+  const flagPills = flags.filter(f => f !== 'BAN_GATE_APPLIED' && f !== 'SOFT_DEPENDENT')
+                          .map(f => `<span class="pill pill-flag">${f}</span>`).join('');
+  const softFlag = flags.includes('SOFT_DEPENDENT') ? '<span class="pill pill-flag">SOFT-DEPENDENT</span>' : '';
 
-  const dec = `
-    <div class="decomp-bar">
-      <div>Hard core <span style="color:var(--muted)">(geometric: deadline / lifecycle / trigger)</span>
-        <div class="bar-bg"><div class="bar-fill" style="width:${c.urgency_hard_core||0}%"></div></div>
-      </div>
-      <div class="v">${c.urgency_hard_core?c.urgency_hard_core.toFixed(0):'—'}</div>
-    </div>
-    <div class="decomp-bar">
-      <div>Soft signals <span style="color:var(--muted)">(non-compliance gap, momentum — capped 15%)</span>
-        <div class="bar-bg"><div class="bar-fill" style="width:${c.urgency_soft||0}%; background: linear-gradient(90deg, var(--q2), #ffa84d)"></div></div>
-      </div>
-      <div class="v">${c.urgency_soft?c.urgency_soft.toFixed(0):'—'}</div>
-    </div>`;
-
+  const radarSvg = buildRadar(c);
   const whyBlock = c.why_now ? `<div class="why-block">${c.why_now}</div>` : '';
   const offerBlock = c.lead_offer ? `
     <div class="dd-section">
@@ -854,63 +768,150 @@ function openDrilldown(c) {
       <div style="font-size:12.5px;color:var(--text-2)">${c.first_touch}</div>
     </div>` : '';
 
-  document.getElementById('ddBody').innerHTML = `
-    <h2><span class="country-flag">${c.flag_emoji||''}</span> ${c.country}
-      ${c.rank ? `<span style="color:var(--muted);font-weight:normal;font-size:14px"> · #${c.rank}</span>` : ''}
-    </h2>
-    <div class="sub">${q==='Q1'?'Q1 — priority target':q==='Q2'?'Q2 — fast/small':q==='Q3'?'Q3 — big/no-clock':'Q4 — monitor'}</div>
-    <div style="margin-bottom:14px">${flagPills}</div>
+  // Pulse feed: synthesize key milestones
+  const pulse = [];
+  if (c.deadline) pulse.push({date: c.deadline, text: 'Licensing window closes'});
+  if (c.framework) pulse.push({date: '—', text: 'Framework: ' + c.framework});
+  if (c.regulator) pulse.push({date: '—', text: 'Regulator(s): ' + c.regulator});
+  if (c.is_shortlist) pulse.push({date: '—', text: `Top-10 stability: ${(c.top10_rate*100).toFixed(0)}%`});
 
-    ${whyBlock}
+  document.getElementById('drawerContent').innerHTML = `
+    <div class="drawer-head">
+      <div class="drawer-country"><span class="drawer-flag">${c.flag_emoji||''}</span>${c.country}${c.rank?` <span style="color:var(--muted);font-weight:normal;font-size:14px">·#${c.rank}</span>`:''}</div>
+      <div class="drawer-sub">${c.legal_status || '—'}</div>
+      <div class="drawer-pills">
+        <span class="pill pill-${q.toLowerCase()}">${q} ${q==='Q1'?'priority':q==='Q2'?'fast/small':q==='Q3'?'nurture':'monitor'}</span>
+        ${anchorPill}${pillBanned}${softFlag}${flagPills}
+      </div>
 
-    <div class="score-pair" style="display:flex; gap:12px; margin-bottom:24px">
-      <div class="score-block atr"><div class="lbl">ATTRACTIVENESS</div><div class="val">${c.attractiveness.toFixed(0)}</div></div>
-      <div class="score-block urg"><div class="lbl">URGENCY</div><div class="val">${c.urgency.toFixed(0)}</div>${c.urgency_p05!=null?`<div class="band">band [${c.urgency_p05.toFixed(0)}, ${c.urgency_p95.toFixed(0)}]</div>`:''}</div>
-      ${c.top10_rate!=null ? `<div class="score-block"><div class="lbl">STABILITY</div><div class="val" style="color:var(--accent)">${(c.top10_rate*100).toFixed(0)}%</div><div class="band">data bootstrap</div></div>` : ''}
-    </div>
-
-    <div class="dd-section">
-      <h4>Urgency decomposition</h4>
-      ${dec}
-    </div>
-
-    <div class="dd-section">
-      <h4>Regulatory snapshot</h4>
-      <div class="dd-grid">
-        <span class="k">Legal status</span>     <span class="v">${c.legal_status||'—'}</span>
-        <span class="k">Regulator(s)</span>     <span class="v">${c.regulator||'—'}</span>
-        <span class="k">Framework</span>        <span class="v">${c.framework||'—'}</span>
-        <span class="k">Deadline</span>         <span class="v">${c.deadline||'—'}</span>
-        <span class="k">Data quality</span>     <span class="v">${c.dq!=null?c.dq.toFixed(2):'—'}</span>
-        ${c.tam_low?`<span class="k">TAM (12-mo)</span><span class="v">$${c.tam_low}M–$${c.tam_high}M</span>`:''}
+      <div class="drawer-score-hero">
+        <div>
+          <div class="score-bignum">${Math.round(c.urgency)}</div>
+          <div class="score-meta">Urgency · ${c.urgency_p05!=null?`band [${Math.round(c.urgency_p05)}, ${Math.round(c.urgency_p95)}]`:'broad-screen'}</div>
+        </div>
+        <div>
+          <div class="grade-big ${g[1]}">${g[0]}</div>
+          <div class="score-meta">Attr ${Math.round(c.attractiveness)}</div>
+        </div>
       </div>
     </div>
 
-    ${offerBlock}
-    ${targetsBlock}
-    ${competitorsBlock}
-    ${firstTouchBlock}
+    <div class="drawer-body">
+      ${whyBlock}
 
-    ${c.notes ? `<div class="dd-section">
-      <h4>Notes</h4>
-      <div style="font-size:12.5px;color:var(--text-2);line-height:1.6">${c.notes}</div>
-    </div>` : ''}
+      <div class="radar-wrap">
+        <h4>Score profile · 6 indicators (1-5 scale)</h4>
+        <svg id="radar" viewBox="-150 -150 300 300">${radarSvg}</svg>
+      </div>
 
-    ${c.is_shortlist ? `<div class="dd-section">
-      <h4>Full dossier</h4>
-      <div style="font-size:12.5px"><a href="../dossiers/${String(c.rank).padStart(2,'0')}_${c.country.replace(/ /g,'_')}.md">Open <code>${String(c.rank).padStart(2,'0')}_${c.country.replace(/ /g,'_')}.md</code> →</a></div>
-    </div>` : ''}
+      <div class="dd-section">
+        <h4>Regulatory snapshot</h4>
+        <div class="dd-grid">
+          <span class="k">Regulator(s)</span> <span class="v">${c.regulator || '—'}</span>
+          <span class="k">Framework</span>    <span class="v">${c.framework || '—'}</span>
+          <span class="k">Deadline</span>     <span class="v">${c.deadline || '—'}</span>
+          <span class="k">Data quality</span> <span class="v">${c.dq!=null?c.dq.toFixed(2):'—'}</span>
+          ${c.tam_low?`<span class="k">TAM (12-mo)</span><span class="v">$${c.tam_low}M – $${c.tam_high}M</span>`:''}
+          <span class="k">Stage</span>        <span class="v">${c.stage}</span>
+        </div>
+      </div>
+
+      ${offerBlock}
+      ${targetsBlock}
+      ${competitorsBlock}
+      ${firstTouchBlock}
+
+      ${c.notes ? `<div class="dd-section">
+        <h4>Notes</h4>
+        <div style="font-size:12.5px;color:var(--text-2);line-height:1.6">${c.notes}</div>
+      </div>` : ''}
+
+      <div class="dd-section">
+        <h4>Pulse feed</h4>
+        <div class="pulse-feed">
+          ${pulse.map(p => `
+            <div class="pulse-item">
+              <span class="pulse-date">${p.date}</span>
+              <span class="pulse-text">${p.text}</span>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+
+      ${c.is_shortlist ? `<div class="dd-section">
+        <h4>Full dossier</h4>
+        <div style="font-size:12.5px"><a href="dossiers/${String(c.rank).padStart(2,'0')}_${c.country.replace(/ /g,'_')}.md">Open dossier markdown →</a></div>
+      </div>` : ''}
+    </div>
   `;
-  document.getElementById('drilldown').classList.add('open');
-  document.getElementById('ddBg').classList.add('open');
-  render(); // re-render to mark selected point
+  document.getElementById('drawer').classList.add('open');
+  document.getElementById('drawerBg').classList.add('open');
+
+  // Highlight selected country on map
+  document.querySelectorAll('.map-country').forEach(p => p.classList.remove('selected'));
+  const path = document.querySelector(`.map-country[data-name="${CSS.escape(c.country)}"]`);
+  if (path) path.classList.add('selected');
 }
 
-function closeDrilldown() {
-  document.getElementById('drilldown').classList.remove('open');
-  document.getElementById('ddBg').classList.remove('open');
+function closeDrawer() {
+  document.getElementById('drawer').classList.remove('open');
+  document.getElementById('drawerBg').classList.remove('open');
+  document.querySelectorAll('.map-country').forEach(p => p.classList.remove('selected'));
   SEL = null;
-  render();
+}
+
+function buildRadar(c) {
+  // 6 axes; values 1-5 (radius scaled 0-130)
+  const s = c.scores_1to5;
+  // Compute soft fallback for screen-only countries that lack scores_1to5
+  if (!s) {
+    return `<text x="0" y="0" fill="#6a7588" font-size="11" text-anchor="middle">Score breakdown unavailable</text>`;
+  }
+  const axes = [
+    {key:'adoption',     label:'Adoption'},
+    {key:'aml',          label:'AML'},
+    {key:'enforcement',  label:'Enforce'},
+    {key:'volume',       label:'Volume'},
+    {key:'inst_depth',   label:'Inst.'},
+    {key:'deadline_prox',label:'Deadline'},
+  ];
+  const N = 6, R = 110;
+  const ax = i => ({
+    x: Math.cos(-Math.PI/2 + (2*Math.PI/N) * i),
+    y: Math.sin(-Math.PI/2 + (2*Math.PI/N) * i),
+  });
+  let out = '';
+  // Concentric hexagons (1..5)
+  for (let lvl = 1; lvl <= 5; lvl++) {
+    const r = (lvl/5) * R;
+    const pts = Array.from({length:N}, (_,i) => {
+      const a = ax(i); return `${(a.x*r).toFixed(1)},${(a.y*r).toFixed(1)}`;
+    }).join(' ');
+    out += `<polygon class="radar-grid" points="${pts}"/>`;
+  }
+  // Axes lines + labels
+  axes.forEach((axMeta, i) => {
+    const a = ax(i);
+    out += `<line class="radar-axis" x1="0" y1="0" x2="${(a.x*R).toFixed(1)}" y2="${(a.y*R).toFixed(1)}"/>`;
+    const lx = a.x * (R + 18), ly = a.y * (R + 18);
+    out += `<text class="radar-axis-label" x="${lx.toFixed(1)}" y="${(ly+3).toFixed(1)}" text-anchor="${a.x>0.2?'start':a.x<-0.2?'end':'middle'}">${axMeta.label}</text>`;
+  });
+  // Data polygon
+  const dataPts = axes.map((axMeta, i) => {
+    const v = Math.max(1, Math.min(5, s[axMeta.key] || 1));
+    const r = (v/5) * R;
+    const a = ax(i);
+    return `${(a.x*r).toFixed(1)},${(a.y*r).toFixed(1)}`;
+  });
+  out += `<polygon class="radar-poly" points="${dataPts.join(' ')}"/>`;
+  // Dots
+  axes.forEach((axMeta, i) => {
+    const v = Math.max(1, Math.min(5, s[axMeta.key] || 1));
+    const r = (v/5) * R;
+    const a = ax(i);
+    out += `<circle class="radar-dot" cx="${(a.x*r).toFixed(1)}" cy="${(a.y*r).toFixed(1)}" r="2.5"/>`;
+  });
+  return out;
 }
 
 load();
