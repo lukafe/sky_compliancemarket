@@ -1,0 +1,44 @@
+0,1
+"📖  LEGEND, METHODOLOGY & USAGE GUIDE",
+,
+── PRIORITY TIERS ──,
+TIER 1 – Immediate Priority,High-adoption markets with active compliance frameworks. Full product suite sales opportunity. Target NOW.
+TIER 2 – Active Prospecting,"Growing markets with emerging regulation. AML tools, licensing support, advisory services. Build pipeline."
+TIER 3 – Monitor & Educate,Gray zones or early-stage frameworks. Watch for regulatory triggers. Early-mover positioning.
+TIER 4 – Watch List,Restricted or rapidly-changing markets. Prepare transition readiness. No active sales.
+TIER 5 – Avoid,Total ban jurisdictions. No direct market activity. Monitor for policy reversal.
+,
+── SCORING SCALES ──,
+AML/CFT Maturity (1-5),"1=No framework, 2=Basic/emerging, 3=Moderate, 4=Advanced, 5=World-class (FATF+)"
+Government Enforcement (1-5),"1=None/passive, 2=Occasional, 3=Active monitoring, 4=Regular enforcement, 5=Aggressive/criminal prosecution"
+Compliance Complexity (1-5),"1=Simple/none, 2=Basic requirements, 3=Moderate multi-step, 4=Complex multi-agency, 5=Extremely complex/cost-prohibitive"
+Market Opportunity Score (1-5),"1=No market (banned), 2=Minimal, 3=Moderate growth, 4=High priority, 5=Exceptional priority target"
+Composite Score,Formula: (Adoption×2) + (AML Maturity×1.5) + (Enforcement×1) + (Opportunity×2). Range: ~5-30. Higher = better fit.
+,
+── LEGAL STATUS CATEGORIES ──,
+Legal – Regulated,Full legal framework with active licensing regime
+Legal – MiCA,EU jurisdiction under Markets in Crypto-Assets Regulation
+Legal – Progressive,Proactively crypto-friendly with comprehensive rules
+Legal – Gray Zone,Crypto not explicitly banned but no clear regulatory framework
+Legal – Restricted,"Legal but with significant restrictions (e.g., high taxes, limited services)"
+Legal – Payment Ban,Ownership/investment allowed but payments banned
+Partial Ban,"Some crypto activities restricted, others permitted"
+Total Ban,All crypto activities prohibited by law
+Total Ban + Criminal,All activities prohibited AND criminally prosecuted
+,
+── DATA SOURCES ──,
+Chainalysis 2025 Geography of Cryptocurrency Report,"Global adoption rankings, transaction volumes, regional flows (Jul 2024–Jun 2025)"
+TRM Labs Global Crypto Policy Review 2025/26,"VASP regulation updates, enforcement trends, jurisdiction-specific developments"
+Atlantic Council Crypto Regulation Tracker,"75-country legal status survey, ban/restriction categorization"
+FATF 2025 Targeted Update,"Travel Rule implementation status, VASP compliance assessment"
+National regulatory authority publications,"Country-specific laws, decrees, licensing requirements"
+ICIJ Coin Laundry Investigation,Global regulatory classification (Red/Yellow/Green/Construction)
+,
+── USAGE GUIDE ──,
+Sheet 1: Country Matrix,"Master reference. Filter by Region, Tier, or Legal Status columns for targeted analysis."
+Sheet 2: Priority Scoring,Sorted by composite score. Use for sales territory prioritization and BD pipeline building.
+Sheet 3: Regulatory Frameworks,Deep dive on specific legal frameworks. Use for technical compliance advisory and product positioning.
+Sheet 4: This sheet,Methodology and legend reference.
+,
+── LAST UPDATED ──,
+── DISCLAIMER ──,

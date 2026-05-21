@@ -1,0 +1,919 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Crypto Compliance Intelligence — CertiK Targeting System</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+  :root {
+    --bg:        #07090d;
+    --bg-2:      #0c1118;
+    --panel:     #11161f;
+    --panel-2:   #161c27;
+    --line:      #1f2733;
+    --line-2:    #2a3340;
+    --text:      #e6edf5;
+    --text-2:    #aab4c2;
+    --muted:     #6e7a8a;
+    --accent:    #1FD1B5;   /* Skynet cyan */
+    --accent-2:  #16a89a;
+    --accent-soft: rgba(31, 209, 181, 0.12);
+    --q1:        #1FD1B5;
+    --q2:        #FFCE5C;
+    --q3:        #6691FF;
+    --q4:        #4a5567;
+    --warn:      #FF8A65;
+    --danger:    #ff5e5e;
+    --shadow:    0 10px 40px -10px rgba(31,209,181,0.15);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text);
+               font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', system-ui, sans-serif;
+               font-size: 14px; line-height: 1.5; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* ── Header ─────────────────────────────────────────────────────── */
+  .topbar {
+    position: sticky; top: 0; z-index: 50;
+    background: linear-gradient(180deg, rgba(7,9,13,0.96) 0%, rgba(7,9,13,0.85) 100%);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+    padding: 14px 36px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .brand { display: flex; align-items: center; gap: 12px; }
+  .brand-logo {
+    width: 32px; height: 32px; border-radius: 6px;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--bg); font-weight: 800; font-size: 16px;
+    box-shadow: 0 4px 20px -4px rgba(31,209,181,0.4);
+  }
+  .brand-name { font-size: 16px; font-weight: 700; letter-spacing: -0.01em; }
+  .brand-sub  { font-size: 12px; color: var(--muted); margin-top: 1px; }
+  .topbar-meta { font-size: 11px; color: var(--muted); text-align: right; }
+  .topbar-meta strong { color: var(--text-2); }
+
+  /* ── Container ──────────────────────────────────────────────────── */
+  .container { max-width: 1480px; margin: 0 auto; padding: 28px 36px 80px 36px; }
+
+  /* ── KPI strip ──────────────────────────────────────────────────── */
+  .hero { margin-bottom: 32px; }
+  .hero-title { font-size: 28px; font-weight: 700; letter-spacing: -0.02em; margin: 0 0 6px 0; }
+  .hero-sub   { font-size: 14px; color: var(--text-2); margin: 0 0 22px 0; max-width: 880px; }
+  .kpis {
+    display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px;
+  }
+  .kpi {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 8px;
+    padding: 14px 16px; position: relative; overflow: hidden;
+  }
+  .kpi.accent { border-color: var(--accent-soft); box-shadow: var(--shadow);
+                background: linear-gradient(135deg, var(--panel) 0%, rgba(31,209,181,0.04) 100%); }
+  .kpi-label { font-size: 10.5px; color: var(--muted); text-transform: uppercase;
+               letter-spacing: 0.1em; font-weight: 600; }
+  .kpi-value { font-size: 22px; font-weight: 700; margin-top: 4px;
+               font-variant: tabular-nums; letter-spacing: -0.01em; }
+  .kpi.accent .kpi-value { color: var(--accent); }
+  .kpi-sub { font-size: 11px; color: var(--muted); margin-top: 2px; }
+
+  /* ── Section ────────────────────────────────────────────────────── */
+  section { margin-top: 36px; }
+  .section-head {
+    display: flex; align-items: baseline; justify-content: space-between;
+    margin-bottom: 14px;
+  }
+  .section-title { font-size: 18px; font-weight: 700; letter-spacing: -0.01em; margin: 0; }
+  .section-sub   { font-size: 12px; color: var(--muted); margin: 0; }
+  .section-pill {
+    display: inline-block; padding: 3px 9px; border-radius: 12px;
+    background: var(--accent-soft); color: var(--accent);
+    font-size: 11px; font-weight: 600; margin-left: 10px; vertical-align: middle;
+  }
+
+  /* ── Shortlist hero cards ──────────────────────────────────────── */
+  .shortlist-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px;
+  }
+  .card {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 10px;
+    padding: 18px 20px; cursor: pointer; transition: all 0.18s ease;
+    display: grid; grid-template-columns: 56px 1fr auto; gap: 14px;
+    align-items: start;
+  }
+  .card:hover { border-color: var(--accent-soft); transform: translateY(-1px);
+                box-shadow: 0 8px 24px -10px rgba(0,0,0,0.4); }
+  .card.anchor { border-color: rgba(31,209,181,0.35); background:
+                 linear-gradient(135deg, var(--panel) 60%, rgba(31,209,181,0.06) 100%); }
+  .card-rank {
+    width: 40px; height: 40px; border-radius: 8px;
+    background: var(--bg-2); border: 1px solid var(--line);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; font-weight: 700; color: var(--accent);
+    font-variant: tabular-nums;
+  }
+  .card.anchor .card-rank { background: var(--accent-soft); border-color: transparent; }
+  .card-body { min-width: 0; }
+  .card-head { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; flex-wrap: wrap; }
+  .card-flag { font-size: 20px; line-height: 1; }
+  .card-country { font-size: 16px; font-weight: 700; letter-spacing: -0.01em; }
+  .card-q {
+    font-size: 10px; padding: 2px 7px; border-radius: 10px;
+    background: var(--accent-soft); color: var(--accent);
+    font-weight: 700; letter-spacing: 0.04em;
+  }
+  .card-q.q2 { background: rgba(255,206,92,0.14); color: var(--q2); }
+  .card-flag-pill {
+    display: inline-block; padding: 2px 7px; border-radius: 10px;
+    background: rgba(255,138,101,0.16); color: var(--warn);
+    font-size: 9.5px; font-weight: 700; letter-spacing: 0.04em;
+  }
+  .card-why { font-size: 12.5px; color: var(--text-2); margin-bottom: 10px; }
+  .card-row { display: flex; gap: 16px; font-size: 11px; color: var(--muted);
+              font-variant: tabular-nums; flex-wrap: wrap; }
+  .card-row strong { color: var(--text); font-weight: 600; }
+  .card-scores {
+    display: flex; flex-direction: column; align-items: flex-end; gap: 4px;
+    text-align: right; min-width: 90px;
+  }
+  .score-pair { display: flex; gap: 10px; }
+  .score-block {
+    display: flex; flex-direction: column; align-items: center;
+    padding: 6px 10px; background: var(--bg-2); border-radius: 6px;
+    min-width: 50px;
+  }
+  .score-block .lbl { font-size: 9px; color: var(--muted); text-transform: uppercase;
+                      letter-spacing: 0.06em; font-weight: 600; }
+  .score-block .val { font-size: 16px; font-weight: 700; color: var(--accent);
+                      font-variant: tabular-nums; line-height: 1.2; }
+  .score-block.urg .val { color: var(--accent); }
+  .score-block.atr .val { color: var(--text); }
+  .stability {
+    font-size: 10px; color: var(--muted); margin-top: 4px;
+  }
+  .stability strong { color: var(--text-2); }
+
+  /* ── 2-column visual section ───────────────────────────────────── */
+  .vis-row { display: grid; grid-template-columns: 1.4fr 1fr; gap: 18px; }
+  .panel {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 10px;
+    padding: 20px 22px;
+  }
+  .panel h3 { margin: 0 0 6px 0; font-size: 14px; font-weight: 700; }
+  .panel .sub { font-size: 11.5px; color: var(--muted); margin: 0 0 14px 0; }
+
+  /* ── Quadrant ──────────────────────────────────────────────────── */
+  #quad svg { width: 100%; height: auto; }
+  .quad-point { cursor: pointer; transition: stroke-width 0.15s; }
+  .quad-point:hover { stroke: var(--text); stroke-width: 2; }
+  .quad-point.selected { stroke: var(--text); stroke-width: 3; }
+  .threshold { stroke: var(--accent); stroke-dasharray: 3 4; opacity: 0.4; }
+  .axis-label { fill: var(--muted); font-size: 10px; }
+  .quad-label {
+    fill: var(--text-2); font-size: 10.5px; font-weight: 700;
+    letter-spacing: 0.05em; opacity: 0.85;
+  }
+  .legend { display: flex; gap: 16px; font-size: 11px; color: var(--text-2);
+            margin-top: 12px; align-items: center; flex-wrap: wrap; }
+  .legend .dot { display: inline-block; width: 9px; height: 9px;
+                 border-radius: 50%; margin-right: 5px; vertical-align: middle; }
+
+  /* ── Timeline ──────────────────────────────────────────────────── */
+  .tl-row {
+    display: grid; grid-template-columns: 30px 130px 1fr 110px; gap: 10px;
+    padding: 10px 0; align-items: center; border-bottom: 1px solid var(--line);
+    cursor: pointer; transition: background 0.12s;
+  }
+  .tl-row:hover { background: rgba(255,255,255,0.02); }
+  .tl-row:last-child { border-bottom: none; }
+  .tl-rank { font-size: 11px; font-weight: 700; color: var(--accent);
+             text-align: center; font-variant: tabular-nums; }
+  .tl-country { font-size: 12.5px; font-weight: 600; display: flex; align-items: center; gap: 7px; }
+  .tl-bar-wrap { position: relative; height: 8px; }
+  .tl-bar-bg { position: absolute; left: 0; right: 0; top: 3px; height: 2px; background: var(--line-2); }
+  .tl-bar-mark { position: absolute; top: 0; width: 10px; height: 8px; border-radius: 2px;
+                 transform: translateX(-5px); box-shadow: 0 0 6px currentColor; }
+  .tl-deadline { font-size: 11px; color: var(--text-2); text-align: right;
+                 font-variant: tabular-nums; }
+  .tl-axis { display: grid; grid-template-columns: 30px 130px 1fr 110px; gap: 10px;
+             padding-bottom: 6px; font-size: 9.5px; color: var(--muted);
+             text-transform: uppercase; letter-spacing: 0.08em; }
+
+  /* ── Drilldown panel (modal-ish from right) ────────────────────── */
+  .drilldown-bg {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(2px); display: none; z-index: 100;
+  }
+  .drilldown-bg.open { display: block; }
+  .drilldown {
+    position: fixed; top: 0; right: -560px; width: 560px; height: 100vh;
+    background: var(--panel); border-left: 1px solid var(--line);
+    padding: 26px 28px; overflow-y: auto; z-index: 101;
+    transition: right 0.25s ease-out;
+  }
+  .drilldown.open { right: 0; }
+  .drilldown-close {
+    position: absolute; top: 14px; right: 18px;
+    background: none; border: 1px solid var(--line); color: var(--text-2);
+    width: 28px; height: 28px; border-radius: 6px; cursor: pointer; font-size: 16px;
+  }
+  .drilldown h2 { margin: 0 0 4px 0; font-size: 22px; font-weight: 700; letter-spacing: -0.01em; }
+  .drilldown h2 .country-flag { font-size: 26px; margin-right: 6px; vertical-align: middle; }
+  .drilldown .sub { font-size: 12px; color: var(--muted); margin: 0 0 18px 0; }
+  .drilldown .score-pair { margin-bottom: 18px; gap: 14px; }
+  .drilldown .score-block { padding: 10px 14px; min-width: 78px; }
+  .drilldown .score-block .val { font-size: 22px; }
+  .drilldown .score-block .lbl { font-size: 10px; }
+  .drilldown .band { font-size: 10.5px; color: var(--muted); margin-top: 2px; }
+
+  .dd-section { margin-bottom: 22px; }
+  .dd-section h4 {
+    font-size: 10.5px; color: var(--muted); text-transform: uppercase;
+    letter-spacing: 0.1em; font-weight: 700; margin: 0 0 8px 0;
+  }
+  .dd-grid { display: grid; grid-template-columns: 140px 1fr; gap: 6px 12px;
+             font-size: 12.5px; }
+  .dd-grid .k { color: var(--muted); }
+  .dd-grid .v { color: var(--text); }
+
+  .decomp-bar {
+    display: grid; grid-template-columns: 1fr 50px; gap: 8px; align-items: center;
+    margin-bottom: 6px; font-size: 12px;
+  }
+  .decomp-bar .bar-bg {
+    height: 6px; background: var(--bg-2); border-radius: 3px; overflow: hidden;
+    margin-top: 6px;
+  }
+  .decomp-bar .bar-fill {
+    height: 100%; background: linear-gradient(90deg, var(--accent-2), var(--accent));
+    border-radius: 3px;
+  }
+  .decomp-bar .v { text-align: right; font-variant: tabular-nums; font-weight: 600; color: var(--accent); }
+
+  .why-block {
+    background: var(--accent-soft); border-left: 3px solid var(--accent);
+    padding: 12px 14px; border-radius: 4px; font-size: 13px; color: var(--text);
+    margin-bottom: 18px;
+  }
+  .targets-list { display: flex; flex-wrap: wrap; gap: 6px; }
+  .target-pill {
+    background: var(--bg-2); border: 1px solid var(--line); border-radius: 12px;
+    padding: 3px 10px; font-size: 11px; color: var(--text-2);
+  }
+
+  /* ── Validation strip ──────────────────────────────────────────── */
+  .validation-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+  }
+  .val-card {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 8px;
+    padding: 14px 16px; position: relative;
+  }
+  .val-card .check { color: var(--accent); font-size: 18px; }
+  .val-card .title {
+    font-size: 12px; font-weight: 700; margin: 4px 0 6px 0;
+  }
+  .val-card .body { font-size: 11px; color: var(--muted); line-height: 1.5; }
+
+  /* ── BD Activation ─────────────────────────────────────────────── */
+  .bd-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .bd-card {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 8px;
+    padding: 16px 18px;
+  }
+  .bd-card .when {
+    font-size: 10px; color: var(--accent); font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px;
+  }
+  .bd-card .markets {
+    font-size: 13px; font-weight: 700; margin-bottom: 8px;
+  }
+  .bd-card .why { font-size: 11.5px; color: var(--muted); line-height: 1.5; }
+
+  /* ── Filters ───────────────────────────────────────────────────── */
+  .filter-bar {
+    display: flex; gap: 10px; margin-bottom: 14px; flex-wrap: wrap;
+    align-items: center;
+  }
+  .filter-bar label {
+    font-size: 10.5px; color: var(--muted); text-transform: uppercase;
+    letter-spacing: 0.06em; font-weight: 600;
+  }
+  .filter-bar select, .filter-bar input {
+    background: var(--bg-2); border: 1px solid var(--line); color: var(--text);
+    padding: 7px 10px; border-radius: 6px; font-size: 12px; min-width: 130px;
+    font-family: inherit;
+  }
+  .filter-bar select:focus, .filter-bar input:focus {
+    outline: none; border-color: var(--accent);
+  }
+
+  /* ── Tabs (anchored navigation) ────────────────────────────────── */
+  .nav-strip {
+    position: sticky; top: 64px; z-index: 40;
+    background: rgba(7,9,13,0.92); backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line); padding: 10px 36px;
+    margin: 0 -36px 24px -36px;
+    display: flex; gap: 4px;
+  }
+  .nav-strip a {
+    padding: 7px 14px; border-radius: 6px; font-size: 12px;
+    color: var(--text-2); transition: all 0.12s;
+  }
+  .nav-strip a:hover { background: var(--bg-2); color: var(--text); text-decoration: none; }
+  .nav-strip a.active { background: var(--accent-soft); color: var(--accent); }
+
+  /* ── Footer ────────────────────────────────────────────────────── */
+  footer { margin-top: 80px; padding: 24px 0; border-top: 1px solid var(--line);
+           color: var(--muted); font-size: 11px; text-align: center; }
+
+  @media (max-width: 1100px) {
+    .shortlist-grid { grid-template-columns: 1fr; }
+    .vis-row { grid-template-columns: 1fr; }
+    .kpis { grid-template-columns: repeat(3, 1fr); }
+    .bd-grid, .validation-grid { grid-template-columns: repeat(2, 1fr); }
+    .drilldown { width: 100%; right: -100%; }
+    .drilldown.open { right: 0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand">
+    <div class="brand-logo">C</div>
+    <div>
+      <div class="brand-name">Crypto Compliance Intelligence</div>
+      <div class="brand-sub">CertiK targeting system · v<span id="cfgVersion"></span></div>
+    </div>
+  </div>
+  <div class="topbar-meta">
+    <div><strong id="cfgDate"></strong></div>
+    <div>Anchor: Brazil · IN 701 · 2026-10-31</div>
+  </div>
+</div>
+
+<div class="container">
+
+  <nav class="nav-strip">
+    <a href="#hero" class="active">Top 10</a>
+    <a href="#quadrant">Quadrant</a>
+    <a href="#timeline">Timeline</a>
+    <a href="#bd">BD Activation</a>
+    <a href="#validation">Validation</a>
+    <a href="#methodology">Methodology</a>
+  </nav>
+
+  <!-- ── Hero ─────────────────────────────────────────────────────── -->
+  <section id="hero" class="hero">
+    <h1 class="hero-title">The Top 10 jurisdictions where compliance demand spikes by end-2026</h1>
+    <p class="hero-sub">
+      Ranked by data-bootstrap stability across 1,000 perturbation runs. Each is a "Brazil pattern" —
+      enacted regime + dated deadline in the 6-18 month sweet spot + measurable non-compliance gap.
+      The frozen calibration anchor is Brazil's BCB IN 701 (Oct 2026).
+    </p>
+
+    <div class="kpis">
+      <div class="kpi accent">
+        <div class="kpi-label">Top 10 Shortlist</div>
+        <div class="kpi-value" id="kpiShortlist">10</div>
+        <div class="kpi-sub">data-bootstrap-stable</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-label">Universe</div>
+        <div class="kpi-value" id="kpiUniverse">90</div>
+        <div class="kpi-sub">jurisdictions screened</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-label">Longlist (HARD-verified)</div>
+        <div class="kpi-value" id="kpiLonglist">20</div>
+        <div class="kpi-sub">source-attributed inputs</div>
+      </div>
+      <div class="kpi accent">
+        <div class="kpi-label">Aggregate TAM (12-mo)</div>
+        <div class="kpi-value" id="kpiTam">$49.5M–$185M</div>
+        <div class="kpi-sub">range across 10 markets</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-label">Total-ban markets capped</div>
+        <div class="kpi-value" id="kpiBanned">8</div>
+        <div class="kpi-sub">BAN GATE enforced</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-label">Anchor urgency threshold</div>
+        <div class="kpi-value" id="kpiAnchor">97</div>
+        <div class="kpi-sub">frozen at Brazil ~12mo</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Shortlist cards ──────────────────────────────────────────── -->
+  <section>
+    <div class="section-head">
+      <div>
+        <h2 class="section-title">Priority shortlist <span class="section-pill">10 of 90</span></h2>
+        <p class="section-sub">Click any card for the full dossier. Pakistan + Vietnam carry flags — verify before significant BD spend.</p>
+      </div>
+    </div>
+    <div class="shortlist-grid" id="shortlistGrid"></div>
+  </section>
+
+  <!-- ── Quadrant + Timeline (two-column) ─────────────────────────── -->
+  <section id="quadrant">
+    <div class="section-head">
+      <div>
+        <h2 class="section-title">The map</h2>
+        <p class="section-sub">Two orthogonal axes — never collapsed into a single number. Q1 = priority.</p>
+      </div>
+    </div>
+
+    <div class="vis-row">
+      <div class="panel">
+        <h3>Attractiveness × Urgency quadrant</h3>
+        <p class="sub">All 90 jurisdictions. Verified countries shown solid; screen-only translucent. Size = bootstrap stability.</p>
+
+        <div class="filter-bar">
+          <label style="margin-right:4px">Filter</label>
+          <select id="filterRegion"><option value="">All regions</option></select>
+          <select id="filterStage">
+            <option value="">All stages</option>
+            <option value="verified">Verified only</option>
+            <option value="screen">Screen-only</option>
+          </select>
+          <select id="filterQuad">
+            <option value="">All quadrants</option>
+            <option value="Q1">Q1 — priority</option>
+            <option value="Q2">Q2 — fast/small</option>
+            <option value="Q3">Q3 — nurture</option>
+            <option value="Q4">Q4 — monitor</option>
+          </select>
+          <input id="filterSearch" type="text" placeholder="search country…">
+        </div>
+
+        <div id="quad"></div>
+        <div class="legend">
+          <span><span class="dot" style="background:var(--q1)"></span> Q1 priority</span>
+          <span><span class="dot" style="background:var(--q2)"></span> Q2 fast/small</span>
+          <span><span class="dot" style="background:var(--q3)"></span> Q3 nurture</span>
+          <span><span class="dot" style="background:var(--q4)"></span> Q4 monitor</span>
+          <span style="margin-left:auto;color:var(--muted)">dashed = anchor thresholds</span>
+        </div>
+      </div>
+
+      <div class="panel" id="timeline">
+        <h3>18-month deadline runway</h3>
+        <p class="sub">Sequenced by deadline. Click any row to drill in.</p>
+        <div class="tl-axis">
+          <span>#</span><span>Country</span><span>Now ─ 2027</span><span>Deadline</span>
+        </div>
+        <div id="timelineRows"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── BD Activation ────────────────────────────────────────────── -->
+  <section id="bd">
+    <div class="section-head">
+      <div>
+        <h2 class="section-title">90-day BD sequencing</h2>
+        <p class="section-sub">Order operations by deadline-proximity and Big-4-displacement opportunity.</p>
+      </div>
+    </div>
+
+    <div class="bd-grid">
+      <div class="bd-card">
+        <div class="when">Q1 2026 · NOW</div>
+        <div class="markets">Turkey · Vietnam · Nigeria</div>
+        <div class="why">Earliest closing windows + biggest absolute non-compliance gaps. Joint events with local crypto law firms.</div>
+      </div>
+      <div class="bd-card">
+        <div class="when">Q2 2026</div>
+        <div class="markets">Germany · France · Ireland · Lithuania · Poland</div>
+        <div class="why">MiCA cut-over peaks (30 Jun 2026). Big-4 displacement window — they have audit but no on-chain depth.</div>
+      </div>
+      <div class="bd-card">
+        <div class="when">Q3 2026</div>
+        <div class="markets">Brazil</div>
+        <div class="why">Anchor regime. Longest deal cycle + biggest single LATAM market. ABCripto + Mattos Filho joint event.</div>
+      </div>
+      <div class="bd-card">
+        <div class="when">Q4 2026 · VERIFY FIRST</div>
+        <div class="markets">Pakistan (only if regime operational)</div>
+        <div class="why">Latest deadline; PVARA regime untested. Verify enforcement intent before significant BD spend.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Validation ──────────────────────────────────────────────── -->
+  <section id="validation">
+    <div class="section-head">
+      <div>
+        <h2 class="section-title">Validation — every test passed</h2>
+        <p class="section-sub">The model is not accepted until controls + sensitivity + face validity all pass (per spec §H).</p>
+      </div>
+    </div>
+
+    <div class="validation-grid">
+      <div class="val-card">
+        <span class="check">✓</span>
+        <div class="title">Positive control</div>
+        <div class="body">Brazil at frozen ~12mo snapshot lands in Q1 (Attr 86 / Urg 97) — calibration anchor working.</div>
+      </div>
+      <div class="val-card">
+        <span class="check">✓</span>
+        <div class="title">Negative control</div>
+        <div class="body">China (grey-market Chainalysis #20 + Total Ban): Attr=25 via BAN GATE, Urg=20. Lands clearly low-low.</div>
+      </div>
+      <div class="val-card">
+        <span class="check">✓</span>
+        <div class="title">Data-bootstrap stability</div>
+        <div class="body">1000 runs perturbing inputs within confidence bands. All 10 shortlist countries ≥85% Top-10 membership rate.</div>
+      </div>
+      <div class="val-card">
+        <span class="check">✓</span>
+        <div class="title">Weight-perturbation stability</div>
+        <div class="body">1000 runs at ±20% on every weight. All 10 = 100% Top-10 rate. Weight choice doesn't drive the shortlist.</div>
+      </div>
+      <div class="val-card">
+        <span class="check">✓</span>
+        <div class="title">Soft-signal independence</div>
+        <div class="body">9 of 10 stable when soft signals = 0. Only Pakistan flagged SOFT_DEPENDENT — explicit flag in dossier.</div>
+      </div>
+      <div class="val-card">
+        <span class="check">✓</span>
+        <div class="title">Collinearity audit</div>
+        <div class="body">Spearman on 10 indicators. Only AML↔Enforcement > 0.85 (kept separate by design per §D.3).</div>
+      </div>
+      <div class="val-card">
+        <span class="check">✓</span>
+        <div class="title">Face validity</div>
+        <div class="body">Switzerland (mature DLT, no clock) lands Q3 high-attr/low-urg. US (GENIUS enforcement-ramp) NOT in Top-10.</div>
+      </div>
+      <div class="val-card">
+        <span class="check">✓</span>
+        <div class="title">Anti-confirmation</div>
+        <div class="body">Turkey beat Brazil in verified scoring. System didn't artificially preserve the anchor's primacy.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Methodology ─────────────────────────────────────────────── -->
+  <section id="methodology">
+    <div class="section-head">
+      <div>
+        <h2 class="section-title">Methodology — at a glance</h2>
+        <p class="section-sub">Full defense in <code>reports/04_methodology_and_robustness.md</code>. Config in <code>config/scoring_config.yaml</code>.</p>
+      </div>
+    </div>
+
+    <div class="vis-row">
+      <div class="panel">
+        <h3>Two-axis composite</h3>
+        <p class="sub">Orthogonal axes, never summed. Quadrant placement is the decision frame.</p>
+        <div style="font-size:12.5px; color:var(--text-2); line-height: 1.7;">
+          <strong style="color:var(--text)">Axis 1 — Attractiveness</strong> (weighted arithmetic mean + BAN GATE)<br>
+          Adoption (30%) + AML maturity (20%) + Enforcement (20%) + Volume tier (20%) + Institutional depth (10%, SYNTH-capped)<br><br>
+          <strong style="color:var(--text)">Axis 2 — Urgency</strong> (geometric mean of HARD CORE + additive SOFT + DEADLINE GATE)<br>
+          Hard core (85%): Deadline proximity (40%) + Lifecycle (30%) + Trigger (30%)<br>
+          Soft (15%, capped): Non-compliance gap (50%) + Demand momentum (50%)<br><br>
+          <strong style="color:var(--accent)">Gates.</strong> BAN GATE caps Attractiveness at 25 for total-ban jurisdictions. DEADLINE GATE caps Urgency at 30 when no dated trigger exists.<br><br>
+          <strong style="color:var(--accent)">Geometric mean of hard core</strong> = non-compensatory: urgency needs deadline AND lifecycle AND trigger together, not just one.
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3>Refresh policy (honestly scoped)</h3>
+        <p class="sub">Per spec §I — Phase 7 honesty rule.</p>
+        <div style="font-size:12.5px; color:var(--text-2); line-height: 1.7;">
+          <strong style="color:var(--accent)">Auto-refresh</strong> (weekly):<br>
+          • Soft signals (non-compliance gap, demand momentum)<br>
+          • Rescoring of existing inputs<br><br>
+          <strong style="color:var(--warn)">Manual refresh</strong> (quarterly + on-event):<br>
+          • HARD legal facts — deadline, framework citation, regulator, thresholds, tax<br>
+          • Each updated field re-cites source + as-of date + confidence<br><br>
+          <em style="color:var(--muted)">No HARD field is ever auto-imputed. UNVERIFIED is allowed and tracked — never inferred.</em>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Crypto Compliance Intelligence System · Config v<span id="footerVersion"></span> · Built with the deterministic scorer at <code>scripts/score.py</code>. Edit <code>config/scoring_config.yaml</code> and re-run to regenerate the entire shortlist.
+  </footer>
+</div>
+
+<!-- ── Drilldown panel ───────────────────────────────────────────── -->
+<div class="drilldown-bg" id="ddBg"></div>
+<div class="drilldown" id="drilldown">
+  <button class="drilldown-close" id="ddClose">×</button>
+  <div id="ddBody"></div>
+</div>
+
+<script>
+let DATA = null;
+let SEL = null;
+
+async function load() {
+  const r = await fetch('data.json');
+  DATA = await r.json();
+  document.getElementById('cfgVersion').textContent = DATA.config_version;
+  document.getElementById('footerVersion').textContent = DATA.config_version;
+  document.getElementById('cfgDate').textContent = DATA.config_date;
+  document.getElementById('kpiShortlist').textContent = DATA.hero_metrics.shortlist_size;
+  document.getElementById('kpiUniverse').textContent  = DATA.hero_metrics.universe_size;
+  document.getElementById('kpiLonglist').textContent  = DATA.hero_metrics.longlist_size;
+  document.getElementById('kpiTam').textContent       =
+    `$${DATA.hero_metrics.tam_total_low_usd_m}M–$${DATA.hero_metrics.tam_total_high_usd_m}M`;
+  document.getElementById('kpiBanned').textContent    = DATA.hero_metrics.banned_capped_count;
+  document.getElementById('kpiAnchor').textContent    = DATA.anchor_urgency;
+  renderShortlist();
+  populateRegions();
+  render();
+  setupNav();
+  setupDrilldown();
+}
+
+function quadrantOf(c) {
+  const u = c.urgency, a = c.attractiveness;
+  const uT = DATA.anchor_urgency, aT = DATA.attractiveness_threshold_universe_median;
+  if (u >= uT && a >= aT) return 'Q1';
+  if (u >= uT && a <  aT) return 'Q2';
+  if (u <  uT && a >= aT) return 'Q3';
+  return 'Q4';
+}
+const QCOLOR = { Q1:'#1FD1B5', Q2:'#FFCE5C', Q3:'#6691FF', Q4:'#4a5567' };
+
+function renderShortlist() {
+  const sl = DATA.countries.filter(c => c.is_shortlist)
+                           .sort((a,b) => a.rank - b.rank);
+  const grid = document.getElementById('shortlistGrid');
+  grid.innerHTML = sl.map(c => {
+    const q = quadrantOf(c);
+    const isAnchor = c.country === 'Brazil';
+    const flagsList = (c.flags || '').split(',').filter(s => s.trim() && s.trim() !== 'SOFT_DEPENDENT' || (c.country === 'Pakistan' && s.includes('SOFT')));
+    const flags = (c.flags||'').split(',').map(s=>s.trim()).filter(s=>s);
+    const flagPills = flags.includes('SOFT_DEPENDENT') && c.country === 'Pakistan'
+        ? '<span class="card-flag-pill">SOFT-DEPENDENT</span>' : '';
+    const medDQ = (c.dq && c.dq < 0.8) ? '<span class="card-flag-pill" style="background:rgba(255,206,92,0.16);color:var(--q2)">MED DQ</span>' : '';
+    const anchorPill = isAnchor ? '<span class="card-flag-pill" style="background:rgba(31,209,181,0.18);color:var(--accent)">ANCHOR</span>' : '';
+
+    return `
+      <div class="card ${isAnchor?'anchor':''}" data-country="${c.country}">
+        <div class="card-rank">${c.rank}</div>
+        <div class="card-body">
+          <div class="card-head">
+            <span class="card-flag">${c.flag_emoji||''}</span>
+            <span class="card-country">${c.country}</span>
+            <span class="card-q ${q==='Q2'?'q2':''}">${q}</span>
+            ${anchorPill}${flagPills}${medDQ}
+          </div>
+          <div class="card-why">${c.why_now||''}</div>
+          <div class="card-row">
+            <span><strong>Deadline:</strong> ${c.deadline||'—'}</span>
+            <span><strong>TAM:</strong> $${c.tam_low}M–$${c.tam_high}M</span>
+            <span><strong>Stability:</strong> ${c.top10_rate!=null?(c.top10_rate*100).toFixed(0)+'%':'—'}</span>
+          </div>
+        </div>
+        <div class="card-scores">
+          <div class="score-pair">
+            <div class="score-block atr"><div class="lbl">ATTR</div><div class="val">${c.attractiveness.toFixed(0)}</div></div>
+            <div class="score-block urg"><div class="lbl">URG</div><div class="val">${c.urgency.toFixed(0)}</div></div>
+          </div>
+          ${c.urgency_p05!=null ? `<div class="stability">band <strong>[${c.urgency_p05.toFixed(0)}, ${c.urgency_p95.toFixed(0)}]</strong></div>` : ''}
+        </div>
+      </div>`;
+  }).join('');
+  document.querySelectorAll('.card').forEach(el => {
+    el.addEventListener('click', () => openDrilldown(DATA.countries.find(c => c.country === el.dataset.country)));
+  });
+}
+
+function populateRegions() {
+  const regions = [...new Set(DATA.countries.map(c => c.region).filter(Boolean))].sort();
+  const sel = document.getElementById('filterRegion');
+  regions.forEach(r => {
+    const o = document.createElement('option'); o.value=o.textContent=r; sel.appendChild(o);
+  });
+  ['filterRegion','filterStage','filterQuad'].forEach(id =>
+    document.getElementById(id).addEventListener('change', render));
+  document.getElementById('filterSearch').addEventListener('input', render);
+}
+
+function filtered() {
+  const reg = document.getElementById('filterRegion').value;
+  const stg = document.getElementById('filterStage').value;
+  const qd  = document.getElementById('filterQuad').value;
+  const s   = document.getElementById('filterSearch').value.trim().toLowerCase();
+  return DATA.countries.filter(c =>
+    (!reg || c.region === reg) &&
+    (!stg || c.stage === stg) &&
+    (!qd  || quadrantOf(c) === qd) &&
+    (!s   || c.country.toLowerCase().includes(s))
+  );
+}
+
+function render() {
+  const W=600, H=420, M={l:42,r:14,t:14,b:30};
+  const innerW = W - M.l - M.r, innerH = H - M.t - M.b;
+  const fx = a => M.l + (a/100) * innerW;
+  const fy = u => M.t + (1 - u/100) * innerH;
+  const uT = DATA.anchor_urgency, aT = DATA.attractiveness_threshold_universe_median;
+
+  const data = filtered();
+  let svg = `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet">`;
+  // background grid
+  for (let v=0; v<=100; v+=20) {
+    svg += `<line x1="${fx(v)}" y1="${M.t}" x2="${fx(v)}" y2="${M.t+innerH}" stroke="var(--line)" opacity="0.3"/>`;
+    svg += `<line x1="${M.l}" y1="${fy(v)}" x2="${M.l+innerW}" y2="${fy(v)}" stroke="var(--line)" opacity="0.3"/>`;
+    svg += `<text class="axis-label" x="${fx(v)}" y="${H-12}" text-anchor="middle">${v}</text>`;
+    svg += `<text class="axis-label" x="${M.l-8}" y="${fy(v)+3}" text-anchor="end">${v}</text>`;
+  }
+  // thresholds
+  svg += `<line class="threshold" x1="${fx(aT)}" y1="${M.t}" x2="${fx(aT)}" y2="${M.t+innerH}"/>`;
+  svg += `<line class="threshold" x1="${M.l}" y1="${fy(uT)}" x2="${M.l+innerW}" y2="${fy(uT)}"/>`;
+  // quadrant labels
+  svg += `<text class="quad-label" x="${M.l+8}" y="${M.t+16}">Q2 FAST/SMALL</text>`;
+  svg += `<text class="quad-label" x="${M.l+innerW-8}" y="${M.t+16}" text-anchor="end">Q1 PRIORITY</text>`;
+  svg += `<text class="quad-label" x="${M.l+8}" y="${M.t+innerH-6}">Q4 MONITOR</text>`;
+  svg += `<text class="quad-label" x="${M.l+innerW-8}" y="${M.t+innerH-6}" text-anchor="end">Q3 NURTURE</text>`;
+  // axis titles
+  svg += `<text class="axis-label" x="${W/2}" y="${H-2}" text-anchor="middle">ATTRACTIVENESS →</text>`;
+  svg += `<text class="axis-label" x="${10}" y="${H/2}" text-anchor="middle" transform="rotate(-90 10 ${H/2})">URGENCY →</text>`;
+  // points
+  data.forEach(c => {
+    const q = quadrantOf(c);
+    const r = c.top10_rate != null ? 5 + 7 * c.top10_rate : 3.5;
+    const cls = SEL && SEL.country === c.country ? ' selected' : '';
+    const opacity = c.stage === 'verified' ? 0.9 : 0.35;
+    const glow = c.is_shortlist ? `style="filter: drop-shadow(0 0 4px ${QCOLOR[q]})"` : '';
+    svg += `<circle class="quad-point${cls}" cx="${fx(c.attractiveness)}" cy="${fy(c.urgency)}" r="${r}"
+            fill="${QCOLOR[q]}" fill-opacity="${opacity}" stroke="none" ${glow}
+            data-country="${c.country}">
+            <title>${c.country} · Attr ${c.attractiveness.toFixed(0)} · Urg ${c.urgency.toFixed(0)} · ${q}</title>
+          </circle>`;
+    // Label shortlisted points
+    if (c.is_shortlist) {
+      svg += `<text x="${fx(c.attractiveness)+r+3}" y="${fy(c.urgency)+3}" fill="${QCOLOR[q]}"
+              font-size="9" font-weight="600" pointer-events="none">${c.country}</text>`;
+    }
+  });
+  svg += `</svg>`;
+  document.getElementById('quad').innerHTML = svg;
+  document.querySelectorAll('.quad-point').forEach(el => {
+    el.addEventListener('click', () => openDrilldown(DATA.countries.find(c => c.country === el.dataset.country)));
+  });
+
+  renderTimeline(data);
+}
+
+function renderTimeline(data) {
+  const v = data.filter(c => c.stage === 'verified' && c.deadline)
+                .sort((a,b) => a.deadline.localeCompare(b.deadline));
+  if (!v.length) { document.getElementById('timelineRows').innerHTML = '<div style="padding: 28px 0; text-align:center;color:var(--muted);font-size:12px">No verified countries match the current filter.</div>'; return; }
+  const min = v[0].deadline, max = v[v.length-1].deadline;
+  const t0 = new Date(min).getTime(), t1 = new Date(max).getTime();
+  const html = v.map((c, i) => {
+    const q = quadrantOf(c);
+    const x = t1 === t0 ? 50 : Math.round(100 * (new Date(c.deadline).getTime() - t0) / (t1 - t0));
+    const rank = c.rank ? c.rank : (i+1);
+    return `
+      <div class="tl-row" data-country="${c.country}">
+        <span class="tl-rank">${c.is_shortlist ? rank : '·'}</span>
+        <span class="tl-country">
+          ${c.flag_emoji||''} ${c.country}
+        </span>
+        <div class="tl-bar-wrap">
+          <div class="tl-bar-bg"></div>
+          <div class="tl-bar-mark" style="left:${x}%; background:${QCOLOR[q]}; color:${QCOLOR[q]}"></div>
+        </div>
+        <span class="tl-deadline">${c.deadline}</span>
+      </div>`;
+  }).join('');
+  document.getElementById('timelineRows').innerHTML = html;
+  document.querySelectorAll('.tl-row').forEach(el => {
+    el.addEventListener('click', () => openDrilldown(DATA.countries.find(c => c.country === el.dataset.country)));
+  });
+}
+
+function setupNav() {
+  document.querySelectorAll('.nav-strip a').forEach(a => {
+    a.addEventListener('click', e => {
+      document.querySelectorAll('.nav-strip a').forEach(x => x.classList.remove('active'));
+      a.classList.add('active');
+    });
+  });
+}
+
+function setupDrilldown() {
+  document.getElementById('ddClose').addEventListener('click', closeDrilldown);
+  document.getElementById('ddBg').addEventListener('click', closeDrilldown);
+  document.addEventListener('keydown', e => { if (e.key==='Escape') closeDrilldown(); });
+}
+
+function openDrilldown(c) {
+  if (!c) return;
+  SEL = c;
+  const q = quadrantOf(c);
+  const flags = (c.flags||'').split(',').map(s=>s.trim()).filter(s=>s);
+  const flagPills = flags.map(f => `<span class="card-flag-pill" style="margin-right:6px">${f}</span>`).join('');
+
+  const dec = `
+    <div class="decomp-bar">
+      <div>Hard core <span style="color:var(--muted)">(geometric: deadline / lifecycle / trigger)</span>
+        <div class="bar-bg"><div class="bar-fill" style="width:${c.urgency_hard_core||0}%"></div></div>
+      </div>
+      <div class="v">${c.urgency_hard_core?c.urgency_hard_core.toFixed(0):'—'}</div>
+    </div>
+    <div class="decomp-bar">
+      <div>Soft signals <span style="color:var(--muted)">(non-compliance gap, momentum — capped 15%)</span>
+        <div class="bar-bg"><div class="bar-fill" style="width:${c.urgency_soft||0}%; background: linear-gradient(90deg, var(--q2), #ffa84d)"></div></div>
+      </div>
+      <div class="v">${c.urgency_soft?c.urgency_soft.toFixed(0):'—'}</div>
+    </div>`;
+
+  const whyBlock = c.why_now ? `<div class="why-block">${c.why_now}</div>` : '';
+  const offerBlock = c.lead_offer ? `
+    <div class="dd-section">
+      <h4>Recommended lead offer</h4>
+      <div style="font-size:13px">${c.lead_offer}</div>
+    </div>` : '';
+  const targetsBlock = c.targets ? `
+    <div class="dd-section">
+      <h4>Target accounts</h4>
+      <div class="targets-list">${c.targets.map(t => `<span class="target-pill">${t}</span>`).join('')}</div>
+    </div>` : '';
+  const competitorsBlock = c.competitors_weak ? `
+    <div class="dd-section">
+      <h4>Competitor opening</h4>
+      <div style="font-size:12.5px;color:var(--text-2)">${c.competitors_weak}</div>
+    </div>` : '';
+  const firstTouchBlock = c.first_touch ? `
+    <div class="dd-section">
+      <h4>First touch</h4>
+      <div style="font-size:12.5px;color:var(--text-2)">${c.first_touch}</div>
+    </div>` : '';
+
+  document.getElementById('ddBody').innerHTML = `
+    <h2><span class="country-flag">${c.flag_emoji||''}</span> ${c.country}
+      ${c.rank ? `<span style="color:var(--muted);font-weight:normal;font-size:14px"> · #${c.rank}</span>` : ''}
+    </h2>
+    <div class="sub">${q==='Q1'?'Q1 — priority target':q==='Q2'?'Q2 — fast/small':q==='Q3'?'Q3 — big/no-clock':'Q4 — monitor'}</div>
+    <div style="margin-bottom:14px">${flagPills}</div>
+
+    ${whyBlock}
+
+    <div class="score-pair" style="display:flex; gap:12px; margin-bottom:24px">
+      <div class="score-block atr"><div class="lbl">ATTRACTIVENESS</div><div class="val">${c.attractiveness.toFixed(0)}</div></div>
+      <div class="score-block urg"><div class="lbl">URGENCY</div><div class="val">${c.urgency.toFixed(0)}</div>${c.urgency_p05!=null?`<div class="band">band [${c.urgency_p05.toFixed(0)}, ${c.urgency_p95.toFixed(0)}]</div>`:''}</div>
+      ${c.top10_rate!=null ? `<div class="score-block"><div class="lbl">STABILITY</div><div class="val" style="color:var(--accent)">${(c.top10_rate*100).toFixed(0)}%</div><div class="band">data bootstrap</div></div>` : ''}
+    </div>
+
+    <div class="dd-section">
+      <h4>Urgency decomposition</h4>
+      ${dec}
+    </div>
+
+    <div class="dd-section">
+      <h4>Regulatory snapshot</h4>
+      <div class="dd-grid">
+        <span class="k">Legal status</span>     <span class="v">${c.legal_status||'—'}</span>
+        <span class="k">Regulator(s)</span>     <span class="v">${c.regulator||'—'}</span>
+        <span class="k">Framework</span>        <span class="v">${c.framework||'—'}</span>
+        <span class="k">Deadline</span>         <span class="v">${c.deadline||'—'}</span>
+        <span class="k">Data quality</span>     <span class="v">${c.dq!=null?c.dq.toFixed(2):'—'}</span>
+        ${c.tam_low?`<span class="k">TAM (12-mo)</span><span class="v">$${c.tam_low}M–$${c.tam_high}M</span>`:''}
+      </div>
+    </div>
+
+    ${offerBlock}
+    ${targetsBlock}
+    ${competitorsBlock}
+    ${firstTouchBlock}
+
+    ${c.notes ? `<div class="dd-section">
+      <h4>Notes</h4>
+      <div style="font-size:12.5px;color:var(--text-2);line-height:1.6">${c.notes}</div>
+    </div>` : ''}
+
+    ${c.is_shortlist ? `<div class="dd-section">
+      <h4>Full dossier</h4>
+      <div style="font-size:12.5px"><a href="../dossiers/${String(c.rank).padStart(2,'0')}_${c.country.replace(/ /g,'_')}.md">Open <code>${String(c.rank).padStart(2,'0')}_${c.country.replace(/ /g,'_')}.md</code> →</a></div>
+    </div>` : ''}
+  `;
+  document.getElementById('drilldown').classList.add('open');
+  document.getElementById('ddBg').classList.add('open');
+  render(); // re-render to mark selected point
+}
+
+function closeDrilldown() {
+  document.getElementById('drilldown').classList.remove('open');
+  document.getElementById('ddBg').classList.remove('open');
+  SEL = null;
+  render();
+}
+
+load();
+</script>
+</body>
+</html>

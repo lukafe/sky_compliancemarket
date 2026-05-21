@@ -1,0 +1,21 @@
+Country,legal_status,attractiveness,urgency,urgency_hard_core,urgency_soft,flags,in_Q1_anchor,priority_score,regime_note,is_mica
+Brazil,Legal – Regulated,86.0,97.0,100.0,80.0,SOFT_DEPENDENT,True,2056.0,IN 701 BCB licensing Oct 2026 - ANCHOR,False
+Pakistan,Legal – Gray Zone,56.0,100.0,100.0,100.0,SOFT_DEPENDENT,False,2056.0,PVARA Nov 2025 NEW REGIME - seed stale,False
+Germany,Legal – MiCA,94.0,93.0,93.52,90.0,SOFT_DEPENDENT,False,1024.0,MiCA enforcement live Jan 2025; BaFin transition deadlines,True
+France,Legal – MiCA,90.0,93.0,93.52,90.0,SOFT_DEPENDENT,False,1020.0,MiCA + PSAN-to-CASP transition,True
+Ireland,Legal – MiCA,86.0,93.0,93.52,90.0,SOFT_DEPENDENT,False,1016.0,MiCA + Central Bank; Coinbase EU,True
+Hong Kong,Legal – Regulated,92.0,91.24,91.46,90.0,SOFT_DEPENDENT,False,1004.4,VASP licensing + Stablecoin Ordinance Aug 2025,False
+Turkey,Legal – Restricted,72.0,92.74,91.46,100.0,SOFT_DEPENDENT,False,999.4,Capital Markets Law amendment 2025; CMB,False
+Netherlands,Legal – MiCA,84.0,91.5,93.52,80.0,SOFT_DEPENDENT,False,999.0,MiCA; AFM/DNB,True
+United Kingdom,Legal – Regulated,82.0,91.24,91.46,90.0,SOFT_DEPENDENT,False,994.4,FSMA 2023 crypto regime; FCA gateway 2026,False
+Vietnam,Legal – Formal (Jan 2026),66.0,92.74,91.46,100.0,SOFT_DEPENDENT,False,993.4,NEW REGIME Jan 2026; MoF framework,False
+Nigeria,Legal – Regulated,76.0,91.24,91.46,90.0,SOFT_DEPENDENT,False,988.4,ISA 2025 + SEC VASP rules,False
+Kenya,Legal – Gray Zone,56.0,92.74,91.46,100.0,SOFT_DEPENDENT,False,983.4,Virtual Asset Service Providers Bill 2025,False
+Lithuania,Legal – MiCA,64.0,91.5,93.52,80.0,SOFT_DEPENDENT,False,979.0,MiCA; major VASP hub historically,True
+Poland,Legal – MiCA,60.0,91.5,93.52,80.0,SOFT_DEPENDENT,False,975.0,MiCA; KNF,True
+Australia,Legal – Regulated,76.0,86.21,85.54,90.0,SOFT_DEPENDENT,False,938.1,Crypto licensing bill 2025; ASIC; transition,False
+United States,Legal – Regulated,100.0,82.79,81.52,90.0,SOFT_DEPENDENT,False,927.9,GENIUS Act stablecoin enforcement ramping 2025-2026,False
+Taiwan,Legal – Regulated,60.0,80.0,80.0,80.0,SOFT_DEPENDENT,False,860.0,VASP Act 2025; FSC,False
+Japan,Legal – Regulated,90.0,67.72,67.32,70.0,SOFT_DEPENDENT,False,767.2,PSA/FIEA 2025 amendments,False
+UAE,Legal – Progressive,90.0,66.1,65.41,70.0,SOFT_DEPENDENT,False,751.0,VARA + ADGM; mature but expanding,False
+South Korea,Legal – Regulated,84.0,63.0,60.0,80.0,SOFT_DEPENDENT,False,714.0,VAUPA 2023 phase 2 + token classification,False

@@ -1,0 +1,231 @@
+version: "3.0.0"
+config_date: "2026-05-20"
+description: >
+  Global Crypto Compliance Intelligence System — scoring configuration.
+  Two-axis quadrant model. HARD fields source-verified; SYNTH fields
+  AI-estimated and capped. Editing this file + re-running scripts/score.py
+  regenerates all rankings.
+
+# ---------------------------------------------------------------------------
+# A. UNIVERSE FUNNEL
+# ---------------------------------------------------------------------------
+universe:
+  universe_size: 90
+  longlist_size: 20
+  shortlist_size: 10
+
+# ---------------------------------------------------------------------------
+# B. NORMALIZATION
+# ---------------------------------------------------------------------------
+normalization:
+  ordinal_floor: 20            # ordinal 1-5 mapped to [20, 100]
+  ordinal_ceiling: 100
+  continuous_winsorize: [0.05, 0.95]
+  continuous_target: [20, 100]
+
+# ---------------------------------------------------------------------------
+# C. AXIS 1 — MARKET ATTRACTIVENESS
+# Aggregation: weighted ARITHMETIC mean, then BAN GATE.
+# Compensatory: yes (a weak field can be offset by strong fields).
+# ---------------------------------------------------------------------------
+axis_attractiveness:
+  aggregation: arithmetic
+  ban_gate_cap: 25                  # total/criminal-ban markets capped here
+  ban_legal_statuses:
+    - "Total Ban"
+    - "Total Ban + Criminal"
+    - "Total Ban (reviewing)"
+  indicators:
+    adoption:
+      type: HARD
+      weight: 0.30
+      polarity: positive
+      justification: >
+        Chainalysis adoption rank is the cleanest objective proxy for
+        on-the-ground crypto activity. Highest weight because it best
+        predicts the size of the addressable market.
+      rubric:
+        chainalysis_rank_1_10: 5
+        chainalysis_rank_11_25: 4
+        chainalysis_rank_26_50: 3
+        chainalysis_rank_51_100: 2
+        chainalysis_rank_over_100: 1
+    aml_cft_maturity:
+      type: HARD
+      weight: 0.20
+      polarity: positive
+      justification: >
+        Mature AML/CFT raises the bar for VASPs and creates demand for
+        compliance services. Lower weight than adoption because maturity
+        without enforcement is paper-only.
+    enforcement_intensity:
+      type: HARD
+      weight: 0.20
+      polarity: positive
+      justification: >
+        Active enforcement converts paper rules into willingness to pay
+        for compliance. Paired with maturity to capture rules-on-paper
+        vs. rules-enforced (per §D.3, kept separate, not merged).
+    market_volume_tier:
+      type: HARD
+      weight: 0.20
+      polarity: positive
+      justification: >
+        Regional transaction-volume tier proxies the dollar size of the
+        market. Distinct from adoption rank: a small country can rank
+        high in adoption but small in absolute volume.
+    institutional_depth:
+      type: SYNTH
+      weight: 0.10
+      polarity: positive
+      justification: >
+        Presence of banks/funds/regulated exchanges as a deal-size
+        proxy. AI-estimated; capped at 10% so SYNTH influence is bounded.
+
+# ---------------------------------------------------------------------------
+# D. AXIS 2 — REGULATORY URGENCY
+# Aggregation: weighted GEOMETRIC mean over HARD CORE + additive SOFT term,
+# then DEADLINE GATE (no dated trigger => urgency capped at 30).
+# Geometric mean penalizes imbalance: real urgency needs several conditions
+# together (deadline + lifecycle + trigger).
+# ---------------------------------------------------------------------------
+axis_urgency:
+  aggregation: geometric_core_plus_soft
+  deadline_gate_cap: 30        # if deadline_proximity == 1, cap urgency <= 30
+  hard_core_weight: 0.85       # remaining 0.15 reserved for soft signals
+  soft_signal_weight: 0.15     # equals SOFT_SIGNAL_WEIGHT (parameter cap)
+  hard_core:
+    deadline_proximity:
+      type: HARD
+      weight: 0.40
+      polarity: positive
+      justification: >
+        Time-to-deadline is the dominant driver of buying urgency.
+        Sweet spot 6-18mo: too far = no budget yet, too close = window
+        already closing for net-new wins.
+      rubric:
+        none: 1
+        over_24_months: 2
+        between_18_and_24_months: 3
+        between_6_and_18_months: 5
+        under_6_months: 4
+      note: >
+        <6mo = 4 (not 5) encodes CertiK winnability, not raw demand.
+        Demand still peaks <6mo out, but acquisition window narrows.
+    lifecycle_stage:
+      type: HARD
+      weight: 0.30
+      polarity: positive
+      justification: >
+        "Enacted but not yet enforced" is the procurement window.
+        Pre-draft = no urgency; mature regimes already have entrenched
+        vendor relationships.
+      rubric:
+        pre_draft: 1
+        consultation: 2
+        enacted_not_enforced: 5
+        in_enforcement: 3
+        mature: 2
+    trigger_type:
+      type: HARD
+      weight: 0.30
+      polarity: positive
+      justification: >
+        Captures the acuteness of the regulatory event creating spend.
+        Travel Rule live and new licensing windows create the biggest
+        forced-buy moments.
+      rubric:
+        new_licensing_regime: 5
+        transition_grandfathering_expiring: 5
+        travel_rule_live: 4
+        enforcement_ramp: 3
+        rule_amendment: 2
+        none: 1
+  soft_signals:
+    non_compliance_gap:
+      type: SYNTH
+      weight: 0.50
+      polarity: positive
+      justification: >
+        In-scope entities not yet compliant vs. deadline. AI-estimated
+        from public registries / company lists / regulator statements.
+    demand_signal_momentum:
+      type: SYNTH
+      weight: 0.50
+      polarity: positive
+      justification: >
+        Trend in regulatory news / consultations / RFP chatter.
+        Early-warning radar only; never sole driver per acceptance criteria.
+
+# ---------------------------------------------------------------------------
+# E. ANCHOR (FROZEN) — Brazil at ~12 months before IN 701 deadline
+# Defines the urgency threshold; does NOT drift as the live deadline passes.
+# ---------------------------------------------------------------------------
+anchor:
+  reference: "Brazil"
+  regime: "BCB IN 701"
+  deadline: "2026-10-31"
+  snapshot_taken_when: "~12 months pre-deadline"
+  snapshot_scores:
+    deadline_proximity: 5          # 12mo => sweet spot
+    lifecycle_stage: 5             # enacted-not-enforced
+    trigger_type: 5                # new licensing regime
+    non_compliance_gap: 4
+    demand_signal_momentum: 4
+    adoption: 5                    # Chainalysis #5 globally
+    aml_cft_maturity: 4
+    enforcement_intensity: 3
+    market_volume_tier: 5          # Very High
+    institutional_depth: 4
+  computed_urgency_score: 97.0     # pinned from scripts/score.py 2026-05-20
+  computed_attractiveness_score: 86.0
+
+# ---------------------------------------------------------------------------
+# F. QUADRANT THRESHOLDS
+# ---------------------------------------------------------------------------
+quadrant:
+  urgency_threshold_source: "anchor.computed_urgency_score"
+  attractiveness_threshold_source: "universe_median"
+  attractiveness_percentile: 0.50    # override knob (median = 0.50)
+
+# ---------------------------------------------------------------------------
+# G. DATA QUALITY & CONFIDENCE
+# ---------------------------------------------------------------------------
+confidence_values:
+  High: 1.0
+  Medium: 0.6
+  Low: 0.3
+  Unverified: 0.0
+min_data_quality: 0.6
+
+# ---------------------------------------------------------------------------
+# H. SENSITIVITY
+# ---------------------------------------------------------------------------
+sensitivity:
+  data_bootstrap_runs: 1000        # primary: perturb fields within confidence
+  weight_perturbation_runs: 1000   # secondary: ±20% on each weight
+  weight_perturbation_pct: 0.20
+  stability_topn: 10               # report Top-N membership rate
+  fragility_flag_threshold: 0.70   # <70% Top-N membership => flag fragile
+
+# ---------------------------------------------------------------------------
+# I. COLLINEARITY
+# ---------------------------------------------------------------------------
+collinearity:
+  method: spearman
+  review_pair_threshold: 0.85
+  action: human_review            # never auto-drop (per §D.3 / §H.4)
+
+# ---------------------------------------------------------------------------
+# J. REFRESH POLICY (per §I and Phase 7 honesty rule)
+# ---------------------------------------------------------------------------
+refresh:
+  soft_signals_and_rescoring: "weekly_auto"
+  hard_legal_facts: "manual_quarterly_with_reverification"
+
+# ---------------------------------------------------------------------------
+# K. WORKING LANGUAGE
+# ---------------------------------------------------------------------------
+language:
+  working: "EN"
+  deliverables: ["EN", "PT-BR"]    # PT-BR generated at finalization (Phase 5)

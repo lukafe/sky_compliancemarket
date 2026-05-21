@@ -1,0 +1,91 @@
+Country,Region,Source
+United States,North America,seed
+Canada,North America,seed
+Mexico,North America,seed
+Germany,Europe – EU,seed
+France,Europe – EU,seed
+Netherlands,Europe – EU,seed
+Spain,Europe – EU,seed
+Italy,Europe – EU,seed
+Poland,Europe – EU,seed
+Switzerland,Europe – Non-EU,seed
+United Kingdom,Europe – Non-EU,seed
+Malta,Europe – EU,seed
+Portugal,Europe – EU,seed
+Estonia,Europe – EU,seed
+Lithuania,Europe – EU,seed
+Ukraine,Europe – Other,seed
+Russia,Europe – Other,seed
+Singapore,Asia-Pacific,seed
+Hong Kong,Asia-Pacific,seed
+Japan,Asia-Pacific,seed
+South Korea,Asia-Pacific,seed
+India,Asia-Pacific,seed
+Australia,Asia-Pacific,seed
+Vietnam,Asia-Pacific,seed
+Pakistan,Asia-Pacific,seed
+Thailand,Asia-Pacific,seed
+Indonesia,Asia-Pacific,seed
+Philippines,Asia-Pacific,seed
+Malaysia,Asia-Pacific,seed
+China,Asia-Pacific,seed
+Taiwan,Asia-Pacific,seed
+UAE,Middle East,seed
+Bahrain,Middle East,seed
+Saudi Arabia,Middle East,seed
+Israel,Middle East,seed
+Turkey,Middle East,seed
+Egypt,Middle East,seed
+Qatar,Middle East,seed
+Kuwait,Middle East,seed
+Brazil,Latin America,seed
+Argentina,Latin America,seed
+Colombia,Latin America,seed
+El Salvador,Latin America,seed
+Venezuela,Latin America,seed
+Chile,Latin America,seed
+Peru,Latin America,seed
+Nigeria,Sub-Saharan Africa,seed
+Kenya,Sub-Saharan Africa,seed
+South Africa,Sub-Saharan Africa,seed
+Ghana,Sub-Saharan Africa,seed
+Ethiopia,Sub-Saharan Africa,seed
+Tanzania,Sub-Saharan Africa,seed
+Algeria,Africa – N.Africa,seed
+Morocco,Africa – N.Africa,seed
+Tunisia,Africa – N.Africa,seed
+Georgia,Eastern Europe,seed
+Kazakhstan,Central Asia,seed
+Uzbekistan,Central Asia,seed
+Moldova,Eastern Europe,seed
+Bangladesh,South Asia,seed
+Nepal,South Asia,seed
+Sri Lanka,South Asia,seed
+Myanmar,Southeast Asia,seed
+Cambodia,Southeast Asia,seed
+New Zealand,Asia-Pacific,seed
+Cayman Islands,Caribbean,seed
+Panama,Latin America,seed
+Iraq,Middle East,seed
+Jordan,Middle East,seed
+Seychelles,Indian Ocean,seed
+Bermuda,Caribbean,seed
+Gibraltar,Europe – Other,seed
+Afghanistan,Central Asia,seed
+North Macedonia,Europe – Other,seed
+Bolivia,Latin America,seed
+Liechtenstein,Europe – Non-EU,added
+Luxembourg,Europe – EU,added
+Ireland,Europe – EU,added
+Isle of Man,Europe – Other,added
+Jersey,Europe – Other,added
+Guernsey,Europe – Other,added
+Bahamas,Caribbean,added
+British Virgin Islands,Caribbean,added
+Austria,Europe – EU,added
+Denmark,Europe – EU,added
+Sweden,Europe – EU,added
+Cyprus,Europe – EU,added
+Norway,Europe – Non-EU,added
+Mauritius,Indian Ocean,added
+Dominican Republic,Latin America,added

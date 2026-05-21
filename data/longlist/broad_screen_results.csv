@@ -1,0 +1,91 @@
+Country,legal_status,attractiveness,urgency,urgency_hard_core,urgency_soft,flags,in_Q1_anchor,priority_score,regime_note,is_mica
+Brazil,Legal – Regulated,86.0,97.0,100.0,80.0,SOFT_DEPENDENT,True,2056.0,IN 701 BCB licensing Oct 2026 - ANCHOR,False
+Pakistan,Legal – Gray Zone,56.0,100.0,100.0,100.0,SOFT_DEPENDENT,False,2056.0,PVARA Nov 2025 NEW REGIME - seed stale,False
+Germany,Legal – MiCA,94.0,93.0,93.52,90.0,SOFT_DEPENDENT,False,1024.0,MiCA enforcement live Jan 2025; BaFin transition deadlines,True
+France,Legal – MiCA,90.0,93.0,93.52,90.0,SOFT_DEPENDENT,False,1020.0,MiCA + PSAN-to-CASP transition,True
+Ireland,Legal – MiCA,86.0,93.0,93.52,90.0,SOFT_DEPENDENT,False,1016.0,MiCA + Central Bank; Coinbase EU,True
+Hong Kong,Legal – Regulated,92.0,91.24,91.46,90.0,SOFT_DEPENDENT,False,1004.4,VASP licensing + Stablecoin Ordinance Aug 2025,False
+Turkey,Legal – Restricted,72.0,92.74,91.46,100.0,SOFT_DEPENDENT,False,999.4,Capital Markets Law amendment 2025; CMB,False
+Netherlands,Legal – MiCA,84.0,91.5,93.52,80.0,SOFT_DEPENDENT,False,999.0,MiCA; AFM/DNB,True
+United Kingdom,Legal – Regulated,82.0,91.24,91.46,90.0,SOFT_DEPENDENT,False,994.4,FSMA 2023 crypto regime; FCA gateway 2026,False
+Vietnam,Legal – Formal (Jan 2026),66.0,92.74,91.46,100.0,SOFT_DEPENDENT,False,993.4,NEW REGIME Jan 2026; MoF framework,False
+Nigeria,Legal – Regulated,76.0,91.24,91.46,90.0,SOFT_DEPENDENT,False,988.4,ISA 2025 + SEC VASP rules,False
+Kenya,Legal – Gray Zone,56.0,92.74,91.46,100.0,SOFT_DEPENDENT,False,983.4,Virtual Asset Service Providers Bill 2025,False
+Lithuania,Legal – MiCA,64.0,91.5,93.52,80.0,SOFT_DEPENDENT,False,979.0,MiCA; major VASP hub historically,True
+Poland,Legal – MiCA,60.0,91.5,93.52,80.0,SOFT_DEPENDENT,False,975.0,MiCA; KNF,True
+Spain,Legal – MiCA,70.0,90.0,93.52,70.0,SOFT_DEPENDENT,False,970.0,MiCA + CNMV,True
+Italy,Legal – MiCA,68.0,90.0,93.52,70.0,SOFT_DEPENDENT,False,968.0,MiCA; CONSOB,True
+Estonia,Legal – MiCA,68.0,88.5,93.52,60.0,SOFT_DEPENDENT,False,953.0,MiCA + FIU,True
+Austria,Legal – MiCA,66.0,88.5,93.52,60.0,SOFT_DEPENDENT,False,951.0,MiCA + FMA,True
+Denmark,Legal – MiCA,66.0,88.5,93.52,60.0,SOFT_DEPENDENT,False,951.0,MiCA + FSA,True
+Sweden,Legal – MiCA,66.0,88.5,93.52,60.0,SOFT_DEPENDENT,False,951.0,MiCA + FI,True
+Australia,Legal – Regulated,76.0,86.21,85.54,90.0,SOFT_DEPENDENT,False,938.1,Crypto licensing bill 2025; ASIC; transition,False
+Portugal,Legal – MiCA,48.0,88.5,93.52,60.0,SOFT_DEPENDENT,False,933.0,MiCA + Bank of Portugal,True
+United States,Legal – Regulated,100.0,82.79,81.52,90.0,SOFT_DEPENDENT,False,927.9,GENIUS Act stablecoin enforcement ramping 2025-2026,False
+Luxembourg,Legal – MiCA,76.0,83.35,87.47,60.0,SOFT_DEPENDENT,False,909.5,MiCA + CSSF,True
+Norway,Legal – MiCA,64.0,83.35,87.47,60.0,SOFT_DEPENDENT,False,897.5,MiCA-aligned via EEA,True
+Cyprus,Legal – MiCA,62.0,83.35,87.47,60.0,SOFT_DEPENDENT,False,895.5,MiCA + CySEC,True
+Taiwan,Legal – Regulated,60.0,80.0,80.0,80.0,SOFT_DEPENDENT,False,860.0,VASP Act 2025; FSC,False
+Japan,Legal – Regulated,90.0,67.72,67.32,70.0,SOFT_DEPENDENT,False,767.2,PSA/FIEA 2025 amendments,False
+UAE,Legal – Progressive,90.0,66.1,65.41,70.0,SOFT_DEPENDENT,False,751.0,VARA + ADGM; mature but expanding,False
+South Korea,Legal – Regulated,84.0,63.0,60.0,80.0,SOFT_DEPENDENT,False,714.0,VAUPA 2023 phase 2 + token classification,False
+Argentina,Legal – Gray Zone,66.0,63.0,60.0,80.0,SOFT_DEPENDENT,False,696.0,CNV VASP registry,False
+Indonesia,Legal – Regulated,76.0,60.0,60.0,60.0,SOFT_DEPENDENT,False,676.0,Bappebti→OJK transition Jan 2025,False
+Thailand,Legal – Regulated,68.0,60.0,60.0,60.0,SOFT_DEPENDENT,False,668.0,SEC Thailand mature,False
+Philippines,Legal – Regulated,66.0,60.0,60.0,60.0,SOFT_DEPENDENT,False,666.0,BSP + SEC PH,False
+South Africa,Legal – Regulated,64.0,60.0,60.0,60.0,SOFT_DEPENDENT,False,664.0,FSCA CASP licensing mature,False
+Russia,Legal – Gray Zone,60.0,60.0,60.0,60.0,SOFT_DEPENDENT,False,660.0,DFA Law + mining bill,False
+Malaysia,Legal – Restricted,60.0,60.0,60.0,60.0,SOFT_DEPENDENT,False,660.0,SC; DAX framework,False
+Chile,Legal – Regulated,60.0,60.0,60.0,60.0,SOFT_DEPENDENT,False,660.0,Fintech Law CMF,False
+Cayman Islands,Legal – Offshore,56.0,60.0,60.0,60.0,SOFT_DEPENDENT,False,656.0,VASP Act 2020 + 2024 amend,False
+Bermuda,Legal – Progressive,56.0,60.0,60.0,60.0,SOFT_DEPENDENT,False,656.0,DABA mature,False
+Gibraltar,Legal – Regulated,56.0,60.0,60.0,60.0,SOFT_DEPENDENT,False,656.0,DLT framework mature,False
+Georgia,Legal – Regulated,54.0,60.0,60.0,60.0,SOFT_DEPENDENT,False,654.0,NBG VASP rules,False
+Kazakhstan,Legal – Regulated,54.0,60.0,60.0,60.0,SOFT_DEPENDENT,False,654.0,AIFC mature,False
+Uzbekistan,Legal – Regulated,48.0,60.0,60.0,60.0,SOFT_DEPENDENT,False,648.0,NAPP VASP,False
+Bahamas,Legal – Regulated,40.0,58.5,60.0,50.0,SOFT_DEPENDENT,False,625.0,DARE Act 2024,False
+Bahrain,Legal – Regulated,54.0,57.0,60.0,40.0,SOFT_DEPENDENT,False,624.0,CBB mature,False
+Mauritius,Legal – Regulated,46.0,57.0,60.0,40.0,SOFT_DEPENDENT,False,616.0,VAITOS Act 2021,False
+Canada,Legal – Regulated,86.0,50.86,51.02,50.0,SOFT_DEPENDENT,False,594.6,PCMLTFA mature; provincial CSA,False
+Singapore,Legal – Regulated,86.0,50.86,51.02,50.0,SOFT_DEPENDENT,False,594.6,PSA mature; stablecoin/DPT updates ongoing,False
+Mexico,Legal – Restricted,70.0,52.36,51.02,60.0,SOFT_DEPENDENT,False,593.6,Fintech Law 2.0; CNBV,False
+Ukraine,Legal – Regulated,66.0,51.99,47.04,80.0,SOFT_DEPENDENT,False,585.9,VA Law 2022 awaiting Rada implementation,False
+Malta,Legal – MiCA,66.0,47.49,47.04,50.0,SOFT_DEPENDENT,False,540.9,VFA→MiCA transition done,True
+Liechtenstein,Legal – Progressive,64.0,45.99,47.04,40.0,SOFT_DEPENDENT,False,523.9,TVTG mature 2020,False
+Switzerland,Legal – Progressive,96.0,41.5,40.0,50.0,SOFT_DEPENDENT,False,511.0,DLT Act mature 2020; FINMA,False
+Israel,Legal – Regulated,66.0,44.4,45.17,40.0,SOFT_DEPENDENT,False,510.0,ISA framework mature,False
+New Zealand,Legal – Regulated,64.0,44.4,45.17,40.0,SOFT_DEPENDENT,False,508.0,FMA; mature,False
+Saudi Arabia,Restricted,56.0,41.5,40.0,50.0,SOFT_DEPENDENT,False,471.0,CMA exploring,False
+Morocco,Total Ban (reviewing),25,43.0,40.0,60.0,"BAN_GATE_APPLIED,SOFT_DEPENDENT",False,455.0,BAM draft framework 2025,False
+Panama,Legal – Gray Zone,48.0,40.0,40.0,40.0,SOFT_DEPENDENT,False,448.0,No formal,False
+Peru,Legal – Gray Zone,46.0,40.0,40.0,40.0,SOFT_DEPENDENT,False,446.0,SBS draft,False
+British Virgin Islands,Legal – Regulated,46.0,40.0,40.0,40.0,SOFT_DEPENDENT,False,446.0,VASP Act 2022,False
+Isle of Man,Legal – Regulated,44.0,40.0,40.0,40.0,SOFT_DEPENDENT,False,444.0,DBE framework,False
+Jersey,Legal – Regulated,44.0,40.0,40.0,40.0,SOFT_DEPENDENT,False,444.0,JFSC framework,False
+Guernsey,Legal – Regulated,44.0,40.0,40.0,40.0,SOFT_DEPENDENT,False,444.0,GFSC framework,False
+Seychelles,Legal – Light-touch,42.0,40.0,40.0,40.0,SOFT_DEPENDENT,False,442.0,FSA registry,False
+El Salvador,Legal – Progressive,40.0,40.0,40.0,40.0,SOFT_DEPENDENT,False,440.0,Bitcoin Law mature; CNAD,False
+Jordan,Restricted,40.0,40.0,40.0,40.0,SOFT_DEPENDENT,False,440.0,CBJ ban-lite,False
+India,Legal – Restricted,86.0,28.43,24.62,50.0,SOFT_DEPENDENT,False,370.3,VDA tax + AML only; no licensing,False
+Colombia,Legal – Gray Zone,56.0,23.0,20.0,40.0,SOFT_DEPENDENT,False,286.0,No formal framework,False
+Venezuela,Legal – Gray Zone,52.0,23.0,20.0,40.0,SOFT_DEPENDENT,False,282.0,No coherent framework,False
+Dominican Republic,Legal – Gray Zone,46.0,23.0,20.0,40.0,SOFT_DEPENDENT,False,276.0,No framework,False
+Moldova,Legal – Gray Zone,40.0,23.0,20.0,40.0,SOFT_DEPENDENT,False,270.0,No formal,False
+Tanzania,Restricted,40.0,20.0,20.0,20.0,SOFT_DEPENDENT,False,240.0,BoT ban,False
+Bolivia,Total Ban (reviewing),20.0,21.5,20.0,30.0,SOFT_DEPENDENT,False,235.0,BCB ban under review,False
+Sri Lanka,Restricted,30.0,20.0,20.0,20.0,SOFT_DEPENDENT,False,230.0,No framework,False
+North Macedonia,Restricted,28.0,20.0,20.0,20.0,SOFT_DEPENDENT,False,228.0,No framework,False
+China,Total Ban,25,20.0,20.0,20.0,"BAN_GATE_APPLIED,SOFT_DEPENDENT",False,225.0,Total ban; HK separate,False
+Egypt,Total Ban,25,20.0,20.0,20.0,"BAN_GATE_APPLIED,SOFT_DEPENDENT",False,225.0,CBE ban,False
+Kuwait,Total Ban,25,20.0,20.0,20.0,"BAN_GATE_APPLIED,SOFT_DEPENDENT",False,225.0,CBK ban,False
+Ghana,Total Ban,25,20.0,20.0,20.0,"BAN_GATE_APPLIED,SOFT_DEPENDENT",False,225.0,BoG ban; draft framework discussed,False
+Bangladesh,Total Ban,25,20.0,20.0,20.0,"BAN_GATE_APPLIED,SOFT_DEPENDENT",False,225.0,Total ban,False
+Qatar,Total Ban,25,20.0,20.0,20.0,"BAN_GATE_APPLIED,SOFT_DEPENDENT",False,225.0,QCB ban; QFC separate,False
+Cambodia,Total Ban,25,20.0,20.0,20.0,"BAN_GATE_APPLIED,SOFT_DEPENDENT",False,225.0,NBC ban,False
+Ethiopia,Restricted,24.0,20.0,20.0,20.0,SOFT_DEPENDENT,False,224.0,No framework,False
+Algeria,Total Ban,20.0,20.0,20.0,20.0,SOFT_DEPENDENT,False,220.0,Total ban,False
+Tunisia,Total Ban,20.0,20.0,20.0,20.0,SOFT_DEPENDENT,False,220.0,Total ban,False
+Nepal,Total Ban,20.0,20.0,20.0,20.0,SOFT_DEPENDENT,False,220.0,Total ban,False
+Myanmar,Total Ban,20.0,20.0,20.0,20.0,SOFT_DEPENDENT,False,220.0,Total ban,False
+Iraq,Total Ban,20.0,20.0,20.0,20.0,SOFT_DEPENDENT,False,220.0,Total ban,False
+Afghanistan,Total Ban,20.0,20.0,20.0,20.0,SOFT_DEPENDENT,False,220.0,Total ban,False

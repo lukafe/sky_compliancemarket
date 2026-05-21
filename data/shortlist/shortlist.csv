@@ -1,0 +1,11 @@
+Country,attractiveness,urgency,urgency_p05_data,urgency_p95_data,urgency_p05_weights,urgency_p95_weights,topN_rate_data,topN_rate_weights,in_Q1,fragile_data,fragile_weights
+Turkey,72.0,100.0,98.06,100.0,100.0,100.0,1.0,1.0,True,False,False
+Germany,94.0,98.5,96.5,99.72,98.28,98.7,1.0,1.0,True,False,False
+France,90.0,98.5,96.48,99.72,98.28,98.7,1.0,1.0,True,False,False
+Nigeria,76.0,98.5,96.32,99.74,98.3,98.72,1.0,1.0,True,False,False
+Lithuania,64.0,97.0,94.86,99.14,97.0,97.0,0.93,1.0,True,False,False
+Poland,60.0,97.0,94.91,99.11,97.0,97.0,0.93,1.0,True,False,False
+Brazil,86.0,97.0,94.89,99.15,97.0,97.0,0.92,1.0,True,False,False
+Ireland,86.0,97.0,94.9,98.27,96.57,97.41,0.91,1.0,True,False,False
+Pakistan,56.0,100.0,94.17,99.71,100.0,100.0,0.87,1.0,False,False,False
+Vietnam,66.0,100.0,93.93,99.73,100.0,100.0,0.85,1.0,True,False,False

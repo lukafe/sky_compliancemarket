@@ -1,0 +1,21 @@
+Country,deadline_iso,framework,regulator,attractiveness,urgency,urgency_hard_core,urgency_soft,dq,flags,notes
+Turkey,2026-03-31,Capital Markets Law amendment + CASP registration,CMB (SPK),72.0,100.0,100.0,100.0,0.89,SOFT_DEPENDENT,CMB CASP regime live; 47 platforms in registration; biggest in-scope migration outside EU.
+Vietnam,2026-01-01,Resolution 03/2025 + Decree implementing MoF framework,Ministry of Finance + SBV,66.0,100.0,100.0,100.0,0.6,SOFT_DEPENDENT,NET-NEW regime live Jan 2026. Massive gray-market base entering compliance.
+Pakistan,2026-11-30,Virtual Assets Act 2025 (PVARA),PVARA,56.0,100.0,100.0,100.0,0.6,SOFT_DEPENDENT,Net-new regime late 2025. Massive non-compliance gap (no licensed entities yet). Country still on FATF watchlist.
+Germany,2026-07-30,MiCA + KMAG transition,BaFin,94.0,98.5,100.0,90.0,1.0,SOFT_DEPENDENT,Largest MiCA market by deal size. CASP transition window closes Jul 2026.
+France,2026-07-30,MiCA + PSAN→CASP transition,AMF + ACPR,90.0,98.5,100.0,90.0,1.0,SOFT_DEPENDENT,PSAN registration converting to CASP; significant in-scope population.
+Nigeria,2026-06-30,ISA 2025 (Investment & Securities Act) + SEC VASP rules,SEC Nigeria + CBN,76.0,98.5,100.0,90.0,0.83,SOFT_DEPENDENT,ISA 2025 enacted; VASP registration; SEC takes lead.
+Brazil,2026-10-31,BCB IN 701 (Resolução BCB nº 701) + Law 14.478/2022,BCB + CVM,86.0,97.0,100.0,80.0,0.94,SOFT_DEPENDENT,Anchor. IN 701 issued Oct 2024 effective Oct 2026. BCB VASP authorization required.
+Ireland,2026-07-30,MiCA,Central Bank of Ireland,86.0,97.0,100.0,80.0,0.94,SOFT_DEPENDENT,Coinbase EU + Kraken EU + Gemini EU based. High institutional depth.
+Lithuania,2026-07-30,MiCA + Bank of Lithuania CASP,BoL,64.0,97.0,100.0,80.0,0.89,SOFT_DEPENDENT,Largest historical EU VASP-licensing hub; ~500+ legacy VASPs migrating to CASP.
+Poland,2026-07-30,MiCA + KNF transition,KNF,60.0,97.0,100.0,80.0,0.77,SOFT_DEPENDENT,KNF VASP transition; significant retail market.
+Netherlands,2026-07-30,MiCA,AFM + DNB,84.0,95.5,100.0,70.0,0.94,SOFT_DEPENDENT,Wwft+MiCA. AFM/DNB joint supervision.
+Kenya,2026-10-01,Virtual Asset Service Providers Bill 2025,CMA + CBK,56.0,92.74,91.46,100.0,0.6,SOFT_DEPENDENT,VASP Bill passed 2025 with phased implementation; supplementary regs late 2026.
+Taiwan,2026-09-30,VASP Act 2025,FSC,60.0,91.5,93.52,80.0,0.77,SOFT_DEPENDENT,VASP Act passed 2025; FSC licensing 2026.
+Hong Kong,2026-08-01,VASP Ordinance + Stablecoin Ordinance 2025,SFC + HKMA,92.0,91.24,91.46,90.0,1.0,SOFT_DEPENDENT,Stablecoin licensing Aug 2025 live; OTC + custody bills 2026.
+United Kingdom,2026-12-31,FSMA 2023 + FCA financial promotion gateway,FCA + HM Treasury,82.0,91.24,91.46,90.0,0.94,SOFT_DEPENDENT,Stablecoin + custody rules consultation closing 2026; gateway live.
+Australia,2027-03-31,Treasury digital asset platforms bill 2025,ASIC + AUSTRAC,76.0,86.42,85.79,90.0,0.71,SOFT_DEPENDENT,DAP bill late-2025 introduced; transition runway. May land in 18-24mo bucket.
+United States,2026-12-31,GENIUS Act stablecoin + multi-agency framework,Multiple (OCC FRB SEC CFTC),96.0,77.56,73.6,100.0,1.0,SOFT_DEPENDENT,GENIUS in enforcement phase. Net-new licensing limited; biggest CertiK angle is stablecoin audit + state-VASP MTL.
+South Korea,2027-07-01,VAUPA + token-classification + DBAA Phase 2,FSC + FSS,82.0,74.38,73.39,80.0,0.83,SOFT_DEPENDENT,Phase 2 token classification rules forthcoming; institutional access expanding.
+Japan,2027-04-01,PSA + FIEA 2025 amendments,FSA + JFSA,90.0,66.1,65.41,70.0,0.94,SOFT_DEPENDENT,2025 amendments expand investor protection. Outside 6-18mo sweet spot.
+UAE,2027-01-01,VARA (Dubai) + ADGM + Federal Decree-Law,VARA + ADGM FSRA + SCA,86.0,66.1,65.41,70.0,0.71,SOFT_DEPENDENT,VARA + ADGM mature; expanding scope but not net-new licensing window.
